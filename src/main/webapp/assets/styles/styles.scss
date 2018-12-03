@@ -1,0 +1,149 @@
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+.m-preview {
+	display: none;
+	position: relative;
+	width: 80%;
+	margin: 1em auto;
+	user-select: none;
+
+	.m-preview--shadow {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 0;
+		height: 0;
+		backface-visibility: hidden;
+		pointer-events: none;
+
+		background: rgba(0,0,0,.3);
+		border: 1px solid #333;
+		border-radius: 5px;
+	}
+
+	.m-preview--areas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+
+		.m-preview--areas--area {
+			position: absolute;
+			border: 1px solid rgba(0,0,0,.5);
+			border-radius: 5px;
+			overflow: hidden;
+			cursor: no-drop;
+
+			.m-preview--areas--area--image {
+				position: absolute;
+				top: -15px;
+				left: -15px;
+				z-index: 1;
+				width: calc(100% + 30px);
+				height: calc(100% + 30px);
+				filter: blur(10px);
+			}
+
+			.m-preview--areas--area--remove {
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 2;
+				color: #aaa;
+				text-decoration: none;
+				background: rgba(0, 0, 0, 0.5);
+				border-radius: 0 0 0 50%;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				line-height: 20px;
+			}
+		}
+	}
+
+	.m-preview--image {
+		display: block;
+		width: 100%;
+	}
+}
+
+.m-upload {
+	position: relative;
+	border: 10px dashed #aaa;
+	border-radius: 20px;
+	text-align: center;
+	margin: auto;
+	font-size: 2em;
+	color: #aaa;
+
+	width: 80%;
+
+	#uploadform {
+		height: 0;
+
+		#imageFile {
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+
+			opacity: 0;
+		}
+	}
+}
+
+.m-progress {
+	display: none;
+	position: relative;
+	width: 80%;
+	height: 40px;
+	margin: 1em auto;
+	border: 2px solid #aaa;
+	border-radius: 10px;
+	overflow: hidden;
+
+	.m-progress--bar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 0;
+		background: #6786ff;
+		transition: width 200ms ease-out;
+	}
+}
+
+#downloadLink {
+	text-decoration: none;
+
+	img {
+		display: block;
+		border: none;
+		width: 250px;
+	}
+}
+
+#startButton {
+	display: block;
+	margin: 1em auto;
+	border: 2px solid #aaa;
+	color: #333;
+	border-radius: 5px;
+	height: 40px;
+	width: 80%;
+	background: #fff;
+	text-transform: uppercase;
+
+	&:hover {
+		background: #aaa;
+		color: #333;
+	}
+}
