@@ -5,6 +5,7 @@ import io.zoku.model.Areas
 import io.zoku.model.ImageData
 import java.awt.Color
 import java.awt.Graphics2D
+import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig
@@ -39,11 +40,49 @@ class ImageReceiver : HttpServlet() {
 
         val g2d = image.graphics as Graphics2D
 
-        g2d.color = Color.BLACK
+        // Black out ---------------------------------------------------------------------------------------------------
+        // g2d.color = Color.BLACK
+        // areas.forEach { area ->
+        //     g2d.fillRect((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
+        // }
+        // -------------------------------------------------------------------------------------------------------------
 
-        areas.forEach { area ->
-            g2d.fillRect((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
+        // Rectangular mosaic ------------------------------------------------------------------------------------------
+        val squareLength = if (image.width > image.height) image.width / 100 else image.height / 100
+
+        val squaredImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_RGB)
+
+        for (sqX in 0 until squaredImage.width step squareLength) {
+            for (sqY in 0 until squaredImage.height step squareLength) {
+
+                var r = 0
+                var g = 0
+                var b = 0
+                var pixels = 0
+                for(imX in sqX until sqX + squareLength) {
+                    if (imX > image.width) break
+
+                    for(imY in sqY until sqY + squareLength) {
+                        if (imY > image.height) break
+                        val currentPixel = Color(image.getRGB(imX, imY))
+                        r += currentPixel.red
+                        g += currentPixel.green
+                        b += currentPixel.blue
+                        pixels++
+                    }
+                }
+                val medianR = r / pixels
+                val medianG = g / pixels
+                val medianB = b / pixels
+
+                g2d.color = Color(medianR, medianG, medianB)
+                g2d.fillRect(sqX, sqY, squareLength, squareLength)
+            }
         }
+
+        g2d.drawImage(squaredImage, 0, 0, null)
+
+        // -------------------------------------------------------------------------------------------------------------
 
         g2d.dispose()
 
