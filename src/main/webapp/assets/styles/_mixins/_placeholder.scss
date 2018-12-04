@@ -1,0 +1,19 @@
+// Takes styles for the placeholder pseudo-element
+// (aotoprefixer can't handle this)
+@mixin placeholder() {
+	&::-webkit-input-placeholder { // Chrome, Safari, Modern Opera
+		@content;
+	}
+
+	&:-moz-placeholder {	// Firefox 18-
+		@content;
+	}
+
+	&::-moz-placeholder { // Firefox 19+
+		@content;
+	}
+
+	&:-ms-input-placeholder { // Internet Explorer 10+
+		@content;
+	}
+}

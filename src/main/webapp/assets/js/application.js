@@ -1,28 +1,41 @@
 $(document).ready(function () {
-    var $progressBar = $('#progress');
+    var maxAllowedFileSizeMB = 5;
+
     var $fileInput = $('#imageFile');
+    var $uploadText = $('.m-upload--text');
+
     var $previewImage = $('.m-preview--image');
     var $previewShadow = $('.m-preview--shadow');
-    var $startButton = $('#startButton');
-    var $uploadText = $('.m-upload--text');
     var $areas = $('.m-preview--areas');
     var $areasInput = $('#areasInput');
+
+    var $modeContainer = $('.m-mode');
+
+    var $startButton = $('#startButton');
+    var $progressBar = $('#progress');
+
     var $imageDataInput = $('#imageDataInput');
-
-
-    var maxAllowedFileSizeMB = 5;
+    var $modeInput = $('#modeInput');
 
     $fileInput.on('change', function() {
         var file = this.files[0];
+
+        $modeContainer.hide();
+        $startButton.hide();
+        $uploadText.removeClass('m-upload--text_small');
+
+        $areas.empty();
 
         if (file.size > maxAllowedFileSizeMB * 1024 * 1024) {
             $uploadText.text('Filesize is ' + (file.size / 1024 / 1024).toFixed(2) + 'MB (maximum allowed: ' + maxAllowedFileSizeMB + 'MB)');
             return;
         }
 
-        $uploadText.text(file.name + ' (Click or drop another file here to change)');
+        $uploadText.addClass('m-upload--text_small').html(file.name + '<br>(Click or drop another file here to change)');
 
         previewImage(this);
+        $modeContainer.show();
+        $startButton.show();
     });
 
     function previewImage(input) {
@@ -54,6 +67,8 @@ $(document).ready(function () {
         };
         $imageDataInput.val(JSON.stringify(imageData));
 
+        $modeInput.val($('#mode').find(':selected').val());
+
         $.ajax({
             url: '/imagereceiver',
             type: 'POST',
@@ -76,14 +91,13 @@ $(document).ready(function () {
             }
         })
             .done(function (response) {
-                $('#downloadLink').attr('href', response);
-                $('#downloadLink').download = 'testimageanonymous.jpg';
-
-                $('#downloadLink').find('img').attr('src', response);
+                var $download = $('.m-download');
+                $download.find('img').attr('src', response);
+                $download.fadeIn();
             })
             .always(function () {
-            $progressBar.hide();
-        });
+                $progressBar.hide();
+            });
     });
 
     var startX = null;
@@ -178,8 +192,13 @@ $(document).ready(function () {
         $previewShadow.hide();
     });
 
-    $(window, document).on('resize', function (e) {
+    $(window, document).on('resize', function () {
         $areas.empty();
+    });
+
+    $('.m-download--close').on('click', function (e) {
+        e.preventDefault();
+        $('.m-download').fadeOut();
     });
 
     function makeArea(x, y, w, h) {
@@ -196,14 +215,17 @@ $(document).ready(function () {
                 backgroundPositionX: 0 - x + 15,
                 backgroundPositionY: 0 - y + 15,
                 'background-size': $previewImage.outerWidth() + 'px ' + $previewImage.outerHeight() + 'px'
-            })).on('click', function (e) {
-                e.preventDefault();
-                $(this).remove();
-            }).data('area', {
+            }))
+            .data('area', {
                 width: w,
                 height: h,
                 y: y,
                 x: x
+            }).on('mouseup', function (e) {
+                e.stopPropagation();
+                $(this).remove();
+            }).on('mousedown mousemove', function (e) {
+                e.stopPropagation();
             });
 
         $areas.append($area);
