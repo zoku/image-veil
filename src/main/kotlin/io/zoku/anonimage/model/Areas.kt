@@ -1,3 +1,3 @@
-package io.zoku.model
+package io.zoku.anonimage.model
 
 class Areas : ArrayList<Area>()

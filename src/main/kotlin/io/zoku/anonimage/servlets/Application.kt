@@ -1,6 +1,6 @@
-package io.zoku.servlets
+package io.zoku.anonimage.servlets
 
-import io.zoku.elements.HTML
+import io.zoku.anonimage.elements.HTML
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
@@ -22,7 +22,7 @@ class Application : HttpServlet() {
                 p(classes = "m-upload--text") { +"Click or drop file here to start" }
                 form(encType = FormEncType.multipartFormData) {
                     id = "uploadform"
-                    fileInput(name = "image") { id = "imageFile" }
+                    fileInput(name = "image") { id = "imageFile"; accept = "image/jpeg" }
                     hiddenInput(name = "areas") { id = "areasInput" }
                     hiddenInput(name = "imageData") { id = "imageDataInput" }
                     hiddenInput(name = "mode") { id = "modeInput" }

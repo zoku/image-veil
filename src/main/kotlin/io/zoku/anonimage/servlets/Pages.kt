@@ -1,8 +1,8 @@
-package io.zoku.servlets
+package io.zoku.anonimage.servlets
 
 import com.vladsch.flexmark.html.HtmlRenderer
 import com.vladsch.flexmark.parser.Parser
-import io.zoku.elements.HTML
+import io.zoku.anonimage.elements.HTML
 import kotlinx.html.dom.serialize
 import kotlinx.html.unsafe
 import java.io.File

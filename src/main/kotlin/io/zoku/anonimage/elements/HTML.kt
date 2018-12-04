@@ -1,4 +1,4 @@
-package io.zoku.elements
+package io.zoku.anonimage.elements
 
 import kotlinx.html.*
 import kotlinx.html.dom.createHTMLDocument

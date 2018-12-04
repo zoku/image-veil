@@ -1,9 +1,9 @@
-package io.zoku.servlets
+package io.zoku.anonimage.servlets
 
 import com.google.gson.GsonBuilder
-import io.zoku.model.Areas
-import io.zoku.model.ImageData
-import io.zoku.transformers.Pixeliser
+import io.zoku.anonimage.model.Areas
+import io.zoku.anonimage.model.ImageData
+import io.zoku.anonimage.transformers.Pixeliser
 import java.awt.Color
 import java.awt.Graphics2D
 import javax.imageio.ImageIO

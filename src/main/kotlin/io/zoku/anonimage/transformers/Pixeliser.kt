@@ -1,4 +1,4 @@
-package io.zoku.transformers
+package io.zoku.anonimage.transformers
 
 import java.awt.Color
 import java.awt.Graphics2D

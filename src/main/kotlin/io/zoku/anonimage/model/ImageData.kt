@@ -1,4 +1,4 @@
-package io.zoku.model
+package io.zoku.anonimage.model
 
 data class ImageData(
         val width: Float,

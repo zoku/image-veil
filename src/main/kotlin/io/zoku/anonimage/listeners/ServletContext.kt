@@ -1,4 +1,4 @@
-package io.zoku.listeners
+package io.zoku.anonimage.listeners
 
 import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
