@@ -1,24 +1,24 @@
 $(document).ready(function () {
-    var maxAllowedFileSizeMB = 5;
+    let maxAllowedFileSizeMB = 5;
 
-    var $fileInput = $('#imageFile');
-    var $uploadText = $('.m-upload--text');
+    let $fileInput = $('#imageFile');
+    let $uploadText = $('.m-upload--text');
 
-    var $previewImage = $('.m-preview--image');
-    var $previewShadow = $('.m-preview--shadow');
-    var $areas = $('.m-preview--areas');
-    var $areasInput = $('#areasInput');
+    let $previewImage = $('.m-preview--image');
+    let $previewShadow = $('.m-preview--shadow');
+    let $areas = $('.m-preview--areas');
+    let $areasInput = $('#areasInput');
 
-    var $modeContainer = $('.m-mode');
+    let $modeContainer = $('.m-mode');
 
-    var $startButton = $('#startButton');
-    var $progressBar = $('#progress');
+    let $startButton = $('#startButton');
+    let $progressBar = $('#progress');
 
-    var $imageDataInput = $('#imageDataInput');
-    var $modeInput = $('#modeInput');
+    let $imageDataInput = $('#imageDataInput');
+    let $modeInput = $('#modeInput');
 
     $fileInput.on('change', function() {
-        var file = this.files[0];
+        let file = this.files[0];
 
         $modeContainer.hide();
         $startButton.hide();
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     function previewImage(input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            let reader = new FileReader();
             reader.onload = function(e) {
                 $previewImage.attr('src', e.target.result);
             };
@@ -55,13 +55,19 @@ $(document).ready(function () {
         $progressBar.find('.m-progress--bar').css({ width: 0 });
         $progressBar.show();
 
-        var areas = [];
+        let areas = [];
         $areas.find('.m-preview--areas--area').each(function (i, elem) {
-            areas.push($(elem).data('area'));
+            console.log($(elem).position());
+            areas.push({
+                x: $(elem).position().left.toFixed(0),
+                y: $(elem).position().top.toFixed(0),
+                width: $(elem).width().toFixed(0),
+                height: $(elem).height().toFixed(0)
+            });
         });
         $areasInput.val(JSON.stringify(areas));
 
-        var imageData = {
+        let imageData = {
             width: $previewImage.outerWidth(),
             height: $previewImage.outerHeight()
         };
@@ -100,14 +106,14 @@ $(document).ready(function () {
             });
     });
 
-    var startX = null;
-    var startY = null;
-    var endX = null;
-    var endY = null;
-    var x = null;
-    var y = null;
-    var width = null;
-    var height = null;
+    let startX = null;
+    let startY = null;
+    let endX = null;
+    let endY = null;
+    let x = null;
+    let y = null;
+    let width = null;
+    let height = null;
 
     $areas.on('mousedown', function (e) {
         e.preventDefault();
@@ -124,12 +130,12 @@ $(document).ready(function () {
             return;
         }
 
-        var shadowWidth = 0;
-        var shadowHeight = 0;
-        var mouseX = e.offsetX;
-        var mouseY = e.offsetY;
-        var shadowX = 0;
-        var shadowY = 0;
+        let shadowWidth = 0;
+        let shadowHeight = 0;
+        let mouseX = e.offsetX;
+        let mouseY = e.offsetY;
+        let shadowX = 0;
+        let shadowY = 0;
 
 
         if (startX < mouseX) {
@@ -193,7 +199,13 @@ $(document).ready(function () {
     });
 
     $(window, document).on('resize', function () {
-        $areas.empty();
+        $('.m-preview--areas--area--image').each(function () {
+            $(this).css({
+                'background-size': $previewImage.width() + 'px ' + $previewImage.height() + 'px',
+                backgroundPositionX: 0 - $(this).parent().position().left + 15,
+                backgroundPositionY: 0 - $(this).parent().position().top + 15,
+            });
+        });
     });
 
     $('.m-download--close').on('click', function (e) {
@@ -202,26 +214,21 @@ $(document).ready(function () {
     });
 
     function makeArea(x, y, w, h) {
-        var $area = $('<div/>')
+        let $area = $('<div/>')
             .addClass('m-preview--areas--area')
             .css({
-                width: w,
-                height: h,
-                top: y,
-                left: x
+                width: w / $previewImage.width() * 100 + '%',
+                height: h / $previewImage.height() * 100 + '%',
+                top: y / $previewImage.height() * 100 + '%',
+                left: x / $previewImage.width() * 100 + '%'
             })
             .append($('<div/>').addClass('m-preview--areas--area--image').css({
                 backgroundImage: 'url(' + $previewImage.attr('src') + ')',
                 backgroundPositionX: 0 - x + 15,
                 backgroundPositionY: 0 - y + 15,
-                'background-size': $previewImage.outerWidth() + 'px ' + $previewImage.outerHeight() + 'px'
+                'background-size': $previewImage.width() + 'px ' + $previewImage.height() + 'px'
             }))
-            .data('area', {
-                width: w,
-                height: h,
-                y: y,
-                x: x
-            }).on('mouseup', function (e) {
+            .on('mouseup', function (e) {
                 e.stopPropagation();
                 $(this).remove();
             }).on('mousedown mousemove', function (e) {
