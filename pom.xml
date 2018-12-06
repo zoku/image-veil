@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-html-jvm</artifactId>
-            <version>0.6.8</version>
+            <version>0.6.11</version>
         </dependency>
 
         <!-- JSON -->
@@ -66,7 +66,7 @@
 
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+        <!--<testSourceDirectory>src/test/kotlin</testSourceDirectory>-->
 
         <plugins>
             <!-- Tomcat -->

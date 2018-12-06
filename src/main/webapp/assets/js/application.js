@@ -27,11 +27,11 @@ $(document).ready(function () {
         $areas.empty();
 
         if (file.size > maxAllowedFileSizeMB * 1024 * 1024) {
-            $uploadText.text('Filesize is ' + (file.size / 1024 / 1024).toFixed(2) + 'MB (maximum allowed: ' + maxAllowedFileSizeMB + 'MB)');
+            $uploadText.text(i18n.js.fileSizeHint.replace('[size1]', (file.size / 1024 / 1024).toFixed(2)).replace('[size2]', maxAllowedFileSizeMB));
             return;
         }
 
-        $uploadText.addClass('m-upload--text_small').html(file.name + '<br>(Click or drop another file here to change)');
+        $uploadText.addClass('m-upload--text_small').html(file.name + '<br>' + i18n.js.newFileHint);
 
         previewImage(this);
         $modeContainer.show();

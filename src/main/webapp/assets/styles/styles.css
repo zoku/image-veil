@@ -219,6 +219,7 @@ body {
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
+  border-radius: 10px 10px 0 0;
   padding: 1em; }
   .m-footer .m-footer--link {
     display: inline-block;
