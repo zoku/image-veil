@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import io.zoku.anonimage.model.Areas
 import io.zoku.anonimage.model.ImageData
 import io.zoku.anonimage.transformers.Pixeliser
+import io.zoku.anonimage.transformers.Randomiser
 import java.awt.Color
 import java.awt.Graphics2D
 import javax.imageio.ImageIO
@@ -32,7 +33,9 @@ class ImageReceiver : HttpServlet() {
         val imageData = gson.fromJson(request.getParameter("imageData")?:"", ImageData::class.java)
         val mode = request.getParameter("mode")
         val imagePart = request.getPart("image")
-        val image = ImageIO.read(imagePart.inputStream)
+        val originalImage = ImageIO.read(imagePart.inputStream)
+
+        val image = Randomiser.randomiseImage(originalImage)
 
         val scaleX = image.width / imageData.width
         val scaleY = image.height / imageData.height
