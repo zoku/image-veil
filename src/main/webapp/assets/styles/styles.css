@@ -149,8 +149,8 @@ body {
   left: 50%;
   z-index: 1;
   width: 90%;
+  height: 90%;
   max-width: 960px;
-  max-height: 100%;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
@@ -168,14 +168,17 @@ body {
     line-height: 40px;
     text-align: center; }
   .m-download .m-download--content {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: #fff;
     border-radius: 10px;
     padding: 1em; }
     .m-download .m-download--content img {
       display: block;
       border: none;
-      max-height: 65vh;
-      height: 570px;
+      width: 100%;
       margin: auto; }
 
 #startButton {
