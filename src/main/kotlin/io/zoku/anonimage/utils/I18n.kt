@@ -1,4 +1,4 @@
-package io.zoku.anonimage
+package io.zoku.anonimage.utils
 
 import java.util.*
 

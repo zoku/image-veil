@@ -2,8 +2,8 @@ package io.zoku.anonimage.servlets
 
 import com.vladsch.flexmark.html.HtmlRenderer
 import com.vladsch.flexmark.parser.Parser
-import io.zoku.anonimage.I18n
-import io.zoku.anonimage.elements.HTML
+import io.zoku.anonimage.utils.I18n
+import io.zoku.anonimage.templates.PageTemplate
 import kotlinx.html.dom.serialize
 import kotlinx.html.unsafe
 import java.io.File
@@ -43,7 +43,7 @@ class Pages : HttpServlet() {
         val document = parser.parse(resource.readText())
         val html = renderer.render(document)
 
-        val dom = HTML.site(title, request) {
+        val dom = PageTemplate.site(title, request) {
             unsafe { +"""<div class="m-page-content">$html</div>""" }
         }
 

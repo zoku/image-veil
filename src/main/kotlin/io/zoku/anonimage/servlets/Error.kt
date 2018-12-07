@@ -1,7 +1,7 @@
 package io.zoku.anonimage.servlets
 
-import io.zoku.anonimage.I18n
-import io.zoku.anonimage.elements.HTML
+import io.zoku.anonimage.utils.I18n
+import io.zoku.anonimage.templates.PageTemplate
 import kotlinx.html.div
 import kotlinx.html.dom.serialize
 import kotlinx.html.h2
@@ -28,7 +28,7 @@ class Error : HttpServlet() {
         val lang = request.getParameter("l") ?: request.locale.language
         val i18n = I18n(Locale(lang))
 
-        val dom = HTML.site(i18n.get("error.headline"), request) {
+        val dom = PageTemplate.site(i18n.get("error.headline"), request) {
             div(classes = "m-page-content") {
                 h2 { +"${i18n.get("error.headline")} $statusCode" }
                 p { +i18n.get("error.description.$statusCode") }

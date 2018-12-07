@@ -1,7 +1,7 @@
 package io.zoku.anonimage.servlets
 
-import io.zoku.anonimage.I18n
-import io.zoku.anonimage.elements.HTML
+import io.zoku.anonimage.utils.I18n
+import io.zoku.anonimage.templates.PageTemplate
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
@@ -22,7 +22,7 @@ class Application : HttpServlet() {
         val lang = request.getParameter("l") ?: request.locale.language
         val i18n = I18n(Locale(lang))
 
-        val dom = HTML.site("App", request) {
+        val dom = PageTemplate.site("App", request) {
             div(classes = "m-upload") {
                 attributes["data-i18n--file-size-hint"] = i18n.get("js.fileSizeHint")
                 attributes["data-i18n--new-file-hint"] = i18n.get("js.newFileHint")
