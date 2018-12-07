@@ -1,24 +1,25 @@
 $(document).ready(function () {
-    let maxAllowedFileSizeMB = 5;
+    var maxAllowedFileSizeMB = 5;
 
-    let $fileInput = $('#imageFile');
-    let $uploadText = $('.m-upload--text');
+    var $fileInput = $('#imageFile');
+    var $upload = $('.m-upload');
+    var $uploadText = $('.m-upload--text');
 
-    let $previewImage = $('.m-preview--image');
-    let $previewShadow = $('.m-preview--shadow');
-    let $areas = $('.m-preview--areas');
-    let $areasInput = $('#areasInput');
+    var $previewImage = $('.m-preview--image');
+    var $previewShadow = $('.m-preview--shadow');
+    var $areas = $('.m-preview--areas');
+    var $areasInput = $('#areasInput');
 
-    let $modeContainer = $('.m-mode');
+    var $modeContainer = $('.m-mode');
 
-    let $startButton = $('#startButton');
-    let $progressBar = $('#progress');
+    var $startButton = $('#startButton');
+    var $progressBar = $('#progress');
 
-    let $imageDataInput = $('#imageDataInput');
-    let $modeInput = $('#modeInput');
+    var $imageDataInput = $('#imageDataInput');
+    var $modeInput = $('#modeInput');
 
     $fileInput.on('change', function() {
-        let file = this.files[0];
+        var file = this.files[0];
 
         $modeContainer.hide();
         $startButton.hide();
@@ -27,11 +28,12 @@ $(document).ready(function () {
         $areas.empty();
 
         if (file.size > maxAllowedFileSizeMB * 1024 * 1024) {
-            $uploadText.text(i18n.js.fileSizeHint.replace('[size1]', (file.size / 1024 / 1024).toFixed(2)).replace('[size2]', maxAllowedFileSizeMB));
+            $uploadText.text($upload.data('i18n--file-size-hint').replace('[size1]', (file.size / 1024 / 1024).toFixed(2)).replace('[size2]', maxAllowedFileSizeMB));
+            $('.m-preview').hide();
             return;
         }
 
-        $uploadText.addClass('m-upload--text_small').html(file.name + '<br>' + i18n.js.newFileHint);
+        $uploadText.addClass('m-upload--text_small').html(file.name + '<br>' + $upload.data('i18n--new-file-hint'));
 
         previewImage(this);
         $modeContainer.show();
@@ -40,7 +42,7 @@ $(document).ready(function () {
 
     function previewImage(input) {
         if (input.files && input.files[0]) {
-            let reader = new FileReader();
+            var reader = new FileReader();
             reader.onload = function(e) {
                 $previewImage.attr('src', e.target.result);
             };
@@ -55,7 +57,7 @@ $(document).ready(function () {
         $progressBar.find('.m-progress--bar').css({ width: 0 });
         $progressBar.show();
 
-        let areas = [];
+        var areas = [];
         $areas.find('.m-preview--areas--area').each(function (i, elem) {
             console.log($(elem).position());
             areas.push({
@@ -67,7 +69,7 @@ $(document).ready(function () {
         });
         $areasInput.val(JSON.stringify(areas));
 
-        let imageData = {
+        var imageData = {
             width: $previewImage.outerWidth(),
             height: $previewImage.outerHeight()
         };
@@ -106,14 +108,14 @@ $(document).ready(function () {
             });
     });
 
-    let startX = null;
-    let startY = null;
-    let endX = null;
-    let endY = null;
-    let x = null;
-    let y = null;
-    let width = null;
-    let height = null;
+    var startX = null;
+    var startY = null;
+    var endX = null;
+    var endY = null;
+    var x = null;
+    var y = null;
+    var width = null;
+    var height = null;
 
     $areas.on('mousedown', function (e) {
         e.preventDefault();
@@ -130,12 +132,12 @@ $(document).ready(function () {
             return;
         }
 
-        let shadowWidth = 0;
-        let shadowHeight = 0;
-        let mouseX = e.offsetX;
-        let mouseY = e.offsetY;
-        let shadowX = 0;
-        let shadowY = 0;
+        var shadowWidth = 0;
+        var shadowHeight = 0;
+        var mouseX = e.offsetX;
+        var mouseY = e.offsetY;
+        var shadowX = 0;
+        var shadowY = 0;
 
 
         if (startX < mouseX) {
@@ -203,7 +205,7 @@ $(document).ready(function () {
             $(this).css({
                 'background-size': $previewImage.width() + 'px ' + $previewImage.height() + 'px',
                 backgroundPositionX: 0 - $(this).parent().position().left + 15,
-                backgroundPositionY: 0 - $(this).parent().position().top + 15,
+                backgroundPositionY: 0 - $(this).parent().position().top + 15
             });
         });
     });
@@ -214,7 +216,7 @@ $(document).ready(function () {
     });
 
     function makeArea(x, y, w, h) {
-        let $area = $('<div/>')
+        var $area = $('<div/>')
             .addClass('m-preview--areas--area')
             .css({
                 width: w / $previewImage.width() * 100 + '%',

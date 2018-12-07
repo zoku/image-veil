@@ -41,16 +41,6 @@ object HTML {
 
                 script(type = "text/javascript", src = "/assets/js/lib/jquery-3.3.1.min.js") {}
                 script(type = "text/javascript", src = "/assets/js/application.js") {}
-                script {
-                    unsafe {
-                        +"""let i18n = {
-                            js: {
-                                fileSizeHint: '${i18n.get("js.fileSizeHint")}',
-                                newFileHint: '${i18n.get("js.newFileHint")}'
-                                }
-                        };""".trimIndent()
-                    }
-                }
             }
         }
     }

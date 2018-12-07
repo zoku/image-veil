@@ -24,6 +24,9 @@ class Application : HttpServlet() {
 
         val dom = HTML.site("App", request) {
             div(classes = "m-upload") {
+                attributes["data-i18n--file-size-hint"] = i18n.get("js.fileSizeHint")
+                attributes["data-i18n--new-file-hint"] = i18n.get("js.newFileHint")
+
                 p(classes = "m-upload--text") { +i18n.get("app.main.upload.startHint") }
                 form(encType = FormEncType.multipartFormData) {
                     id = "uploadform"
