@@ -264,16 +264,24 @@ body {
 	border-radius: $default-border-radius;
 	box-shadow: 0 0 5px rgba(0,0,0,.5);
 
-	h2 { font-size: 1.4em }
-	h3 { font-size: 1.3em }
-	h4 { font-size: 1.2em }
+	h2, h3, h4, p {
+		margin: 1em 0 0 0;
+	}
+
+	h2, h3, h4 {
+		font-weight: bold;
+	}
+
+	h2 { font-size: 1.6em; border-bottom: solid 1px #aaa; }
+	h3 { font-size: 1.3em; }
+	h4 { font-size: 1.1em; }
 }
 
 .m-footer {
 	position: absolute;
 	bottom: 0;
-	left: 0;
-	width: 100%;
+	left: 1em;
+	right: 1em;
 	background: rgba(0,0,0,.7);
 	color: #fff;
 	border-radius: $default-border-radius $default-border-radius 0 0;

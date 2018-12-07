@@ -205,18 +205,23 @@ body {
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+  .m-page-content h2, .m-page-content h3, .m-page-content h4, .m-page-content p {
+    margin: 1em 0 0 0; }
+  .m-page-content h2, .m-page-content h3, .m-page-content h4 {
+    font-weight: bold; }
   .m-page-content h2 {
-    font-size: 1.4em; }
+    font-size: 1.6em;
+    border-bottom: solid 1px #aaa; }
   .m-page-content h3 {
     font-size: 1.3em; }
   .m-page-content h4 {
-    font-size: 1.2em; }
+    font-size: 1.1em; }
 
 .m-footer {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: 1em;
+  right: 1em;
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
   border-radius: 10px 10px 0 0;

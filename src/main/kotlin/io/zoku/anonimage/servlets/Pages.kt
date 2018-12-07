@@ -1,7 +1,12 @@
 package io.zoku.anonimage.servlets
 
+import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension
+import com.vladsch.flexmark.ext.media.tags.MediaTagsExtension
+import com.vladsch.flexmark.ext.tables.TablesExtension
+import com.vladsch.flexmark.ext.typographic.TypographicExtension
 import com.vladsch.flexmark.html.HtmlRenderer
 import com.vladsch.flexmark.parser.Parser
+import com.vladsch.flexmark.util.options.MutableDataSet
 import io.zoku.anonimage.utils.I18n
 import io.zoku.anonimage.templates.PageTemplate
 import kotlinx.html.dom.serialize
@@ -36,6 +41,15 @@ class Pages : HttpServlet() {
         }
 
         val resource = File(Pages::class.java.getResource("/pages/$lang/$mdFile").file)
+
+        val options = MutableDataSet()
+        options.set(Parser.EXTENSIONS, Arrays.asList(
+                TablesExtension.create(),
+                StrikethroughExtension.create(),
+                MediaTagsExtension.create(),
+                TypographicExtension.create()
+        ))
+        options.set(HtmlRenderer.SOFT_BREAK, "<br>\n")
 
         val parser = Parser.builder().build()
         val renderer = HtmlRenderer.builder().build()
