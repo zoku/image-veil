@@ -37,7 +37,7 @@ class Pages : HttpServlet() {
             i18n.get("app.pages.privacy.uri") -> { title = i18n.get("app.pages.privacy.title"); mdFile = "privacy.md" }
             i18n.get("app.pages.howto.uri") -> { title = i18n.get("app.pages.howto.title"); mdFile = "howto.md" }
             i18n.get("app.pages.faq.uri") -> { title = i18n.get("app.pages.faq.title"); mdFile = "faq.md" }
-            else -> { title = "Error"; mdFile = "none"; response.sendError(404) }
+            else -> { response.sendError(404); return }
         }
 
         val resource = File(Pages::class.java.getResource("/pages/$lang/$mdFile").file)
