@@ -1,24 +1,33 @@
 ## Imprint
 
 ### Angaben gemäß § 5 TMG
-
 Manuel Helbing 
 
-Kontakt:
-E-Mail: mail@manuelhelbing.de
+Contact:
 
-### Haftungsausschluss: 
+E-mail: mail@manuelhelbing.de
 
-#### Haftung für Links
-Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+### Disclaimor: 
+#### Liability for links
+Our service contains links to external websites of third parties on who's content we cannot take any influence. Therefor we cannot take any responsibility for those contents. The respective provider or operator is responsible for the contents of linkes pages. At the time of linking we checked the linked page for possible copyright infringements. At that time illegitimate contents were not obvious. A permanent check of contents of linked pages is not reasonable without prior indications of copyright infringements. When we get to know about copyright infringements, we will remove those links immediately. 
 
-#### Urheberrecht
-Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+#### Copyrights
+Contents and works created by the page operator on this site are governed by german copyright law. Reproduction, editing, distribution and any type of sale beyond the bounds of copyright law require written permission by the respective author or creator. Downloading and copying of this site are permitted only for private and non-commercial use. Contents on this site not created by the provider respect the copyrights of their creators. Contents created by third parties are marked as such. If you notice any copyright infringement we ask you to tell us about it. When we come to know such infringement we will promptly remove such content.
 
-#### Datenschutz
-Die Nutzung unserer Webseite ist ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. 
-Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. 
-Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+#### Privacy
+The usage of our website is possible without providing any personal data.
+If personal data (e.g. name, address or email) is gathered it is, as far as
+practicable, voluntary. This data will not be shared with third parties without
+your explicit consent.
 
-#### Bildquellen
-Titelbild von Warren Wong auf Unsplash
+We point out that any data transfer on the internet (e.g. when communicating
+via e-mail) can suffer from security problems. Complete protection of your data
+from access of third parties is impossible.   
+
+Third parties are prohibited to use contact data provided in accordance
+with imprint liability to send any advertisement or information material, unless
+explicitly encouraged to do so. The operator of this site explicitly reserve
+to take leagal measures in case of unsolicited delivery of advertisement, e.g. spam-mails.
+
+#### Image sources
+Background image by Warren Wong on Unsplash

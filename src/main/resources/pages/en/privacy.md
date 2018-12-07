@@ -1,9 +1,12 @@
 ## Privacy policy
+### Personal data
+We do not save any personal data, especialy not your ip-address or user-agent in our log files.
 
-This is simple: We do not save any data. Not even logs with your IP in it. Nothing.
+### Tracking
+We do not use any tracking software. We only save the date and time of an image-anonymisation to keep track of how often the service is used.
 
-Even the image is processed in volatile memory only and is completely deleted afterwards. No temporary files, no shenanigans.
+### Secure transfer
+The site is only available via SSL/TLS (https:// in your browser's address bar). You can also use TOR to visit our site.
 
-We do not use tracking. To keep an overview on how many people use the tool, we save a timestamp when an image is processed. Nothing more.
-
-Most of the process takes place in your browser window. The upload only starts when you press "Anonymise!".
+### Saving of images
+We do not save the images you upload to our server. They are edited and deleted from memory immediately afterwards. The image is only transfered to our server when you click the 'Anonymise!'-Button.

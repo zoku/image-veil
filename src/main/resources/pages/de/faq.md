@@ -1,24 +1,24 @@
-## FAQ
-- Q: Why do you not blur the images, like you do in the preview?
-- A: Simply bluring images is not save enough. It is still possible to "un-pixelate" the image. We only use coarse mosaic patterns to pixelate images to make a later de-pixelisation impossible.
+## Häufig gestellte Fragen (FAQ)
+**F**: Warum lasst ihr die Bilder nicht verschwimmen, wie in der Vorschau?<br/>
+**A**: Einen Bildbereich einfach verschwimmen zu lassen reicht nicht. Es bleiben dabei genügend Daten übrig, um das Bild wiederherzustellen. Wir nutzen nur grobe Mosaikstrukturen und Vollfarben, um eine Wiederherstellung des Bildes unmöglich zu machen.
 
-- Q: What about meta-data like the EXIF tables?
-- A: The app creates a completely new image. All meta-data is lost in the process.
+**F**: Was passiert mit den Metadaten des Bildes (z.B. EXIF-Tabellen)?<br/>
+**A**: Die Anwendung erstellt intern ein neues Bild und nutzt dafür nur die Bilddaten selbst. Alle anderen Daten, wie auch Metadaten gehen verloren.
 
-- Q: Why do you host this app?
-- A: 
+**F**: Warum stellt ihr diese Anwendung zur Verfügung?<br/>
+**A**: 
 
-- Q: Can I use this via TOR?
-- A: Yes! The TOR-service is on ...
+**F**: Https ist mir nicht sicher genug! Kann ich die Anwendung auch mit TOR nutzen?<br/>
+**A**: Ja! Der TOR-Service liegt unter ...
 
-- Q: Do you track?
-- A: No. We only save a timestamp to see if the app is used at all.
+**F**: Benutzt ihr tracker?<br/>
+**A**: Nein. Wir speichern ausschließlich Datum und Uhrzeit einer Bildbearbeitung, um einen Überblick zu behalten. Wir nutzen *keine* Tracking-Software, *keine* Facebook-, Twitter- oder Google-Plugins und *kein* Werbenetzwerk.
 
-- Q: Is my image secure?
-- A: Yes. It will only be uploaded for the processing and will not be saved anywhere on our servers.
+**F**: Ist mein Bild bei euch sicher?<br/>
+**A**: Ja. Es wird nur ein mal zur bearbeitung kurzzeitig im Speicher underes Servers abgelegt und hinterher direkt wieder gelöscht.
 
-- Q: Can I contribute?
-- A: Sure! If you can program Kotlin or Javascript you can make a PullRequest on Github. You can also report errors or make suggestions.
+**F**: Kann ich mich beteiligen?<br/>
+**A**: Natürlich! Wenn du Kotlin oder Javascript beherrschst, kannst du gern einen PullRequest bei Github machen. Du kannst uns auch gerne über Fehler informieren und Anregungen schicken.
 
-- Q: What data will be saved on you server?
-- A: Only a timestamp. All your data will stay yours and yours alone.
+**F**: Welche Daten werden auf dem Server gespeichert?<br/>
+**A**: Nur Datum und Uhrzeit, wann ein Bild bearbeitet wurde. Alle deine Daten gehören nur dir allein.

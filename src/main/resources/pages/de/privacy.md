@@ -1,9 +1,12 @@
-## Privacy policy
+## Datenschutzerklärung
+### Personenbezogene Daten
+Wir speichern keine personenbezogenen Daten, insbesondere keine IP-Adressen oder User-Agents in unseren Log-Dateien.
 
-This is simple: We do not save any data. Not even logs with your IP in it. Nothing.
+### Tracking
+Wir benutzen keine Trackingsoftware. Wir speichern ausschließlich Datum und Uhrzeit einer Bildanonymisierung, um einen überblick über die Anzahl der Seitennutzungen zu behalten.
 
-Even the image is processed in volatile memory only and is completely deleted afterwards. No temporary files, no shenanigans.
+### Sichere Datenübertragung
+Die Seite ist nur über SSL/TLS (https:// in der Adresszeile des Browsers) erreichbar. Du kannst auch TOR benutzen, um unsere Seite zu erreichen.
 
-We do not use tracking. To keep an overview on how many people use the tool, we save a timestamp when an image is processed. Nothing more.
-
-Most of the process takes place in your browser window. The upload only starts when you press "Anonymise!".
+### Speichern von Bildern
+Die Bilder, die du bei uns hochlädst, werden nicht aus unserem Server gespeichert. Nach dem editieren werden sie umgehend aus dem Speicher gelöscht. Die Bilder werden erst dann auf unseren Server übertragen, wenn du auf den Knopf 'Anonymisieren!' klickst.
