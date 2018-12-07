@@ -132,7 +132,8 @@ body {
   margin: 1em 0 0 0;
   border: 2px solid #aaa;
   border-radius: 10px;
-  overflow: hidden; }
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.8); }
   .m-progress .m-progress--bar {
     position: absolute;
     left: 0;
