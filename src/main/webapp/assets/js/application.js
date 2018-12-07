@@ -1,65 +1,79 @@
 $(document).ready(function () {
+    // Configuration
     var maxAllowedFileSizeMB = 5;
 
-    var $fileInput = $('#imageFile');
-    var $upload = $('.m-upload');
-    var $uploadText = $('.m-upload--text');
+    // Elements
+    var $upload = {
+        module: $('.m-upload'),
+        text: $('.m-upload .m-upload--text'),
+        fileInput: $('#imageFile')
+    };
 
-    var $previewImage = $('.m-preview--image');
-    var $previewShadow = $('.m-preview--shadow');
-    var $areas = $('.m-preview--areas');
-    var $areasInput = $('#areasInput');
+    var $preview = {
+        module: $('.m-preview'),
+        image: $('.m-preview .m-preview--image'),
+        shadow: $('.m-preview .m-preview--shadow'),
+        areas: $('.m-preview .m-preview--areas')
+    };
+
+    var $form = {
+        module: $('#uploadform'),
+        inputs: {
+            areas: $('#areasInput'),
+            mode: $('#modeInput'),
+            imageData: $('#imageDataInput')
+        }
+    };
+
+    var $progress = {
+        module: $('#progress'),
+        bar: $('.m-progress--bar')
+    };
 
     var $modeContainer = $('.m-mode');
-
     var $startButton = $('#startButton');
-    var $progressBar = $('#progress');
 
-    var $imageDataInput = $('#imageDataInput');
-    var $modeInput = $('#modeInput');
+    // App-global variables
+    var startX = null;
+    var startY = null;
+    var endX = null;
+    var endY = null;
+    var x = null;
+    var y = null;
+    var width = null;
+    var height = null;
 
-    $fileInput.on('change', function() {
+    // Event handling
+    $upload.fileInput.on('change', function() {
         var file = this.files[0];
 
         $modeContainer.hide();
         $startButton.hide();
-        $uploadText.removeClass('m-upload--text_small');
+        $upload.text.removeClass('m-upload--text_small');
 
-        $areas.empty();
+        $preview.areas.empty();
 
         if (file.size > maxAllowedFileSizeMB * 1024 * 1024) {
-            $uploadText.text($upload.data('i18n--file-size-hint').replace('[size1]', (file.size / 1024 / 1024).toFixed(2)).replace('[size2]', maxAllowedFileSizeMB));
-            $('.m-preview').hide();
+            $upload.text.text($upload.module.data('i18n--file-size-hint').replace('[size1]', (file.size / 1024 / 1024).toFixed(2)).replace('[size2]', maxAllowedFileSizeMB));
+            $preview.module.hide();
             return;
         }
 
-        $uploadText.addClass('m-upload--text_small').html(file.name + '<br>' + $upload.data('i18n--new-file-hint'));
+        $upload.text.addClass('m-upload--text_small').html(file.name + '<br>' + $upload.module.data('i18n--new-file-hint'));
 
         previewImage(this);
         $modeContainer.show();
         $startButton.show();
     });
 
-    function previewImage(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $previewImage.attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-            $('.m-preview').show();
-        }
-    }
-
     $startButton.on('click', function (e) {
         e.preventDefault();
 
-        $progressBar.find('.m-progress--bar').css({ width: 0 });
-        $progressBar.show();
+        $progress.bar.css({ width: 0 });
+        $progress.module.show();
 
         var areas = [];
-        $areas.find('.m-preview--areas--area').each(function (i, elem) {
-            console.log($(elem).position());
+        $preview.areas.find('.m-preview--areas--area').each(function (i, elem) {
             areas.push({
                 x: $(elem).position().left.toFixed(0),
                 y: $(elem).position().top.toFixed(0),
@@ -67,20 +81,20 @@ $(document).ready(function () {
                 height: $(elem).height().toFixed(0)
             });
         });
-        $areasInput.val(JSON.stringify(areas));
+        $form.inputs.areas.val(JSON.stringify(areas));
 
         var imageData = {
-            width: $previewImage.outerWidth(),
-            height: $previewImage.outerHeight()
+            width: $preview.image.width(),
+            height: $preview.image.height()
         };
-        $imageDataInput.val(JSON.stringify(imageData));
+        $form.inputs.imageData.val(JSON.stringify(imageData));
 
-        $modeInput.val($('#mode').find(':selected').val());
+        $form.inputs.mode.val($('#mode').find(':selected').val());
 
         $.ajax({
             url: '/imagereceiver',
             type: 'POST',
-            data: new FormData($('#uploadform')[0]),
+            data: new FormData($form.module[0]),
             cache: false,
             contentType: false,
             processData: false,
@@ -89,7 +103,7 @@ $(document).ready(function () {
                 if (myXhr.upload) {
                     myXhr.upload.addEventListener('progress', function(e) {
                         if (e.lengthComputable) {
-                            $('#progress').find('.m-progress--bar').css({
+                            $progress.bar.css({
                                 width: (e.loaded / e.total * 100) + '%'
                             });
                         }
@@ -104,31 +118,22 @@ $(document).ready(function () {
                 $download.fadeIn();
             })
             .always(function () {
-                $progressBar.hide();
+                $progress.bar.hide();
             });
     });
 
-    var startX = null;
-    var startY = null;
-    var endX = null;
-    var endY = null;
-    var x = null;
-    var y = null;
-    var width = null;
-    var height = null;
-
-    $areas.on('mousedown', function (e) {
+    $preview.areas.on('mousedown', function (e) {
         e.preventDefault();
 
         startX = e.offsetX;
         startY = e.offsetY;
-        $previewShadow.show();
+        $preview.shadow.show();
     });
 
-    $areas.on('mousemove', function (e) {
+    $preview.areas.on('mousemove', function (e) {
         e.preventDefault();
 
-        if (startX === null || startY === null || !$previewShadow.is(':visible')) {
+        if (startX === null || startY === null || !$preview.shadow.is(':visible')) {
             return;
         }
 
@@ -157,7 +162,7 @@ $(document).ready(function () {
         }
 
         window.requestAnimationFrame(function () {
-            $previewShadow.css({
+            $preview.shadow.css({
                 'transform': 'translateX(' + shadowX + 'px) translateY(' + shadowY + 'px)',
                 width: shadowWidth,
                 height: shadowHeight
@@ -165,7 +170,7 @@ $(document).ready(function () {
         });
     });
 
-    $areas.on('mouseup', function (e) {
+    $preview.areas.on('mouseup', function (e) {
         e.preventDefault();
 
         endX = e.offsetX;
@@ -197,13 +202,13 @@ $(document).ready(function () {
         y = null;
         width = null;
         height = null;
-        $previewShadow.hide();
+        $preview.shadow.hide();
     });
 
     $(window, document).on('resize', function () {
         $('.m-preview--areas--area--image').each(function () {
             $(this).css({
-                'background-size': $previewImage.width() + 'px ' + $previewImage.height() + 'px',
+                'background-size': $preview.image.width() + 'px ' + $preview.image.height() + 'px',
                 backgroundPositionX: 0 - $(this).parent().position().left + 15,
                 backgroundPositionY: 0 - $(this).parent().position().top + 15
             });
@@ -215,20 +220,32 @@ $(document).ready(function () {
         $('.m-download').fadeOut();
     });
 
+    // Functions
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $preview.image.attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+            $preview.module.show();
+        }
+    }
+
     function makeArea(x, y, w, h) {
         var $area = $('<div/>')
             .addClass('m-preview--areas--area')
             .css({
-                width: w / $previewImage.width() * 100 + '%',
-                height: h / $previewImage.height() * 100 + '%',
-                top: y / $previewImage.height() * 100 + '%',
-                left: x / $previewImage.width() * 100 + '%'
+                width: w / $preview.image.width() * 100 + '%',
+                height: h / $preview.image.height() * 100 + '%',
+                top: y / $preview.image.height() * 100 + '%',
+                left: x / $preview.image.width() * 100 + '%'
             })
             .append($('<div/>').addClass('m-preview--areas--area--image').css({
-                backgroundImage: 'url(' + $previewImage.attr('src') + ')',
+                backgroundImage: 'url(' + $preview.image.attr('src') + ')',
                 backgroundPositionX: 0 - x + 15,
                 backgroundPositionY: 0 - y + 15,
-                'background-size': $previewImage.width() + 'px ' + $previewImage.height() + 'px'
+                'background-size': $preview.image.width() + 'px ' + $preview.image.height() + 'px'
             }))
             .on('mouseup', function (e) {
                 e.stopPropagation();
@@ -237,6 +254,6 @@ $(document).ready(function () {
                 e.stopPropagation();
             });
 
-        $areas.append($area);
+        $preview.areas.append($area);
     }
 });
