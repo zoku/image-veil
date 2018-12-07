@@ -6,6 +6,7 @@ import kotlinx.html.div
 import kotlinx.html.dom.serialize
 import kotlinx.html.h2
 import kotlinx.html.p
+import org.slf4j.LoggerFactory
 import java.util.*
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
@@ -18,11 +19,11 @@ import javax.servlet.http.HttpServletResponse
         urlPatterns = [ "/error" ]
 )
 class Error : HttpServlet() {
-    // private val logger = LoggerFactory.getLogger("ErrorServlet")
+    private val logger = LoggerFactory.getLogger("ErrorServlet")
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
-        // val throwable = request.getAttribute("javax.servlet.error.exception") as Throwable?
+        val throwable = request.getAttribute("javax.servlet.error.exception") as Throwable?
         val statusCode = request.getAttribute("javax.servlet.error.status_code") as Int?
-        // val servletName = request.getAttribute("javax.servlet.error.servlet_name") as String?
+        val servletName = request.getAttribute("javax.servlet.error.servlet_name") as String?
 
         val lang = request.getParameter("l") ?: request.locale.language
         val i18n = I18n(Locale(lang))
@@ -34,7 +35,7 @@ class Error : HttpServlet() {
             }
         }
 
-        // logger.error("$servletName threw: $statusCode because of '${throwable?.message}'")
+        logger.error("$servletName threw: $statusCode because of '${throwable?.message}'")
 
         response.writer.append(dom.serialize(prettyPrint = true))
     }

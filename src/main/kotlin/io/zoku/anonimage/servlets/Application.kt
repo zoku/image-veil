@@ -40,7 +40,7 @@ class Application : HttpServlet() {
             div(classes = "m-preview") {
                 div(classes = "m-preview--shadow")
                 div(classes = "m-preview--areas")
-                img(classes = "m-preview--image", src = "/assets/img/preview.png", alt = i18n.get("app.main.preview.image.alt"))
+                img(classes = "m-preview--image", src = "${request.contextPath}/assets/img/preview.png", alt = i18n.get("app.main.preview.image.alt"))
             }
 
             div(classes = "m-mode") {
@@ -65,7 +65,7 @@ class Application : HttpServlet() {
                 div(classes = "m-download--content") {
                     h2 { +i18n.get("app.download.headline") }
                     p { +i18n.get("app.download.hint") }
-                    img(src = "/assets/img/preview.png", alt = i18n.get("app.download.image.alt"))
+                    img(src = "${request.contextPath}/assets/img/preview.png", alt = i18n.get("app.download.image.alt"))
                 }
             }
         }
