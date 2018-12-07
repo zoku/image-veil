@@ -55,8 +55,10 @@ class ImageReceiver : HttpServlet() {
                 // Rectangular mosaic ------------------------------------------------------------------------------------------
                 val squaredImage = Pixeliser.squaredImage(image)
                 areas.forEach { area ->
-                    val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
-                    g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
+                    if (area.width > 0 && area.height > 0) {
+                        val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
+                        g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
+                    }
                 }
                 // -------------------------------------------------------------------------------------------------------------
             }
