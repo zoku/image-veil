@@ -5,6 +5,7 @@ import io.zoku.anonimage.model.Areas
 import io.zoku.anonimage.model.ImageData
 import io.zoku.anonimage.transformers.Pixeliser
 import io.zoku.anonimage.transformers.Randomiser
+import org.slf4j.LoggerFactory
 import java.awt.Color
 import java.awt.Graphics2D
 import javax.imageio.ImageIO
@@ -16,6 +17,10 @@ import javax.servlet.http.HttpServletResponse
 import kotlin.math.roundToInt
 import javax.xml.bind.DatatypeConverter
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.lang.Exception
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 @WebServlet(
@@ -26,6 +31,7 @@ import java.io.ByteArrayOutputStream
 )
 @MultipartConfig
 class ImageReceiver : HttpServlet() {
+    private val logger = LoggerFactory.getLogger("ImageReceiver")
     private val gson = GsonBuilder().setPrettyPrinting().create()
 
     override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
@@ -74,6 +80,13 @@ class ImageReceiver : HttpServlet() {
 
         val data = DatatypeConverter.printBase64Binary(baos.toByteArray())
         val imageString = "data:image/jpeg;base64,$data"
+
+        try {
+            val logFile = File("${System.getProperty("user.home")}/anonimage-uses.log")
+            logFile.appendText(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").format(LocalDateTime.now()) + "\n")
+        } catch (e: Exception) {
+            logger.error("Log file could not be written.")
+        }
 
         response.writer.append(imageString)
     }
