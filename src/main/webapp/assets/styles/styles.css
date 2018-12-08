@@ -40,7 +40,8 @@ body {
     background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     color: #fff;
-    padding: .5em; }
+    padding: .5em;
+    cursor: pointer; }
     .m-language .m-language--preview img {
       height: 12px; }
   .m-language .m-language--list {
