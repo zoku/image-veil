@@ -12,6 +12,7 @@ import io.zoku.anonimage.templates.PageTemplate
 import kotlinx.html.dom.serialize
 import kotlinx.html.unsafe
 import java.io.File
+import java.io.IOException
 import java.util.*
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
@@ -31,16 +32,22 @@ class Pages : HttpServlet() {
 
         val title: String
         val mdFile: String
+        val pageId: String
 
         when (pageName) {
-            i18n.get("app.pages.imprint.uri") -> { title = i18n.get("app.pages.imprint.title"); mdFile = "imprint.md" }
-            i18n.get("app.pages.privacy.uri") -> { title = i18n.get("app.pages.privacy.title"); mdFile = "privacy.md" }
-            i18n.get("app.pages.howto.uri") -> { title = i18n.get("app.pages.howto.title"); mdFile = "howto.md" }
-            i18n.get("app.pages.faq.uri") -> { title = i18n.get("app.pages.faq.title"); mdFile = "faq.md" }
+            i18n.get("app.pages.imprint.uri") -> { title = i18n.get("app.pages.imprint.title"); mdFile = "imprint.md"; pageId = "imprint" }
+            i18n.get("app.pages.privacy.uri") -> { title = i18n.get("app.pages.privacy.title"); mdFile = "privacy.md"; pageId = "privacy" }
+            i18n.get("app.pages.howto.uri") -> { title = i18n.get("app.pages.howto.title"); mdFile = "howto.md"; pageId = "howto" }
+            i18n.get("app.pages.faq.uri") -> { title = i18n.get("app.pages.faq.title"); mdFile = "faq.md"; pageId = "faq" }
             else -> { response.sendError(404); return }
         }
 
-        val resource = File(Pages::class.java.getResource("/pages/$lang/$mdFile").file)
+        val resource = try {
+            File(Pages::class.java.getResource("/pages/$lang/$mdFile").file)
+        } catch (e: Exception) {
+            response.sendError(404)
+            return
+        }
 
         val options = MutableDataSet()
         options.set(Parser.EXTENSIONS, Arrays.asList(
@@ -57,7 +64,7 @@ class Pages : HttpServlet() {
         val document = parser.parse(resource.readText())
         val html = renderer.render(document)
 
-        val dom = PageTemplate.site(title, request) {
+        val dom = PageTemplate.site(title, request, pageId) {
             unsafe { +"""<div class="m-page-content">$html</div>""" }
         }
 

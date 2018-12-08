@@ -8,7 +8,7 @@ import java.util.*
 import javax.servlet.http.HttpServletRequest
 
 object PageTemplate {
-    fun site(title: String, request: HttpServletRequest, block: DIV.() -> Unit = {}): Document {
+    fun site(title: String, request: HttpServletRequest, pageId: String? = null, block: DIV.() -> Unit = {}): Document {
         val lang = request.getParameter("l") ?: request.locale.language
         val i18n = I18n(Locale(lang))
 
@@ -28,6 +28,29 @@ object PageTemplate {
                     h1(classes = "m-headline") { +"AnonImage | $title" }
                     a(href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=$lang" else "" }") {
                         img(classes = "m-title", src = "${request.contextPath}/assets/img/title.png", alt = i18n.get("app.logo.alt"))
+                    }
+
+                    val supportedLanguages = arrayListOf("de", "en") // Add rm for Roman Empire and pi for Pirate, also es, fr, it, ru, gr
+
+                    div(classes = "m-language") {
+                        div(classes = "m-language--preview") { img(src = "${request.contextPath}/assets/img/flags/$lang.jpg");+" ${lang.toUpperCase()}" }
+                        ul(classes = "m-language--list") {
+                            supportedLanguages.forEach { language ->
+                                if (language != lang) {
+                                    li(classes = "m-language--list--item") {
+                                        val pageUri = when {
+                                            pageId != null -> "${request.contextPath}/pages/${i18n.get("app.pages.imprint.uri", Locale(language))}"
+                                            request.requestURI == "/error" -> "${request.contextPath}/"
+                                            else -> "${request.contextPath}${request.requestURI}"
+                                        }
+
+                                        a(href = "$pageUri?l=$language") {
+                                            img(src = "${request.contextPath}/assets/img/flags/$language.jpg"); + " ${language.toUpperCase()}"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     block.invoke(this)

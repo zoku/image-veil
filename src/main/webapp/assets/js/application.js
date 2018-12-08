@@ -220,6 +220,15 @@ $(document).ready(function () {
         $('.m-download').fadeOut();
     });
 
+    // -- Language selection
+    $('.m-language').on('click', function () {
+        $('.m-language .m-language--list').fadeToggle();
+    });
+
+    $('.m-language .m-language--list').on('mouseout', function () {
+        $('.m-language .m-language--list').fadeOut();
+    });
+
     // Functions
     function previewImage(input) {
         if (input.files && input.files[0]) {
