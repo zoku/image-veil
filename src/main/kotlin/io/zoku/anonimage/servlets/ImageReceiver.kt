@@ -5,15 +5,12 @@ import io.zoku.anonimage.model.Areas
 import io.zoku.anonimage.model.ImageData
 import io.zoku.anonimage.transformers.*
 import org.slf4j.LoggerFactory
-import java.awt.Color
-import java.awt.Graphics2D
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import kotlin.math.roundToInt
 import javax.xml.bind.DatatypeConverter
 import java.io.ByteArrayOutputStream
 import java.io.File
