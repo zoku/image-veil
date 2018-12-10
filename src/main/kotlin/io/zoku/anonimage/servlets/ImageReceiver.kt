@@ -17,6 +17,7 @@ import java.io.File
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 @WebServlet(
@@ -31,6 +32,11 @@ class ImageReceiver : HttpServlet() {
     private val gson = GsonBuilder().setPrettyPrinting().create()
 
     override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
+        // Load config
+        val config = Properties()
+        config.load(ImageReceiver::class.java.getResourceAsStream("/config.properties"))
+
+        // Define variables
         val areas = gson.fromJson(request.getParameter("areas")?:"", Areas::class.java)
         val imageData = gson.fromJson(request.getParameter("imageData")?:"", ImageData::class.java)
         val mode = request.getParameter("mode")
@@ -43,15 +49,17 @@ class ImageReceiver : HttpServlet() {
         val transformers = arrayListOf<Transformer>()
 
         // Add transformers
-        transformers.add(Randomiser())
+        if (config["imageReceiver.addNoise"] == "true") {
+            transformers.add(Randomiser())
+        }
 
         when (mode) {
             "black" -> transformers.add(Blackout(areas, scaleX, scaleY))
             "square" -> transformers.add(Pixeliser(areas, scaleX, scaleY))
         }
 
-        if (image.width > 1280 || image.height > 1280) {
-            transformers.add(Shrinker())
+        if (image.width > config["imageReceiver.maxImageEdgeSize"].toString().toInt() || image.height > config["imageReceiver.maxImageEdgeSize"].toString().toInt()) {
+            transformers.add(Shrinker(config["imageReceiver.maxImageEdgeSize"].toString().toDouble()))
         }
 
         // Run transformers

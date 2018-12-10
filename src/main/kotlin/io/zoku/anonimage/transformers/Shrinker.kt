@@ -4,12 +4,12 @@ import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-class Shrinker : Transformer {
+class Shrinker(private val maxImageEdgeSize: Double) : Transformer {
     override fun run(image: BufferedImage): BufferedImage {
         val scale = if (image.width > image.height) {
-            1280.0 / image.width
+            maxImageEdgeSize / image.width
         } else {
-            1280.0 / image.height
+            maxImageEdgeSize / image.height
         }
 
         val scaledImage = BufferedImage((image.width * scale).roundToInt(), (image.height * scale).roundToInt(), BufferedImage.TYPE_INT_RGB)
