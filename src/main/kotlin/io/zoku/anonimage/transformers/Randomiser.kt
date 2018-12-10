@@ -4,11 +4,11 @@ import java.awt.Color
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-object Randomiser {
-    private const val percentageToRandomise = .50
-    private const val intensityOfRandomisation = 30
+class Randomiser : Transformer {
+    private val percentageToRandomise = .50
+    private val intensityOfRandomisation = 30
 
-    fun randomiseImage(image: BufferedImage): BufferedImage {
+    override fun run(image: BufferedImage): BufferedImage {
         val pixelCount = image.width * image.height
         val randomiseCount = (pixelCount * percentageToRandomise).roundToInt()
 

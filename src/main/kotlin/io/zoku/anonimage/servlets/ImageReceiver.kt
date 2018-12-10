@@ -3,8 +3,7 @@ package io.zoku.anonimage.servlets
 import com.google.gson.GsonBuilder
 import io.zoku.anonimage.model.Areas
 import io.zoku.anonimage.model.ImageData
-import io.zoku.anonimage.transformers.Pixeliser
-import io.zoku.anonimage.transformers.Randomiser
+import io.zoku.anonimage.transformers.*
 import org.slf4j.LoggerFactory
 import java.awt.Color
 import java.awt.Graphics2D
@@ -39,41 +38,27 @@ class ImageReceiver : HttpServlet() {
         val imageData = gson.fromJson(request.getParameter("imageData")?:"", ImageData::class.java)
         val mode = request.getParameter("mode")
         val imagePart = request.getPart("image")
-        val originalImage = ImageIO.read(imagePart.inputStream)
-
-        val image = Randomiser.randomiseImage(originalImage)
+        var image = ImageIO.read(imagePart.inputStream)
 
         val scaleX = image.width / imageData.width
         val scaleY = image.height / imageData.height
 
-        val g2d = image.graphics as Graphics2D
+        val transformers = arrayListOf<Transformer>()
+
+        transformers.add(Randomiser())
 
         when (mode) {
-            "black" -> {
-                // Black out ---------------------------------------------------------------------------------------------------
-                g2d.color = Color.BLACK
-                areas.forEach { area ->
-                    g2d.fillRect((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
-                }
-                // -------------------------------------------------------------------------------------------------------------
-            }
-            "square" -> {
-                // Rectangular mosaic ------------------------------------------------------------------------------------------
-                val squaredImage = Pixeliser.squaredImage(image)
-                areas.forEach { area ->
-                    if (area.width > 0 && area.height > 0) {
-                        val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
-                        g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
-                    }
-                }
-                // -------------------------------------------------------------------------------------------------------------
-            }
-            else -> {
-                // Only kill the meta data
-            }
+            "black" -> transformers.add(Blackout(areas, scaleX, scaleY))
+            "square" -> transformers.add(Pixeliser(areas, scaleX, scaleY))
         }
 
-        g2d.dispose()
+        if (image.width > 1280 || image.height > 1280) {
+            transformers.add(Shrinker())
+        }
+
+        transformers.forEach { transformer ->
+            image = transformer.run(image)
+        }
 
         val baos = ByteArrayOutputStream()
         ImageIO.write(image, "JPEG", baos)

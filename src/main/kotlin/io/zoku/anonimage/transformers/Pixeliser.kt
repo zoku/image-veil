@@ -1,11 +1,13 @@
 package io.zoku.anonimage.transformers
 
+import io.zoku.anonimage.model.Areas
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
+import kotlin.math.roundToInt
 
-object Pixeliser {
-    fun squaredImage(image: BufferedImage): BufferedImage {
+class Pixeliser(val areas: Areas, private val scaleX: Float, private val scaleY: Float) : Transformer {
+    override fun run(image: BufferedImage): BufferedImage {
         val squareLength = if (image.width > image.height) image.width / 100 else image.height / 100
 
         val squaredImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_RGB)
@@ -36,6 +38,14 @@ object Pixeliser {
             }
         }
 
-        return squaredImage
+        val g2d = image.graphics as Graphics2D
+        areas.forEach { area ->
+            if (area.width > 0 && area.height > 0) {
+                val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
+                g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
+            }
+        }
+
+        return image
     }
 }
