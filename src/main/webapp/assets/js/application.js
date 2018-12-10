@@ -42,6 +42,7 @@ $(document).ready(function () {
     var y = null;
     var width = null;
     var height = null;
+    var lastMove = null;
 
     // Event handling
     $upload.fileInput.on('change', function() {
@@ -68,6 +69,8 @@ $(document).ready(function () {
 
     $startButton.on('click', function (e) {
         e.preventDefault();
+
+        $startButton.prop('disabled', true);
 
         $progress.bar.css({ width: 0 });
         $progress.module.show();
@@ -106,6 +109,9 @@ $(document).ready(function () {
                             $progress.bar.css({
                                 width: (e.loaded / e.total * 100) + '%'
                             });
+                            if (e.loaded === e.total) {
+                                $progress.bar.addClass('m-progress--bar_indeterminate');
+                            }
                         }
                     } , false);
                 }
@@ -118,19 +124,34 @@ $(document).ready(function () {
                 $download.fadeIn();
             })
             .always(function () {
-                $progress.bar.hide();
+                $progress.bar.removeClass('m-progress--bar_indeterminate');
+                $progress.module.hide();
+                $startButton.prop('disabled', false);
             });
     });
 
-    $preview.areas.on('mousedown', function (e) {
+    $preview.areas.on('mousedown', buildAreaStart);
+    $preview.areas[0].addEventListener('touchstart', buildAreaStart);
+
+    function buildAreaStart(e) {
         e.preventDefault();
 
-        startX = e.offsetX;
-        startY = e.offsetY;
-        $preview.shadow.show();
-    });
+        if (isTouchDevice()) {
+            var rect = e.target.getBoundingClientRect();
+            startX = e.targetTouches[0].pageX - rect.left;
+            startY = e.targetTouches[0].pageY - rect.top;
+        } else {
+            startX = e.offsetX;
+            startY = e.offsetY;
+        }
 
-    $preview.areas.on('mousemove', function (e) {
+        $preview.shadow.show();
+    }
+
+    $preview.areas.on('mousemove', buildAreaMove);
+    $preview.areas[0].addEventListener('touchmove', buildAreaMove);
+
+    function buildAreaMove(e) {
         e.preventDefault();
 
         if (startX === null || startY === null || !$preview.shadow.is(':visible')) {
@@ -139,11 +160,20 @@ $(document).ready(function () {
 
         var shadowWidth = 0;
         var shadowHeight = 0;
-        var mouseX = e.offsetX;
-        var mouseY = e.offsetY;
         var shadowX = 0;
         var shadowY = 0;
 
+        var mouseX;
+        var mouseY;
+        if (isTouchDevice()) {
+            var rect = e.target.getBoundingClientRect();
+            mouseX = e.targetTouches[0].pageX - rect.left;
+            mouseY = e.targetTouches[0].pageY - rect.top;
+            lastMove = e;
+        } else {
+            mouseX = e.offsetX;
+            mouseY = e.offsetY;
+        }
 
         if (startX < mouseX) {
             shadowX = startX;
@@ -168,13 +198,23 @@ $(document).ready(function () {
                 height: shadowHeight
             });
         });
-    });
+    }
 
-    $preview.areas.on('mouseup', function (e) {
+    $preview.areas.on('mouseup', buildAreaEnd);
+    $preview.areas[0].addEventListener('touchend', buildAreaEnd);
+
+    function buildAreaEnd(e) {
         e.preventDefault();
 
-        endX = e.offsetX;
-        endY = e.offsetY;
+        if(isTouchDevice()) {
+            var rect = lastMove.target.getBoundingClientRect();
+            endX = lastMove.targetTouches[0].pageX - rect.left;
+            endY = lastMove.targetTouches[0].pageY - rect.top;
+
+        } else {
+            endX = e.offsetX;
+            endY = e.offsetY;
+        }
 
         if (startX < endX) {
             x = startX;
@@ -203,7 +243,7 @@ $(document).ready(function () {
         width = null;
         height = null;
         $preview.shadow.hide();
-    });
+    }
 
     $(window, document).on('resize', function () {
         $('.m-preview--areas--area--image').each(function () {
@@ -264,5 +304,21 @@ $(document).ready(function () {
             });
 
         $preview.areas.append($area);
+    }
+
+    function isTouchDevice() {
+        var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+        var mq = function(query) {
+            return window.matchMedia(query).matches;
+        };
+
+        if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+            return true;
+        }
+
+        // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+        // https://git.io/vznFH
+        var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+        return mq(query);
     }
 });
