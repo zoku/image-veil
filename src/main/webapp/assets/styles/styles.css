@@ -179,6 +179,18 @@ body {
     width: 0;
     background: #6786ff;
     transition: width 200ms ease-out; }
+@keyframes bar-animation {
+  0% {
+    background-position-x: -106px; }
+  100% {
+    background-position-x: 0; } }
+    .m-progress .m-progress--bar.m-progress--bar_indeterminate {
+      width: 100%;
+      background: repeating-linear-gradient(145deg, transparent 0, transparent 30px, #6786ff 30px, #6786ff 60px) no-repeat;
+      background-size: 200% 40px;
+      background-position-x: -106;
+      animation: bar-animation 1s infinite;
+      animation-timing-function: linear; }
 
 .m-download {
   display: none;
@@ -231,10 +243,14 @@ body {
   margin-bottom: 70px;
   font-size: 1.5em;
   font-weight: bold;
-  color: #aaa; }
+  color: #000; }
   #startButton:hover {
     background: #aaa;
-    color: #333; }
+    color: #555;
+    cursor: pointer; }
+  #startButton:disabled {
+    opacity: .5;
+    cursor: default; }
 
 .m-page-content {
   background: rgba(255, 255, 255, 0.9);
