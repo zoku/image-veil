@@ -37,6 +37,7 @@ class Pixeliser(val areas: Areas, private val scaleX: Float, private val scaleY:
                 squaredG2D.fillRect(sqX, sqY, squareLength, squareLength)
             }
         }
+        squaredG2D.dispose()
 
         val g2d = image.graphics as Graphics2D
         areas.forEach { area ->
@@ -45,6 +46,7 @@ class Pixeliser(val areas: Areas, private val scaleX: Float, private val scaleY:
                 g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
             }
         }
+        g2d.dispose()
 
         return image
     }

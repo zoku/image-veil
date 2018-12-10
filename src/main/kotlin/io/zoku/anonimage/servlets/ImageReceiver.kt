@@ -42,6 +42,7 @@ class ImageReceiver : HttpServlet() {
 
         val transformers = arrayListOf<Transformer>()
 
+        // Add transformers
         transformers.add(Randomiser())
 
         when (mode) {
@@ -53,16 +54,19 @@ class ImageReceiver : HttpServlet() {
             transformers.add(Shrinker())
         }
 
+        // Run transformers
         transformers.forEach { transformer ->
             image = transformer.run(image)
         }
 
+        // Prepare image as image-uri
         val baos = ByteArrayOutputStream()
         ImageIO.write(image, "JPEG", baos)
 
         val data = DatatypeConverter.printBase64Binary(baos.toByteArray())
         val imageString = "data:image/jpeg;base64,$data"
 
+        // Log process
         try {
             val logFile = File("${System.getProperty("user.home")}/anonimage-uses.log")
             logFile.appendText(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").format(LocalDateTime.now()) + "\n")
@@ -70,6 +74,7 @@ class ImageReceiver : HttpServlet() {
             logger.error("Log file could not be written.")
         }
 
+        // Output image
         response.writer.append(imageString)
     }
 }

@@ -13,6 +13,7 @@ class Blackout(private val areas: Areas, private val scaleX: Float, private val 
         areas.forEach { area ->
             g2d.fillRect((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
         }
+        g2d.dispose()
         return image
     }
 }
