@@ -70,7 +70,7 @@ $(document).ready(function () {
     $startButton.on('click', function (e) {
         e.preventDefault();
 
-        $startButton.prop('disabled', true);
+        $startButton.hide();
 
         $progress.bar.css({ width: 0 });
         $progress.module.show();
@@ -126,7 +126,7 @@ $(document).ready(function () {
             .always(function () {
                 $progress.bar.removeClass('m-progress--bar_indeterminate');
                 $progress.module.hide();
-                $startButton.prop('disabled', false);
+                $startButton.show();
             });
     });
 
