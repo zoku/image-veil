@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import io.zoku.anonimage.model.Areas
 import io.zoku.anonimage.model.ImageData
 import io.zoku.anonimage.transformers.*
+import io.zoku.anonimage.utils.Config
 import org.slf4j.LoggerFactory
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig
@@ -17,8 +18,6 @@ import java.io.File
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
-
 
 @WebServlet(
         name = "ImageReceiver",
@@ -32,10 +31,6 @@ class ImageReceiver : HttpServlet() {
     private val gson = GsonBuilder().setPrettyPrinting().create()
 
     override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
-        // Load config
-        val config = Properties()
-        config.load(ImageReceiver::class.java.getResourceAsStream("/config.properties"))
-
         // Define variables
         val areas = gson.fromJson(request.getParameter("areas")?:"", Areas::class.java)
         val imageData = gson.fromJson(request.getParameter("imageData")?:"", ImageData::class.java)
@@ -49,7 +44,7 @@ class ImageReceiver : HttpServlet() {
         val transformers = arrayListOf<Transformer>()
 
         // Add transformers
-        if (config["imageReceiver.addNoise"] == "true") {
+        if (Config.imageReceiver_addNoise) {
             transformers.add(Randomiser())
         }
 
@@ -58,8 +53,8 @@ class ImageReceiver : HttpServlet() {
             "square" -> transformers.add(Pixeliser(areas, scaleX, scaleY))
         }
 
-        if (image.width > config["imageReceiver.maxImageEdgeSize"].toString().toInt() || image.height > config["imageReceiver.maxImageEdgeSize"].toString().toInt()) {
-            transformers.add(Shrinker(config["imageReceiver.maxImageEdgeSize"].toString().toDouble()))
+        if (image.width > Config.imageReceiver_maxImageEdgeSize || image.height > Config.imageReceiver_maxImageEdgeSize) {
+            transformers.add(Shrinker())
         }
 
         // Run transformers

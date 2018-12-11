@@ -1,15 +1,16 @@
 package io.zoku.anonimage.transformers
 
+import io.zoku.anonimage.utils.Config
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-class Shrinker(private val maxImageEdgeSize: Double) : Transformer {
+class Shrinker : Transformer {
     override fun run(image: BufferedImage): BufferedImage {
         val scale = if (image.width > image.height) {
-            maxImageEdgeSize / image.width
+            Config.imageReceiver_maxImageEdgeSize.toDouble() / image.width
         } else {
-            maxImageEdgeSize / image.height
+            Config.imageReceiver_maxImageEdgeSize.toDouble() / image.height
         }
 
         val scaledImage = BufferedImage((image.width * scale).roundToInt(), (image.height * scale).roundToInt(), BufferedImage.TYPE_INT_RGB)
