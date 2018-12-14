@@ -1,11 +1,11 @@
 ## How to use
 ### Anonymisation
-1. Klicke auf die gestrichelt umrandete Fläche und wähle im folgenden Dialog eine Datei oder ziehe mit der Maus eine Bilddatei (im Moment unterstützen wir nur Dateien vom Typ JPEG) darauf.
-1. Wenn notwendig, klicke mit der linken Maustaste auf das Bild, halte die Maustaste gedrückt und ziehe einen Rahmen auf. Der Inhalt dieses Rahmens wird im Anonymisierungsvorgang verpixelt. Wiederhole dies, bis alle Stellen, die später nicht mehr erkennbar sein sollen verdeckt sind.
-1. Zum Löschen eines Rahmens kannst du einfach mit der linken Maustaste auf den Rahmen klicken. Dieser verschwindet dann.
-1. Wähle eine Verpixlungsart aus der Liste unter deinem Bild aus oder wähle 'Nicht verpixeln', um keine Verpixelung anzuwenden.
-1. Klicke auf den Knopf 'Anonymisieren!', um den anonymisierungsvorgang zu starten. Dein Bild wird dann auf unseren Server geladen und bearbeitet.
-1. Wenn der Bearbeitungsvorgang fertig ist, wird dir das verpixelte Bild angezeigt. Um es zu speichern kannst du mit der rechten Maustaste darauf klicken und 'Bild speichern unter...' wählen.
+1. Click on the area with the dashed outline and in the following dialogue select a file, or drag an image file (at the moment we only support JPEG-files) onto it.
+1. If needed, left click on the preview image, hold the mouse button and pull open a frame. The contents of this frame will be pixelated in the anonymised image. Repeat until all areas which musn't be recognisable later are couvered.
+1. To delete a frame simply left click it. It will vanish.
+1. Choose a type of pixelation from the list below the preview image or choose 'None' to not pixelate any area.
+1. Click on 'Anonymise!' to start the anonymisation process. Your image will be transferred to our server and be edited.
+1. When the editing process is finished, your anonymised and pixelated image will be shown to you. To save it, right click it and select 'Save image as...'.
 
 ### What does the app do different than the others?
-Zusätzlich zur Verpixelung von Bildbereichen und dem Entfernen von Metadaten, wie z.B. den EXIF-Tabellen, versuchen wir auch einer wissenschaftlichen Bildanalyse vorzubeugen, die den genauen Kamerachip identifizieren könnte, mit dem das Bild aufgenommen wurde. Hierfür fügen wir ein kaum sichtbares, zufälliges Rauschen zum Bild hinzu, das das Rauschen, was durch den Chip der Kamera entsteht überlagert und so für die Analysesoftware unsichtbar macht.
+In addition to pixelisation and removal of meta data like EXIF-tables, we try to prevent scientific image analysis which could be used to identify the exact chip which has been used to record the image (see [Image analysis](image-analysis?l=en)). To do this we add a barely visible, random noise to the image, which overlays the noise inherent in the camera chip, making it invisible to the analysis software.

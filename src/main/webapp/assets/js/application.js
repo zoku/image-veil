@@ -131,7 +131,7 @@ $(document).ready(function () {
     });
 
     $preview.areas.on('mousedown', buildAreaStart);
-    $preview.areas[0].addEventListener('touchstart', buildAreaStart);
+    // $preview.areas[0].addEventListener('touchstart', buildAreaStart);
 
     function buildAreaStart(e) {
         e.preventDefault();
@@ -149,7 +149,7 @@ $(document).ready(function () {
     }
 
     $preview.areas.on('mousemove', buildAreaMove);
-    $preview.areas[0].addEventListener('touchmove', buildAreaMove);
+    // $preview.areas[0].addEventListener('touchmove', buildAreaMove);
 
     function buildAreaMove(e) {
         e.preventDefault();
@@ -201,7 +201,7 @@ $(document).ready(function () {
     }
 
     $preview.areas.on('mouseup', buildAreaEnd);
-    $preview.areas[0].addEventListener('touchend', buildAreaEnd);
+    // $preview.areas[0].addEventListener('touchend', buildAreaEnd);
 
     function buildAreaEnd(e) {
         e.preventDefault();
@@ -210,7 +210,6 @@ $(document).ready(function () {
             var rect = lastMove.target.getBoundingClientRect();
             endX = lastMove.targetTouches[0].pageX - rect.left;
             endY = lastMove.targetTouches[0].pageY - rect.top;
-
         } else {
             endX = e.offsetX;
             endY = e.offsetY;

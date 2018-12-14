@@ -40,7 +40,7 @@ object PageTemplate {
                                 if (language != lang) {
                                     li(classes = "m-language--list--item") {
                                         val pageUri = when {
-                                            pageId != null -> "${request.contextPath}/pages/${i18n.get("app.pages.imprint.uri", Locale(language))}"
+                                            pageId != null -> "${request.contextPath}/pages/${i18n.get("app.pages.$pageId.uri", Locale(language))}"
                                             request.requestURI == "/error" -> "${request.contextPath}/"
                                             else -> "${request.contextPath}${request.requestURI}"
                                         }

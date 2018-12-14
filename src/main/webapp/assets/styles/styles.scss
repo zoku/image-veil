@@ -19,8 +19,7 @@ html, body {
 }
 
 body {
-	background: url(/assets/img/title.jpg) top right no-repeat;
-
+	background: url(/assets/img/title.jpg) no-repeat fixed top right;
 	background-size: contain;
 	@include on-medium { background-size: cover; }
 }
@@ -354,6 +353,38 @@ body {
 	h2 { font-size: 1.6em; border-bottom: solid 1px #aaa; }
 	h3 { font-size: 1.3em; }
 	h4 { font-size: 1.1em; }
+
+	a {
+		color: #555;
+		text-decoration: none;
+
+		&:hover {
+			color: #333;
+			text-decoration: underline;
+		}
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1em 0 0 0;
+
+		tr {
+			&:nth-child(odd) {
+				background: rgba(0,0,0,.1);
+			}
+			th {
+
+			}
+
+			td {
+				img {
+					width: 100%;
+					max-width: 400px;
+				}
+			}
+		}
+	}
 }
 
 .m-footer {

@@ -39,6 +39,7 @@ class Pages : HttpServlet() {
             i18n.get("app.pages.privacy.uri") -> { title = i18n.get("app.pages.privacy.title"); mdFile = "privacy.md"; pageId = "privacy" }
             i18n.get("app.pages.howto.uri") -> { title = i18n.get("app.pages.howto.title"); mdFile = "howto.md"; pageId = "howto" }
             i18n.get("app.pages.faq.uri") -> { title = i18n.get("app.pages.faq.title"); mdFile = "faq.md"; pageId = "faq" }
+            i18n.get("app.pages.imageAnalysis.uri") -> { title = i18n.get("app.pages.imageAnalysis.title"); mdFile = "image-analysis.md"; pageId = "imageAnalysis" }
             else -> { response.sendError(404); return }
         }
 
@@ -53,13 +54,12 @@ class Pages : HttpServlet() {
         options.set(Parser.EXTENSIONS, Arrays.asList(
                 TablesExtension.create(),
                 StrikethroughExtension.create(),
-                MediaTagsExtension.create(),
-                TypographicExtension.create()
+                MediaTagsExtension.create()
         ))
-        options.set(HtmlRenderer.SOFT_BREAK, "<br>\n")
+        options.set(HtmlRenderer.SOFT_BREAK, "<br/>\n")
 
-        val parser = Parser.builder().build()
-        val renderer = HtmlRenderer.builder().build()
+        val parser = Parser.builder(options).build()
+        val renderer = HtmlRenderer.builder(options).build()
 
         val document = parser.parse(resource.readText())
         val html = renderer.render(document)
