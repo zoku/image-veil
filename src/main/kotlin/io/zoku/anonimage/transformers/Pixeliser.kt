@@ -1,13 +1,13 @@
 package io.zoku.anonimage.transformers
 
-import io.zoku.anonimage.model.Areas
+import io.zoku.anonimage.model.Area
 import io.zoku.anonimage.utils.Config
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-class Pixeliser(private val areas: Areas, private val scaleX: Float, private val scaleY: Float) : Transformer {
+class Pixeliser(private val areas: ArrayList<Area>, private val scaleX: Float, private val scaleY: Float) : Transformer {
     override fun run(image: BufferedImage): BufferedImage {
         val squareLength = ((if (image.width > image.height) image.width else image.height) * Config.pixeliser_squareMosaic_squareSize).roundToInt()
 

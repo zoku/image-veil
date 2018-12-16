@@ -4404,11 +4404,24 @@ body {
   width: 100%;
   height: 40px;
   margin: 1em 0 0 0;
+  margin-bottom: 70px;
   border: 2px solid #aaa;
   border-radius: 10px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.8);
   font-size: 1.5em; }
+  .m-progress .m-progress--label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    padding: .5em 1em;
+    border: solid 1px #000;
+    border-radius: 5px;
+    font-size: .5em; }
   .m-progress .m-progress--bar {
     position: absolute;
     left: 0;
@@ -4423,12 +4436,13 @@ body {
   100% {
     background-position-x: 0; } }
     .m-progress .m-progress--bar.m-progress--bar_indeterminate {
-      width: 100%;
+      width: 100% !important;
       background: repeating-linear-gradient(145deg, transparent 0, transparent 30px, #6786ff 30px, #6786ff 60px) no-repeat;
       background-size: 200% 40px;
       background-position-x: -106;
       animation: bar-animation 1s infinite;
-      animation-timing-function: linear; }
+      animation-timing-function: linear;
+      transition: none; }
 
 .m-download {
   display: none;
@@ -4472,13 +4486,13 @@ body {
 #startButton {
   display: none;
   margin: 1em 0 0 0;
+  margin-bottom: 70px;
   width: 100%;
   border: 2px solid #aaa;
   border-radius: 10px;
   height: 40px;
   background: #fff;
   text-transform: uppercase;
-  margin-bottom: 70px;
   font-size: 1.5em;
   font-weight: bold;
   color: #000; }

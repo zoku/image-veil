@@ -18,31 +18,17 @@ $(document).ready(function () {
 
     var $form = {
         module: $('#uploadform'),
-        inputs: {
-            areas: $('#areasInput'),
-            mode: $('#modeInput'),
-            imageData: $('#imageDataInput')
-        }
+        options: $('#imageOptions')
     };
 
     var $progress = {
         module: $('#progress'),
-        bar: $('.m-progress--bar')
+        bar: $('.m-progress--bar'),
+        label: $('.m-progress--label')
     };
 
     var $modeContainer = $('.m-mode');
     var $startButton = $('#startButton');
-
-    // App-global variables
-    var startX = null;
-    var startY = null;
-    var endX = null;
-    var endY = null;
-    var x = null;
-    var y = null;
-    var width = null;
-    var height = null;
-    var lastMove = null;
 
     // Event handling
     $upload.fileInput.on('change', function() {
@@ -75,6 +61,8 @@ $(document).ready(function () {
         $progress.bar.css({ width: 0 });
         $progress.module.show();
 
+        var imageOptions = {};
+
         var areas = [];
         $preview.areas.find('.m-preview--areas--area').each(function (i, elem) {
             areas.push({
@@ -84,15 +72,16 @@ $(document).ready(function () {
                 height: $(elem).height().toFixed(0)
             });
         });
-        $form.inputs.areas.val(JSON.stringify(areas));
+        imageOptions.areas = areas;
 
-        var imageData = {
+        imageOptions.data = {
             width: $preview.image.width(),
             height: $preview.image.height()
         };
-        $form.inputs.imageData.val(JSON.stringify(imageData));
 
-        $form.inputs.mode.val($('#mode').find(':selected').val());
+        imageOptions.mode = $('#mode').find(':selected').val();
+
+        $form.options.val(JSON.stringify(imageOptions));
 
         $.ajax({
             url: '/imagereceiver',
@@ -102,20 +91,31 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             xhr: function() {
-                var myXhr = $.ajaxSettings.xhr();
-                if (myXhr.upload) {
-                    myXhr.upload.addEventListener('progress', function(e) {
+                var xhr = $.ajaxSettings.xhr();
+                if (xhr.upload) {
+                    xhr.upload.addEventListener('progress', function(e) {
                         if (e.lengthComputable) {
                             $progress.bar.css({
                                 width: (e.loaded / e.total * 100) + '%'
                             });
+                            $progress.label.text($progress.label.data('i18n--upload').replace('[state]', (e.loaded / e.total * 100).toFixed(0)));
                             if (e.loaded === e.total) {
-                                $progress.bar.addClass('m-progress--bar_indeterminate');
+                                $progress.bar.css({ width: 0 }).addClass('m-progress--bar_indeterminate');
+                                $progress.label.text($progress.label.data('i18n--work'));
                             }
                         }
                     } , false);
                 }
-                return myXhr;
+                xhr.addEventListener('progress', function (e) {
+                    if (e.lengthComputable) {
+                        $progress.bar.removeClass('m-progress--bar_indeterminate');
+                        $progress.bar.css({
+                            width: (e.loaded / e.total * 100) + '%'
+                        });
+                        $progress.label.text($progress.label.data('i18n--download').replace('[state]', (e.loaded / e.total * 100).toFixed(0)));
+                    }
+                });
+                return xhr;
             }
         })
             .done(function (response) {

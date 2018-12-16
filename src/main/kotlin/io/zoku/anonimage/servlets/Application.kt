@@ -31,9 +31,7 @@ class Application : HttpServlet() {
                 form(encType = FormEncType.multipartFormData) {
                     id = "uploadform"
                     fileInput(name = "image") { id = "imageFile"; accept = "image/jpeg" }
-                    hiddenInput(name = "areas") { id = "areasInput" }
-                    hiddenInput(name = "imageData") { id = "imageDataInput" }
-                    hiddenInput(name = "mode") { id = "modeInput" }
+                    hiddenInput(name = "options") { id = "imageOptions" }
                 }
             }
 
@@ -55,7 +53,12 @@ class Application : HttpServlet() {
 
             div(classes = "m-progress") {
                 id = "progress"
-                div(classes = "m-progress--bar") { }
+                div(classes = "m-progress--label") {
+                    attributes["data-i18n--upload"] = i18n.get("app.main.progress.label.upload")
+                    attributes["data-i18n--work"] = i18n.get("app.main.progress.label.work")
+                    attributes["data-i18n--download"] = i18n.get("app.main.progress.label.download")
+                }
+                div(classes = "m-progress--bar") {}
             }
 
             input(type = InputType.button) { id = "startButton"; value = i18n.get("app.main.startCta.caption") }
