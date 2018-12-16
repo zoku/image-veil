@@ -23,5 +23,5 @@
 **F**: Welche Daten werden auf dem Server gespeichert?
 **A**: Nur Datum und Uhrzeit, wann ein Bild bearbeitet wurde. Alle deine Daten gehören nur dir allein.
 
-**F**: Warum funktioniert diese Seite nicht auf meinem Handy?
-**A**: Wir arbeiten gerade noch daran, die Seite auch auf Touchgeräten nutzbar zu machen. Stay tuned!
+**F**: In welchen Browsern funktioniert die app?
+**A**: Getestet ist sie im Moment im aktuellen Chrome unter MacOS und Android.

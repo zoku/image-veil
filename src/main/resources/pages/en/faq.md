@@ -23,5 +23,5 @@
 **Q**: What data will be saved on you server?
 **A**: Only a timestamp. All your data will stay yours and yours alone.
 
-**Q**: Why doesn't this site properly run on my mobile?
-**A**: We're currently working on making the site run on touch devices. Stay tuned!
+**Q**: In which browsers does this app work?
+**A**: It is tested working under current Chrome on MacOS and Android.
