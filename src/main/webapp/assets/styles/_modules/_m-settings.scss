@@ -19,6 +19,9 @@
 			border-radius: 0;
 			box-shadow: none;
 			background: none;
+
+			.m-settings--toggle--cogs { display: none; }
+			.m-settings--toggle--x { display: inline; }
 		}
 	}
 
@@ -33,7 +36,15 @@
 		text-align: center;
 		line-height: 60px;
 		font-size: 1.5em;
+		text-decoration: none;
 		color: #000;
-		border-radius: 0 10px 10px 0;
+		border-radius: 0 0 10px 0;
+
+		&:hover {
+			color: #555;
+		}
+
+		.m-settings--toggle--cogs { display: inline; }
+		.m-settings--toggle--x { display: none; }
 	}
 }

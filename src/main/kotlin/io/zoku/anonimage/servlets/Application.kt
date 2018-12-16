@@ -24,7 +24,10 @@ class Application : HttpServlet() {
 
         val dom = PageTemplate.site("App", request) {
             div(classes = "m-settings") {
-                a(classes = "m-settings--toggle", href = "#") { i(classes = "fas fa-cogs") }
+                a(classes = "m-settings--toggle", href = "#") {
+                    i(classes = "fas fa-cogs m-settings--toggle--cogs")
+                    i(classes = "fas fa-times m-settings--toggle--x")
+                }
 
                 div(classes = "m-mode") {
                     label { htmlFor = "mode"; +i18n.get("app.main.mode.caption") }
