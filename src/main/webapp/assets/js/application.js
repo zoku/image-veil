@@ -3,6 +3,11 @@ $(document).ready(function () {
     var maxAllowedFileSizeMB = 5;
 
     // Elements
+    var $settings = {
+        module: $('.m-settings'),
+        toggle: $('.m-settings--toggle')
+    };
+
     var $upload = {
         module: $('.m-upload'),
         text: $('.m-upload .m-upload--text'),
@@ -27,14 +32,22 @@ $(document).ready(function () {
         label: $('.m-progress--label')
     };
 
-    var $modeContainer = $('.m-mode');
     var $startButton = $('#startButton');
 
     // Event handling
+    $settings.toggle.on('click', function (e) {
+        e.preventDefault();
+        if ($settings.module.hasClass('m-settings_is-visible')) {
+            $settings.module.removeClass('m-settings_is-visible');
+        } else {
+            $settings.module.addClass('m-settings_is-visible')
+        }
+    });
+
     $upload.fileInput.on('change', function() {
         var file = this.files[0];
 
-        $modeContainer.hide();
+        $settings.module.hide();
         $startButton.hide();
         $upload.text.removeClass('m-upload--text_small');
 
@@ -49,7 +62,7 @@ $(document).ready(function () {
         $upload.text.addClass('m-upload--text_small').html(file.name + '<br>' + $upload.module.data('i18n--new-file-hint'));
 
         previewImage(this);
-        $modeContainer.show();
+        $settings.module.show();
         $startButton.show();
     });
 

@@ -4250,19 +4250,38 @@ body {
     body {
       background-size: cover; } }
 
-.m-constraint {
-  position: relative;
-  width: 100%;
-  max-width: 960px;
-  min-height: 100%;
-  padding: 1em;
-  margin: auto; }
-
-.m-headline {
-  display: none; }
-
-.m-title {
-  max-width: 100%; }
+.m-settings {
+  display: none;
+  position: fixed;
+  left: -255px;
+  top: 0;
+  z-index: 2;
+  width: 250px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0.5);
+  transition: left 250ms ease-out;
+  padding: 40px 1em 1em 1em; }
+  .m-settings.m-settings_is-visible {
+    left: 0; }
+    .m-settings.m-settings_is-visible .m-settings--toggle {
+      right: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: none; }
+  .m-settings .m-settings--toggle {
+    position: absolute;
+    right: -60px;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    line-height: 60px;
+    font-size: 1.5em;
+    color: #000;
+    border-radius: 0 10px 10px 0; }
 
 .m-language {
   position: absolute;
@@ -4300,6 +4319,20 @@ body {
         padding: .5em; }
         .m-language .m-language--list .m-language--list--item a img {
           height: 12px; }
+
+.m-constraint {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  min-height: 100%;
+  padding: 1em;
+  margin: auto; }
+
+.m-headline {
+  display: none; }
+
+.m-title {
+  max-width: 100%; }
 
 .m-upload {
   position: relative;
@@ -4387,7 +4420,6 @@ body {
     height: 100%; }
 
 .m-mode {
-  display: none;
   margin: 1em 0 0 0; }
   .m-mode #mode {
     width: 100%;
@@ -4444,6 +4476,27 @@ body {
       animation-timing-function: linear;
       transition: none; }
 
+#startButton {
+  display: none;
+  margin: 1em 0 0 0;
+  margin-bottom: 70px;
+  width: 100%;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  height: 40px;
+  background: #fff;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #000; }
+  #startButton:hover {
+    background: #aaa;
+    color: #555;
+    cursor: pointer; }
+  #startButton:disabled {
+    opacity: .5;
+    cursor: default; }
+
 .m-download {
   display: none;
   position: fixed;
@@ -4482,27 +4535,6 @@ body {
       border: none;
       width: 100%;
       margin: auto; }
-
-#startButton {
-  display: none;
-  margin: 1em 0 0 0;
-  margin-bottom: 70px;
-  width: 100%;
-  border: 2px solid #aaa;
-  border-radius: 10px;
-  height: 40px;
-  background: #fff;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #000; }
-  #startButton:hover {
-    background: #aaa;
-    color: #555;
-    cursor: pointer; }
-  #startButton:disabled {
-    opacity: .5;
-    cursor: default; }
 
 .m-page-content {
   background: rgba(255, 255, 255, 0.9);

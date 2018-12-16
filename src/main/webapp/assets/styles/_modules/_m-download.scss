@@ -1,0 +1,45 @@
+.m-download {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	width: 90%;
+	height: 90%;
+	max-width: 960px;
+	transform: translate(-50%, -50%);
+	background: rgba(0,0,0,.8);
+	border-radius: $default-border-radius;
+	padding: 2em;
+
+	.m-download--close {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 40px;
+		height: 40px;
+		color: #fff;
+		text-decoration: none;
+		font-size: 20px;
+		line-height: 40px;
+		text-align: center;
+	}
+
+	.m-download--content {
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background: #fff;
+		border-radius: $default-border-radius;
+		padding: 1em;
+
+		img {
+			display: block;
+			border: none;
+			width: 100%;
+			margin: auto;
+		}
+	}
+}

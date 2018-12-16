@@ -23,6 +23,20 @@ class Application : HttpServlet() {
         val i18n = I18n(Locale(lang))
 
         val dom = PageTemplate.site("App", request) {
+            div(classes = "m-settings") {
+                a(classes = "m-settings--toggle", href = "#") { i(classes = "fas fa-cogs") }
+
+                div(classes = "m-mode") {
+                    label { htmlFor = "mode"; +i18n.get("app.main.mode.caption") }
+                    select {
+                        id = "mode"
+                        option { value = "square"; +i18n.get("app.main.mode.options.square"); attributes["selected"] = "" }
+                        option { value = "fill"; +i18n.get("app.main.mode.options.fill") }
+                        option { value = "none"; +i18n.get("app.main.mode.options.none") }
+                    }
+                }
+            }
+
             div(classes = "m-upload") {
                 attributes["data-i18n--file-size-hint"] = i18n.get("js.fileSizeHint")
                 attributes["data-i18n--new-file-hint"] = i18n.get("js.newFileHint")
@@ -39,16 +53,6 @@ class Application : HttpServlet() {
                 div(classes = "m-preview--shadow")
                 div(classes = "m-preview--areas")
                 img(classes = "m-preview--image", src = "${request.contextPath}/assets/img/preview.png", alt = i18n.get("app.main.preview.image.alt"))
-            }
-
-            div(classes = "m-mode") {
-                label { htmlFor = "mode"; +i18n.get("app.main.mode.caption") }
-                select {
-                    id = "mode"
-                    option { value = "square"; +i18n.get("app.main.mode.options.square"); attributes["selected"] = "" }
-                    option { value = "black"; +i18n.get("app.main.mode.options.blackout") }
-                    option { value = "none"; +i18n.get("app.main.mode.options.none") }
-                }
             }
 
             div(classes = "m-progress") {

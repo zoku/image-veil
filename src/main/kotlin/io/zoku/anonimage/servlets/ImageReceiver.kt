@@ -50,7 +50,7 @@ class ImageReceiver : HttpServlet() {
         }
 
         when (options.mode) {
-            "black" -> transformers.add(Blackout(options.areas, scaleX, scaleY))
+            "fill" -> transformers.add(Fill(options.areas, scaleX, scaleY))
             "square" -> transformers.add(Pixeliser(options.areas, scaleX, scaleY))
         }
 

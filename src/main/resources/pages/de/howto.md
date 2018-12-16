@@ -1,9 +1,8 @@
 ## Anleitung
 ### Anonymisierung
-1. Klicke auf die gestrichelt umrandete Fläche und wähle im folgenden Dialog eine Datei oder ziehe mit der Maus eine Bilddatei (im Moment unterstützen wir nur Dateien vom Typ JPEG) darauf.
-1. Wenn notwendig, klicke mit der linken Maustaste auf das Bild, halte die Maustaste gedrückt und ziehe einen Rahmen auf. Der Inhalt dieses Rahmens wird im Anonymisierungsvorgang verpixelt. Wiederhole dies, bis alle Stellen, die später nicht mehr erkennbar sein sollen verdeckt sind.
-1. Zum Löschen eines Rahmens kannst du einfach mit der linken Maustaste auf den Rahmen klicken. Dieser verschwindet dann.
-1. Wähle eine Verpixlungsart aus der Liste unter deinem Bild aus oder wähle 'Nicht verpixeln', um keine Verpixelung anzuwenden.
+1. Klicke oder tippe auf die gestrichelt umrandete Fläche und wähle im folgenden Dialog eine Datei oder ziehe mit der Maus eine Bilddatei (im Moment unterstützen wir nur Dateien vom Typ JPEG) darauf.
+1. Klicke oder tippe auf das Vorschaubild, um eine oder mehrere Verpixelungsflächen hinzu zu fügen. Du kannst diese an den Seiten größer und kleiner ziehen, mit der Maus oder dem Finger verschieben und mit dem "Mülleimer"-Knopf löschen.
+1. In der Linken oberen Ecke kannst du nun den Optionsdialog öffnen, um z.B. die Verpixelungsart zu wählen.
 1. Klicke auf den Knopf 'Anonymisieren!', um den anonymisierungsvorgang zu starten. Dein Bild wird dann auf unseren Server geladen und bearbeitet.
 1. Wenn der Bearbeitungsvorgang fertig ist, wird dir das verpixelte Bild angezeigt. Um es zu speichern kannst du mit der rechten Maustaste darauf klicken und 'Bild speichern unter...' wählen.
 

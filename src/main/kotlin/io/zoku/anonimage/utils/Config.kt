@@ -13,7 +13,7 @@ object Config {
 
     val pixeliser_squareMosaic_squareSize: Double
 
-    val pixeliser_blackout_color: Int
+    val pixeliser_fill_color: Int
 
     init {
         config.load(Config::class.java.getResourceAsStream("/config.properties"))
@@ -26,6 +26,6 @@ object Config {
 
         pixeliser_squareMosaic_squareSize = config["pixeliser.squareMosaic.squareSize"].toString().toDouble()
 
-        pixeliser_blackout_color = Integer.parseInt(config["pixeliser.blackout.color"].toString(), 16)
+        pixeliser_fill_color = Integer.parseInt(config["pixeliser.fill.color"].toString(), 16)
     }
 }

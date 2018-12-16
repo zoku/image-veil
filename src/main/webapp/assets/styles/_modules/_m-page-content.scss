@@ -1,0 +1,52 @@
+.m-page-content {
+	background: rgba(255, 255, 255, .9);
+	margin: $default-margin;
+	margin-bottom: 60px;
+	padding: 1em;
+	border-radius: $default-border-radius;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+
+	h2, h3, h4, p {
+		margin: 1em 0 0 0;
+	}
+
+	h2, h3, h4 {
+		font-weight: bold;
+	}
+
+	h2 { font-size: 1.6em; border-bottom: solid 1px #aaa; }
+	h3 { font-size: 1.3em; }
+	h4 { font-size: 1.1em; }
+
+	a {
+		color: #555;
+		text-decoration: none;
+
+		&:hover {
+			color: #333;
+			text-decoration: underline;
+		}
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1em 0 0 0;
+
+		tr {
+			&:nth-child(odd) {
+				background: rgba(0,0,0,.1);
+			}
+			th {
+
+			}
+
+			td {
+				img {
+					width: 100%;
+					max-width: 400px;
+				}
+			}
+		}
+	}
+}
