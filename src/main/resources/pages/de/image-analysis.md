@@ -15,12 +15,12 @@ Die GPS-Koordinaten wurden im Nachhinein von uns zensiert, da sie uns zu präzis
 | **File Type Extension:** jpg | **File Type Extension:** jpg |
 | **MIME Type:** image/jpeg | **MIME Type:** image/jpeg |
 | **Exif Byte Order:** Big-endian (Motorola, MM) |  |
-| **Image Width:** | **Image Width:** 4160 |
-| **Image Height:** | **Image Height:** 3120 |
-| **Encoding Process:** | **Encoding Process:** Baseline DCT, Huffman coding |
-| **Bits Per Sample:** | **Bits Per Sample:** 8 |
-| **Color Components:** | **Color Components:** 3 |
-| **Y Cb Cr Sub Sampling:** | **Y Cb Cr Sub Sampling:** YCbCr4:2:0 (2 2) |
+| **Image Width:** 4160 | **Image Width:** 1280 |
+| **Image Height:** 3120 | **Image Height:** 960 |
+| **Encoding Process:** Baseline DCT, Huffman coding | **Encoding Process:** Baseline DCT, Huffman coding |
+| **Bits Per Sample:** 8 | **Bits Per Sample:** 8 |
+| **Color Components:** 3 | **Color Components:** 3 |
+| **Y Cb Cr Sub Sampling:** YCbCr4:2:0 (2 2) | **Y Cb Cr Sub Sampling:** YCbCr4:2:0 (2 2) |
 | **EXIF** |  |
 | **Modufy Date:** 2018:12:14 15:48:32 |  |
 | **GPS Date Stamp:** 2018:12:14 |  |
