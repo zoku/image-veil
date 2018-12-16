@@ -71,7 +71,7 @@ class Application : HttpServlet() {
             input(type = InputType.button) { id = "startButton"; value = i18n.get("app.main.startCta.caption") }
 
             div(classes = "m-download") {
-                a( classes = "m-download--close", href = "#") { +"X" }
+                a( classes = "m-download--close", href = "#") { i(classes = "fas fa-times") }
                 div(classes = "m-download--content") {
                     h2 { +i18n.get("app.download.headline") }
                     p { +i18n.get("app.download.hint") }
