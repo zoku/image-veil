@@ -1,8 +1,8 @@
 package io.zoku.anonimage.servlets
 
+import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
-import io.zoku.anonimage.model.Areas
-import io.zoku.anonimage.model.ImageData
+import io.zoku.anonimage.model.ImageOptions
 import io.zoku.anonimage.transformers.*
 import io.zoku.anonimage.utils.Config
 import org.slf4j.LoggerFactory
@@ -32,25 +32,26 @@ class ImageReceiver : HttpServlet() {
 
     override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
         // Define variables
-        val areas = gson.fromJson(request.getParameter("areas")?:"", Areas::class.java)
-        val imageData = gson.fromJson(request.getParameter("imageData")?:"", ImageData::class.java)
-        val mode = request.getParameter("mode")
+        val options = gson.fromJson(request.getParameter("options")?:"", ImageOptions::class.java)
         val imagePart = request.getPart("image")
         var image = ImageIO.read(imagePart.inputStream)
+        val imageMataData = ImageMetadataReader.readMetadata(imagePart.inputStream)
 
-        val scaleX = image.width / imageData.width
-        val scaleY = image.height / imageData.height
+        val scaleX = image.width / options.data.width
+        val scaleY = image.height / options.data.height
 
         val transformers = arrayListOf<Transformer>()
 
         // Add transformers
+        transformers.add(Rotator(imageMataData))
+
         if (Config.imageReceiver_addNoise) {
             transformers.add(Randomiser())
         }
 
-        when (mode) {
-            "black" -> transformers.add(Blackout(areas, scaleX, scaleY))
-            "square" -> transformers.add(Pixeliser(areas, scaleX, scaleY))
+        when (options.mode) {
+            "black" -> transformers.add(Blackout(options.areas, scaleX, scaleY))
+            "square" -> transformers.add(Pixeliser(options.areas, scaleX, scaleY))
         }
 
         if (image.width > Config.imageReceiver_maxImageEdgeSize || image.height > Config.imageReceiver_maxImageEdgeSize) {
@@ -78,6 +79,7 @@ class ImageReceiver : HttpServlet() {
         }
 
         // Output image
+        response.setIntHeader("Content-Length", imageString.length)
         response.writer.append(imageString)
     }
 }
