@@ -1,7 +1,7 @@
-package io.zoku.anonimage.transformers
+package io.zoku.imageveil.transformers
 
-import io.zoku.anonimage.model.Area
-import io.zoku.anonimage.utils.Config
+import io.zoku.imageveil.model.Area
+import io.zoku.imageveil.utils.Config
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage

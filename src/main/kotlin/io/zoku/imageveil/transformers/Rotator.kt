@@ -1,4 +1,4 @@
-package io.zoku.anonimage.transformers
+package io.zoku.imageveil.transformers
 
 import com.drew.metadata.Metadata
 import com.drew.metadata.exif.ExifIFD0Directory
@@ -42,12 +42,14 @@ class Rotator(private val metaData: Metadata) : Transformer {
     private object ImageOrientations {
         const val LANDSCAPE_0_O = 1
         const val LANDSCAPE_0_M = 2
+
+        const val LANDSCAPE_90_O = 6
+        const val LANDSCAPE_90_M = 5
+
         const val LANDSCAPE_180_O = 3
         const val LANDSCAPE_180_M = 4
 
-        const val LANDSCAPE_270_O = 6
-        const val LANDSCAPE_270_M = 5
-        const val LANDSCAPE_90_O = 8
-        const val LANDSCAPE_90_M = 7
+        const val LANDSCAPE_270_O = 8
+        const val LANDSCAPE_270_M = 7
     }
 }

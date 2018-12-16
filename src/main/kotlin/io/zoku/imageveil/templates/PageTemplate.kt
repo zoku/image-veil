@@ -1,6 +1,6 @@
-package io.zoku.anonimage.templates
+package io.zoku.imageveil.templates
 
-import io.zoku.anonimage.utils.I18n
+import io.zoku.imageveil.utils.I18n
 import kotlinx.html.*
 import kotlinx.html.dom.createHTMLDocument
 import org.w3c.dom.Document
@@ -14,7 +14,7 @@ object PageTemplate {
 
         return createHTMLDocument().html {
             head {
-                title { +"AnonImage | $title" }
+                title { +"ImageVeil | $title" }
                 meta(name = "desciption", content = i18n.get("app.description"))
                 meta(name = "viewport", content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
                 meta { charset = "utf-8" }
@@ -27,7 +27,7 @@ object PageTemplate {
 
             body {
                 div(classes = "m-constraint") {
-                    h1(classes = "m-headline") { +"AnonImage | $title" }
+                    h1(classes = "m-headline") { +"ImageVeil | $title" }
                     a(href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=$lang" else "" }") {
                         img(classes = "m-title", src = "${request.contextPath}/assets/img/title.png", alt = i18n.get("app.logo.alt"))
                     }
@@ -62,7 +62,7 @@ object PageTemplate {
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.privacy.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.privacy") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.howto.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.howto") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.faq") }
-                        a(classes = "m-footer--link", href = "https://www.github.com/zoku/anonimage") { +i18n.get("app.footer.links.github") }
+                        a(classes = "m-footer--link", href = "https://www.github.com/zoku/imageveil") { +i18n.get("app.footer.links.github") }
                     }
                 }
 

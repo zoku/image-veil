@@ -1,7 +1,7 @@
-package io.zoku.anonimage.servlets
+package io.zoku.imageveil.servlets
 
-import io.zoku.anonimage.utils.I18n
-import io.zoku.anonimage.templates.PageTemplate
+import io.zoku.imageveil.utils.I18n
+import io.zoku.imageveil.templates.PageTemplate
 import kotlinx.html.div
 import kotlinx.html.dom.serialize
 import kotlinx.html.h2

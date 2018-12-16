@@ -1,4 +1,4 @@
-package io.zoku.anonimage.model
+package io.zoku.imageveil.model
 
 data class Area(
         val x: Int,

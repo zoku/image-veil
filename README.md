@@ -1,4 +1,4 @@
-# AnonImage App
+# ImageVeil App
 
 Run in Tomcat:
 ```

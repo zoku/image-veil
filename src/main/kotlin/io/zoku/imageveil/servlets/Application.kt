@@ -1,7 +1,7 @@
-package io.zoku.anonimage.servlets
+package io.zoku.imageveil.servlets
 
-import io.zoku.anonimage.utils.I18n
-import io.zoku.anonimage.templates.PageTemplate
+import io.zoku.imageveil.utils.I18n
+import io.zoku.imageveil.templates.PageTemplate
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
@@ -12,8 +12,8 @@ import kotlinx.html.dom.*
 import java.util.*
 
 @WebServlet(
-        name = "AnonImageApp",
-        displayName = "AnonImage WebApplication",
+        name = "ImageVeilApp",
+        displayName = "ImageVeil WebApplication",
         description = "Provides an API to pixelate/blur images, remove exif data and change chip characteristics.",
         urlPatterns = [ "" ]
 )

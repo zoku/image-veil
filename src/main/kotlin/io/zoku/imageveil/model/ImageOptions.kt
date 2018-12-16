@@ -1,4 +1,4 @@
-package io.zoku.anonimage.model
+package io.zoku.imageveil.model
 
 /**
  * Created by Manuel Helbing on 2018-12-16.

@@ -1,6 +1,6 @@
-package io.zoku.anonimage.transformers
+package io.zoku.imageveil.transformers
 
-import io.zoku.anonimage.utils.Config
+import io.zoku.imageveil.utils.Config
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt

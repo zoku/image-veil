@@ -1,4 +1,4 @@
-package io.zoku.anonimage.utils
+package io.zoku.imageveil.utils
 
 import java.io.IOException
 import java.util.*

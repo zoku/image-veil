@@ -1,10 +1,10 @@
-package io.zoku.anonimage.servlets
+package io.zoku.imageveil.servlets
 
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
-import io.zoku.anonimage.model.ImageOptions
-import io.zoku.anonimage.transformers.*
-import io.zoku.anonimage.utils.Config
+import io.zoku.imageveil.model.ImageOptions
+import io.zoku.imageveil.transformers.*
+import io.zoku.imageveil.utils.Config
 import org.slf4j.LoggerFactory
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig
@@ -72,7 +72,7 @@ class ImageReceiver : HttpServlet() {
 
         // Log process
         try {
-            val logFile = File("${System.getProperty("user.home")}/anonimage-uses.log")
+            val logFile = File("${System.getProperty("user.home")}/imageveil-uses.log")
             logFile.appendText(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").format(LocalDateTime.now()) + "\n")
         } catch (e: Exception) {
             logger.error("Log file could not be written.")
