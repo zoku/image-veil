@@ -3,12 +3,15 @@ package io.zoku.imageveil.transformers
 import com.drew.metadata.Metadata
 import com.drew.metadata.exif.ExifIFD0Directory
 import org.imgscalr.Scalr
+import org.slf4j.LoggerFactory
 import java.awt.image.BufferedImage
 
 /**
  * Created by Manuel Helbing on 2018-12-16.
  */
 class Rotator(private val metaData: Metadata) : Transformer {
+    private val logger = LoggerFactory.getLogger("Transformers - Rotator")
+
     override fun run(image: BufferedImage): BufferedImage {
         val exifDir = metaData.getFirstDirectoryOfType(ExifIFD0Directory::class.java)
 
@@ -24,6 +27,7 @@ class Rotator(private val metaData: Metadata) : Transformer {
                 ImageOrientations.LANDSCAPE_180_M -> return Scalr.rotate(rotate(image, 180), Scalr.Rotation.FLIP_HORZ)
                 ImageOrientations.LANDSCAPE_270_O -> return rotate(image, 270)
                 ImageOrientations.LANDSCAPE_270_M -> return Scalr.rotate(rotate(image, 270), Scalr.Rotation.FLIP_HORZ)
+                else -> logger.warn("Unknown image orientation: $orientation")
             }
         }
         return image
