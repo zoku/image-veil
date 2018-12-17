@@ -2,12 +2,15 @@ package io.zoku.imageveil.transformers
 
 import io.zoku.imageveil.model.Area
 import io.zoku.imageveil.utils.Config
+import org.slf4j.LoggerFactory
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
 class Pixeliser(private val areas: ArrayList<Area>, private val scaleX: Float, private val scaleY: Float) : Transformer {
+    private val logger = LoggerFactory.getLogger("Pixeliser")
+
     override fun run(image: BufferedImage): BufferedImage {
         val squareLength = ((if (image.width > image.height) image.width else image.height) * Config.pixeliser_squareMosaic_squareSize).roundToInt()
 
@@ -43,8 +46,16 @@ class Pixeliser(private val areas: ArrayList<Area>, private val scaleX: Float, p
         val g2d = image.graphics as Graphics2D
         areas.forEach { area ->
             if (area.width > 0 && area.height > 0) {
-                val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
-                g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
+                try {
+                    val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
+                    g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
+                } catch (e: Exception) {
+                    logger.error("""
+                        image:       w ${image.width}, h ${image.height}, sX $scaleX, sY $scaleY
+                        squareImage: w ${squaredImage.width}, h ${squaredImage.height}
+                        area:        x ${area.x}, y ${area.y}, w ${area.width}, h ${area.height}
+                    """.trimIndent())
+                }
             }
         }
         g2d.dispose()
