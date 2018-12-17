@@ -1,11 +1,10 @@
 ## Imprint
 
-### Angaben gemäß § 5 TMG
+### Information compliant with § 5 TMG
 Manuel Helbing 
 
 Contact:
-
-E-mail: mail@manuelhelbing.de
+E-mail: mail@image-veil.net
 
 ### Disclaimor: 
 #### Liability for links
@@ -28,6 +27,3 @@ Third parties are prohibited to use contact data provided in accordance
 with imprint liability to send any advertisement or information material, unless
 explicitly encouraged to do so. The operator of this site explicitly reserve
 to take leagal measures in case of unsolicited delivery of advertisement, e.g. spam-mails.
-
-#### Image sources
-Background image by Warren Wong on Unsplash

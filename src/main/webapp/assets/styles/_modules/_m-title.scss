@@ -1,3 +1,27 @@
 .m-title {
+	@include clearfix;
+	display: block;
 	max-width: 100%;
+
+	height: 40px;
+	font-size: 40px;
+	margin: 0 0 0 0;
+
+	.m-title--image {
+		display: block;
+		float: left;
+		height: 100%;
+	}
+
+	.m-title--text {
+		display: block;
+		float: left;
+		color: #fff;
+		margin-left: .25em;
+	}
+
+	@include on-small { height: 60px; font-size: 60px; margin: 0 0 20px 0; }
+	@include on-medium { height: 80px; font-size: 80px; margin: 0 0 30px 0; }
+	@include on-large { height: 100px; font-size: 100px; margin: 0 0 40px 0; }
+	@include on-xlarge { height: 120px; font-size: 120px; margin: 0 0 50px 0; }
 }

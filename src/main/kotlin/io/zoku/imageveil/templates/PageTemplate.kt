@@ -28,8 +28,9 @@ object PageTemplate {
             body {
                 div(classes = "m-constraint") {
                     h1(classes = "m-headline") { +"ImageVeil | $title" }
-                    a(href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=$lang" else "" }") {
-                        img(classes = "m-title", src = "${request.contextPath}/assets/img/title.png", alt = i18n.get("app.logo.alt"))
+                    a(classes = "m-title", href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=$lang" else "" }") {
+                        img(classes = "m-title--image", src = "${request.contextPath}/assets/img/logo.png", alt = i18n.get("app.logo.alt"))
+                        div(classes = "m-title--text") { +"ImageVeil" }
                     }
 
                     val supportedLanguages = arrayListOf("de", "en") // Add rm for Roman Empire and pi for Pirate, also es, fr, it, ru, gr

@@ -5,10 +5,10 @@
 	height: 40px;
 	margin: $default-margin;
 	margin-bottom: 70px;
-	border: 2px solid #aaa;
+	border: 2px solid #fff;
 	border-radius: $default-border-radius;
 	overflow: hidden;
-	background: rgba(255, 255, 255, .8);
+	// background: rgba(255, 255, 255, .8);
 	font-size: 1.5em;
 
 	.m-progress--label {
@@ -17,10 +17,10 @@
 		left: 50%;
 		z-index: 1;
 		transform: translate(-50%, -50%);
-		background: rgba(255, 255, 255, .8);
-		color: #000;
+		background: rgba(0, 0, 0, .8);
+		color: #fff;
 		padding: .5em 1em;
-		border: solid 1px #000;
+		border: solid 1px #fff;
 		border-radius: 5px;
 		font-size: .5em;
 	}
@@ -31,7 +31,7 @@
 		top: 0;
 		height: 100%;
 		width: 0;
-		background: #6786ff;
+		background: #6a0f5a;
 		transition: width 200ms ease-out;
 
 		@keyframes bar-animation {
@@ -45,7 +45,7 @@
 
 		&.m-progress--bar_indeterminate {
 			width: 100% !important;
-			background: repeating-linear-gradient(145deg, transparent 0, transparent 30px, #6786ff 30px, #6786ff 60px) no-repeat;
+			background: repeating-linear-gradient(145deg, transparent 0, transparent 30px, #6a0f5a 30px, #6a0f5a 60px) no-repeat;
 			background-size: 200% 40px;
 			background-position-x: -106;
 			animation: bar-animation 1s infinite;

@@ -1,14 +1,14 @@
 .m-upload {
 	position: relative;
-	border: 5px dashed #666;
+	border: 5px dashed #fff;
 	border-radius: $default-border-radius;
 	text-align: center;
 	margin: $default-margin;
-	background: rgba(255,255,255,.8);
+	// background: rgba(0, 0, 0, .8);
 
 	.m-upload--text {
 		font-size: 2em;
-		color: #666;
+		color: #fff;
 
 		&.m-upload--text_small {
 			font-size: 1em;
