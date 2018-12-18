@@ -68,10 +68,7 @@ object PageTemplate {
                     }
                 }
 
-                script(type = "text/javascript", src = "${request.contextPath}/assets/js/lib/jquery-3.3.1.min.js") {}
-                script(type = "text/javascript", src = "${request.contextPath}/assets/js/lib/jquery-ui.min.js") {}
-                script(type = "text/javascript", src = "${request.contextPath}/assets/js/lib/jquery-ui.touch-punch.min.js") {}
-
+                script(type = "text/javascript", src = "${request.contextPath}/assets/js/lib/jquery-all.min.js") {}
                 script(type = "text/javascript", src = "${request.contextPath}/assets/js/application.js") {}
             }
         }
