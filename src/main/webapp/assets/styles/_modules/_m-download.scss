@@ -12,6 +12,8 @@
 	border-radius: $default-border-radius;
 	padding: 2em;
 
+	user-select: none;
+
 	.m-download--close {
 		display: block;
 		position: absolute;

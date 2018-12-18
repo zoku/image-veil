@@ -11,6 +11,8 @@
 	transition: left 250ms ease-out;
 	padding: 40px 1em 1em 1em;
 
+	user-select: none;
+
 	&.m-settings_is-visible {
 		left: 0;
 

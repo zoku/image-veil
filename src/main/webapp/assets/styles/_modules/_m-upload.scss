@@ -4,7 +4,7 @@
 	border-radius: $default-border-radius;
 	text-align: center;
 	margin: $default-margin;
-	// background: rgba(0, 0, 0, .8);
+	user-select: none;
 
 	.m-upload--text {
 		font-size: 2em;

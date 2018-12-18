@@ -8,6 +8,7 @@
 	border-radius: $default-border-radius $default-border-radius 0 0;
 
 	padding: 1em;
+	user-select: none;
 
 	.m-footer--link {
 		display: inline-block;
