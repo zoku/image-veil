@@ -15,10 +15,15 @@
 
 	user-select: none;
 
+	transition: border-color 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out;
+
 	&:hover {
-		background: #aaa;
-		color: #333;
+		// background: #aaa;
+		// color: #333;
 		cursor: pointer;
+		color: #6a0f5a;
+		border-color: #6a0f5a;
+		background: rgba(255, 255, 255, .8);
 	}
 
 	&:disabled {

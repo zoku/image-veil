@@ -4440,10 +4440,17 @@ body {
   border-radius: 10px;
   text-align: center;
   margin: 1em 0 0 0;
-  user-select: none; }
+  user-select: none;
+  transition: border-color 300ms ease-out, background-color 300ms ease-out; }
+  .m-upload:hover {
+    border-color: #6a0f5a;
+    background: rgba(255, 255, 255, 0.8); }
+    .m-upload:hover .m-upload--text {
+      color: #6a0f5a; }
   .m-upload .m-upload--text {
     font-size: 2em;
-    color: #fff; }
+    color: #fff;
+    transition: color 300ms ease-out; }
     .m-upload .m-upload--text.m-upload--text_small {
       font-size: 1em; }
   .m-upload #uploadform {
@@ -4589,11 +4596,13 @@ body {
   font-size: 1.5em;
   font-weight: bold;
   color: #fff;
-  user-select: none; }
+  user-select: none;
+  transition: border-color 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out; }
   #startButton:hover {
-    background: #aaa;
-    color: #333;
-    cursor: pointer; }
+    cursor: pointer;
+    color: #6a0f5a;
+    border-color: #6a0f5a;
+    background: rgba(255, 255, 255, 0.8); }
   #startButton:disabled {
     opacity: .5;
     cursor: default; }

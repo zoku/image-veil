@@ -6,9 +6,21 @@
 	margin: $default-margin;
 	user-select: none;
 
+	transition: border-color 300ms ease-out, background-color 300ms ease-out;
+
+	&:hover {
+		border-color: #6a0f5a;
+		background: rgba(255, 255, 255, .8);
+
+		.m-upload--text {
+			color: #6a0f5a;
+		}
+	}
+
 	.m-upload--text {
 		font-size: 2em;
 		color: #fff;
+		transition: color 300ms ease-out;
 
 		&.m-upload--text_small {
 			font-size: 1em;
