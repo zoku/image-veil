@@ -4471,6 +4471,9 @@ body {
         width: 100%;
         height: 100%;
         overflow: hidden; }
+        @media screen\0 {
+          .m-preview .m-preview--areas .m-preview--areas--area .m-preview--areas--area--image-container {
+            background: rgba(0, 0, 0, 0.7); } }
         .m-preview .m-preview--areas .m-preview--areas--area .m-preview--areas--area--image-container .m-preview--areas--area--image-container--image {
           position: absolute;
           top: -15px;
@@ -4478,6 +4481,9 @@ body {
           width: calc(100% + 30px);
           height: calc(100% + 30px);
           filter: blur(10px); }
+          @media screen\0 {
+            .m-preview .m-preview--areas .m-preview--areas--area .m-preview--areas--area--image-container .m-preview--areas--area--image-container--image {
+              display: none; } }
       .m-preview .m-preview--areas .m-preview--areas--area .m-preview--areas--area--remove {
         position: absolute;
         top: -15px;

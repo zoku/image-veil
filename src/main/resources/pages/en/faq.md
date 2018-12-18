@@ -26,14 +26,14 @@
 **Q**: In which browsers does this app work?
 **A**:
 
-|                | Chrome | Safari | Firefox\* | Internet Explorer | Edge | Opera |
-|---------------:|:-------|:-------|:--------|:------------------|:-----|:------|
-| Windows        | O      | ?      | O       | ?                 | ?    | ?     |
-| MacOS          | O      | ?      | ?       | ?                 | ?    | ?     |
-| Ubuntu         | ?      | ?      | ?       | ?                 | ?    | ?     |
-| Android        | O      | ?      | X       | ?                 | ?    | ?     |
-| iOS            | ?      | !      | ?       | ?                 | ?    | ?     |
-| Windows Mobile | ?      | ?      | ?       | ?                 | ?    | ?     |
+|                | Chrome | Safari | Firefox\* | Opera | Internet Explorer | Edge |
+|---------------:|:-------|:-------|:----------|:------|:------------------|:-----|
+| Windows        | O      | -      | O         | O     | O                 | X    |
+| Windows Mobile | ?      | -      | ?         | ?     | ?                 | ?    |
+| MacOS          | O      | ?      | ?         | ?     | -                 | -    |
+| Ubuntu         | ?      | -      | ?         | ?     | -                 | -    |
+| Android        | O      | -      | X         | ?     | -                 | -    |
+| iOS            | ?      | !      | ?         | ?     | -                 | -    |
 
 O = Without limitations
 ! = With limitations
