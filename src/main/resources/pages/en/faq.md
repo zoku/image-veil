@@ -6,7 +6,7 @@
 **A**: The app creates a completely new image. All meta-data is lost in the process (see [Image analysis](image-analysis?l=en)).
 
 **Q**: Why do you host this app?
-**A**:
+**A**: Look what we write [about us](about-us)!
 
 **Q**: Can I use this via TOR?
 **A**: Yes! The TOR-service is on ...

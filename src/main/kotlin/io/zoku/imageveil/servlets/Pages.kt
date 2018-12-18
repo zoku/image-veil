@@ -33,6 +33,7 @@ class Pages : HttpServlet() {
         val pageId: String
 
         when (pageName) {
+            i18n.get("app.pages.about.uri") -> { title = i18n.get("app.pages.about.title"); mdFile = "about.md"; pageId = "about" }
             i18n.get("app.pages.imprint.uri") -> { title = i18n.get("app.pages.imprint.title"); mdFile = "imprint.md"; pageId = "imprint" }
             i18n.get("app.pages.privacy.uri") -> { title = i18n.get("app.pages.privacy.title"); mdFile = "privacy.md"; pageId = "privacy" }
             i18n.get("app.pages.howto.uri") -> { title = i18n.get("app.pages.howto.title"); mdFile = "howto.md"; pageId = "howto" }

@@ -59,11 +59,12 @@ object PageTemplate {
                     block.invoke(this)
 
                     section(classes = "m-footer") {
+                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.about.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.about") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.imprint.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.imprint") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.privacy.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.privacy") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.howto.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.howto") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.faq") }
-                        a(classes = "m-footer--link", href = "https://www.github.com/zoku/imageveil") { +i18n.get("app.footer.links.github") }
+                        a(classes = "m-footer--link", href = "https://www.github.com/zoku/imageveil") { i(classes = "fab fa-github"); +" ${i18n.get("app.footer.links.github")}" }
                     }
                 }
 
