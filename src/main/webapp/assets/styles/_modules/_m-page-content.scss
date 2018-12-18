@@ -19,12 +19,12 @@
 	h4 { font-size: 1.1em; }
 
 	a {
-		color: #555;
-		text-decoration: none;
+		color: #6a0f5a;
+		text-decoration: underline;
+		transition: color 150ms ease-out;
 
 		&:hover {
-			color: #333;
-			text-decoration: underline;
+			color: #555;
 		}
 	}
 
@@ -37,14 +37,27 @@
 			&:nth-child(odd) {
 				background: rgba(0,0,0,.1);
 			}
-			th {
 
+			th, td {
+				padding: .5em;
+			}
+
+			th {
+				background: rgba(0,0,0,.5);
+				color: #fff;
+				font-weight: normal;
 			}
 
 			td {
 				img {
 					width: 100%;
 					max-width: 400px;
+				}
+
+				&[align="right"]:first-of-type {
+					background: rgba(0,0,0,.5);
+					color: #fff;
+					font-weight: normal;
 				}
 			}
 		}

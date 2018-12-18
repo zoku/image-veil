@@ -24,4 +24,20 @@
 **A**: Only a timestamp. All your data will stay yours and yours alone.
 
 **Q**: In which browsers does this app work?
-**A**: It is tested working under current Chrome on MacOS and Android.
+**A**:
+
+|                | Chrome | Safari | Firefox\* | Internet Explorer | Edge | Opera |
+|---------------:|:-------|:-------|:--------|:------------------|:-----|:------|
+| Windows        | O      | ?      | O       | ?                 | ?    | ?     |
+| MacOS          | O      | ?      | ?       | ?                 | ?    | ?     |
+| Ubuntu         | ?      | ?      | ?       | ?                 | ?    | ?     |
+| Android        | O      | ?      | X       | ?                 | ?    | ?     |
+| iOS            | ?      | !      | ?       | ?                 | ?    | ?     |
+| Windows Mobile | ?      | ?      | ?       | ?                 | ?    | ?     |
+
+O = Without limitations
+! = With limitations
+X = Not usable
+? = Not tested
+
+\*and TOR-Browser

@@ -4622,20 +4622,30 @@ body {
   .m-page-content h4 {
     font-size: 1.1em; }
   .m-page-content a {
-    color: #555;
-    text-decoration: none; }
+    color: #6a0f5a;
+    text-decoration: underline;
+    transition: color 150ms ease-out; }
     .m-page-content a:hover {
-      color: #333;
-      text-decoration: underline; }
+      color: #555; }
   .m-page-content table {
     width: 100%;
     border-collapse: collapse;
     margin: 1em 0 0 0; }
     .m-page-content table tr:nth-child(odd) {
       background: rgba(0, 0, 0, 0.1); }
+    .m-page-content table tr th, .m-page-content table tr td {
+      padding: .5em; }
+    .m-page-content table tr th {
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-weight: normal; }
     .m-page-content table tr td img {
       width: 100%;
       max-width: 400px; }
+    .m-page-content table tr td[align="right"]:first-of-type {
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-weight: normal; }
 
 .m-footer {
   position: absolute;
