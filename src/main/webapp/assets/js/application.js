@@ -170,7 +170,7 @@ $(document).ready(function () {
     // Functions
     function positionToPercent(area, alsoConvertPosition) {
         var $area = $(area);
-        var $areaBG = $area.find('.m-preview--areas--area--image');
+        var $areaBG = $area.find('.m-preview--areas--area--image-container--image');
 
         $areaBG.css({
             'background-size': $preview.image.width() + 'px ' + $preview.image.height() + 'px',
@@ -213,13 +213,13 @@ $(document).ready(function () {
                 top: y / $preview.image.height() * 100 + '%',
                 left: x / $preview.image.width() * 100 + '%'
             })
-            .append($('<div/>').addClass('m-preview--areas--area--image').css({
+            .append($('<div/>').addClass('m-preview--areas--area--image-container').append($('<div/>').addClass('m-preview--areas--area--image-container--image').css({
                 backgroundImage: 'url(' + $preview.image.attr('src') + ')',
                 backgroundPositionX: 0 - x + 15,
                 backgroundPositionY: 0 - y + 15,
                 'background-size': $preview.image.width() + 'px ' + $preview.image.height() + 'px'
-            }))
-            .append($('<button/>').html('<i class="fas fa-trash-alt"></i>').addClass('m-preview--areas--area--remove').on('click', function (e) {
+            })))
+            .append($('<button/>').html('<i class="fas fa-times"></i>').addClass('m-preview--areas--area--remove').on('click', function (e) {
                 e.stopPropagation();
                 $(this).parent().remove();
             }))
@@ -237,7 +237,7 @@ $(document).ready(function () {
             })
             .resizable({
                 containment: 'parent',
-                handles: 'all',
+                handles: 'n,e,s,w,nw,se,sw',
                 minWidth: 60,
                 minHeight: 60,
                 resize: function () {
