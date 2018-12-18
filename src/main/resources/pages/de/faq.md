@@ -26,18 +26,16 @@
 **F**: In welchen Browsern funktioniert die app?
 **A**:
 
-|                | Chrome | Safari | Firefox\* | Opera | Internet Explorer | Edge |
-|---------------:|:-------|:-------|:----------|:------|:------------------|:-----|
-| Windows        | O      | -      | O         | O     | O                 | X    |
-| Windows Mobile | ?      | -      | ?         | ?     | ?                 | ?    |
-| MacOS          | O      | ?      | ?         | ?     | -                 | -    |
-| Ubuntu         | ?      | -      | ?         | ?     | -                 | -    |
-| Android        | O      | -      | X         | ?     | -                 | -    |
-| iOS            | ?      | !      | ?         | ?     | -                 | -    |
+|                | Chrome | Safari | Firefox | TOR | Opera | Internet Explorer | Edge |
+|---------------:|:-------|:-------|:--------|:----|:------|:------------------|:-----|
+| Windows        | O      | -      | O       | O   | O     | O                 | X    |
+| Windows Mobile | ?      | -      | ?       | ?   | ?     | ?                 | ?    |
+| MacOS          | O      | O      | O       | O   | O     | -                 | -    |
+| Ubuntu         | ?      | -      | ?       | ?   | ?     | -                 | -    |
+| Android        | O      | -      | O       | !   | O     | -                 | O    |
+| iOS            | ?      | !      | ?       | ?   | ?     | -                 | -    |
 
 O = Uneingeschränkt
 ! = Mit Einschränkungen
 X = Nicht nutzbar
 ? = Nicht getestet
-
-\*und TOR-Browser
