@@ -70,6 +70,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         $startButton.hide();
+        $settings.module.removeClass('m-settings_is-visible');
 
         $progress.bar.css({ width: 0 });
         $progress.module.show();
