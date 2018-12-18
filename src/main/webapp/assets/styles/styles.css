@@ -4679,7 +4679,8 @@ body {
     .m-page-content table tr:nth-child(odd) {
       background: rgba(0, 0, 0, 0.1); }
     .m-page-content table tr th, .m-page-content table tr td {
-      padding: .5em; }
+      padding: .5em;
+      text-align: center; }
     .m-page-content table tr th {
       background: rgba(0, 0, 0, 0.5);
       color: #fff;

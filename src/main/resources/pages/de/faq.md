@@ -25,15 +25,80 @@
 
 **F**: In welchen Browsern funktioniert die app?
 **A**:
-
-|                | Chrome | Safari | Firefox | TOR | Opera | Internet Explorer | Edge |
-|---------------:|:-------|:-------|:--------|:----|:------|:------------------|:-----|
-| Windows        | O      | -      | O       | O   | O     | O                 | X    |
-| Windows Mobile | ?      | -      | ?       | ?   | ?     | ?                 | ?    |
-| MacOS          | O      | O      | O       | O   | O     | -                 | -    |
-| Ubuntu         | ?      | -      | ?       | ?   | ?     | -                 | -    |
-| Android        | O      | -      | O       | !   | O     | -                 | O    |
-| iOS            | ?      | !      | ?       | ?   | ?     | -                 | -    |
+<table>
+    <tr>
+        <th></th>
+        <th><i class="fab fa-windows"></i></th>
+        <th>WinM</th>
+        <th><i class="fab fa-apple"></i></th>
+        <th>iOS</th>
+        <th><i class="fab fa-ubuntu"></i></th>
+        <th><i class="fab fa-android"></i></th>
+    </tr>
+    <tr>
+        <td align="right"><i class="fab fa-chrome"></i></td>
+        <td>O</td>
+        <td>?</td>
+        <td>O</td>
+        <td>?</td>
+        <td>?</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td align="right"><i class="fab fa-firefox"></i></td>
+        <td>O</td>
+        <td>?</td>
+        <td>O</td>
+        <td>?</td>
+        <td>?</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td align="right"><i class="fab fa-safari"></i></td>
+        <td>-</td>
+        <td>-</td>
+        <td>O</td>
+        <td>!</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td align="right">Tor</td>
+        <td>O</td>
+        <td>?</td>
+        <td>O</td>
+        <td>?</td>
+        <td>?</td>
+        <td>!</td>
+    </tr>
+    <tr>
+        <td align="right"><i class="fab fa-opera"></i></td>
+        <td>O</td>
+        <td>?</td>
+        <td>O</td>
+        <td>?</td>
+        <td>?</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td align="right"><i class="fab fa-internet-explorer"></i></td>
+        <td>O</td>
+        <td>?</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td align="right"><i class="fab fa-edge"></i></td>
+        <td>X</td>
+        <td>?</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>O</td>
+    </tr>
+</table>
 
 O = Uneingeschränkt
 ! = Mit Einschränkungen
