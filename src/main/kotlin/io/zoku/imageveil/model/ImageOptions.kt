@@ -4,7 +4,9 @@ package io.zoku.imageveil.model
  * Created by Manuel Helbing on 2018-12-16.
  */
 data class ImageOptions(
-        val areas: ArrayList<Area>,
-        val mode: String,
-        val data: ImageData
+        var areas: ArrayList<Area>,
+        var mode: String = "square",
+        var addNoise: Boolean = true,
+        var resize: Boolean = true,
+        var data: ImageData
 )

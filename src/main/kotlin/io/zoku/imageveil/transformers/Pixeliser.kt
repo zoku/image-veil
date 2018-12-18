@@ -46,14 +46,27 @@ class Pixeliser(private val areas: ArrayList<Area>, private val scaleX: Float, p
         val g2d = image.graphics as Graphics2D
         areas.forEach { area ->
             if (area.width > 0 && area.height > 0) {
+                var x = (area.x * scaleX).roundToInt()
+                var y = (area.y * scaleY).roundToInt()
+                var width = (area.width * scaleX).roundToInt()
+                var height = (area.height * scaleY).roundToInt()
+
+                if (x + width > squaredImage.width) width = squaredImage.width - x
+                if (y + height > squaredImage.height) height = squaredImage.height - y
+                if (x < 0) { width += x; x = 0 }
+                if (y < 0) { height += y; y = 0 }
+
                 try {
-                    val areaImage = squaredImage.getSubimage((area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), (area.width * scaleX).roundToInt(), (area.height * scaleY).roundToInt())
-                    g2d.drawImage(areaImage, (area.x * scaleX).roundToInt(), (area.y * scaleY).roundToInt(), null)
+                    val areaImage = squaredImage.getSubimage(x, y, width, height)
+                    g2d.drawImage(areaImage, x, y, null)
                 } catch (e: Exception) {
-                    logger.error("""
-                        image:       w ${image.width}, h ${image.height}, sX $scaleX, sY $scaleY
-                        squareImage: w ${squaredImage.width}, h ${squaredImage.height}
-                        area:        x ${area.x}, y ${area.y}, w ${area.width}, h ${area.height}
+                    logger.error("""${"\n"}
+                        scale          : x $scaleX, y $scaleY
+                        image          : w ${image.width}, h ${image.height}
+                        squareImage    : w ${squaredImage.width}, h ${squaredImage.height}
+                        correction     : x $x, y $y, w $width, h $height
+                        area (original): x ${area.x}, y ${area.y}, w ${area.width}, h ${area.height}
+                        area (scaled)  : x ${(area.x * scaleX).roundToInt()}, y ${(area.y * scaleY).roundToInt()}, w ${(area.width * scaleX).roundToInt()}, h ${(area.height * scaleY).roundToInt()}, maxX ${(area.width * scaleX + area.x * scaleX).roundToInt()}, maxY ${(area.height * scaleY + area.y * scaleY).roundToInt()}
                     """.trimIndent())
                 }
             }

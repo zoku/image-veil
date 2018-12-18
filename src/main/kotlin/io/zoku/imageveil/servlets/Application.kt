@@ -2,6 +2,8 @@ package io.zoku.imageveil.servlets
 
 import io.zoku.imageveil.utils.I18n
 import io.zoku.imageveil.templates.PageTemplate
+import io.zoku.imageveil.templates.mCheckbox
+import io.zoku.imageveil.templates.mSelect
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
@@ -25,19 +27,17 @@ class Application : HttpServlet() {
         val dom = PageTemplate.site("App", request) {
             div(classes = "m-settings") {
                 a(classes = "m-settings--toggle", href = "#") {
-                    i(classes = "fas fa-cogs m-settings--toggle--cogs")
+                    i(classes = "fas fa-sliders-h m-settings--toggle--cogs")
                     i(classes = "fas fa-times m-settings--toggle--x")
                 }
 
-                div(classes = "m-mode") {
-                    label { htmlFor = "mode"; +i18n.get("app.main.mode.caption") }
-                    select {
-                        id = "mode"
-                        option { value = "square"; +i18n.get("app.main.mode.options.square"); attributes["selected"] = "" }
-                        option { value = "fill"; +i18n.get("app.main.mode.options.fill") }
-                        option { value = "none"; +i18n.get("app.main.mode.options.none") }
-                    }
+                mSelect(elementId = "mode", label = i18n.get("app.main.mode.caption")) {
+                    option { value = "square"; +i18n.get("app.main.mode.options.square"); attributes["selected"] = "selected" }
+                    option { value = "fill"; +i18n.get("app.main.mode.options.fill") }
+                    option { value = "none"; +i18n.get("app.main.mode.options.none") }
                 }
+                mCheckbox(elementId = "addNoise", label = i18n.get("app.main.options.addNoise.label"), checked = true)
+                mCheckbox(elementId = "resize", label = i18n.get("app.main.options.resize.label"), checked = true)
             }
 
             div(classes = "m-upload") {

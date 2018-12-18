@@ -92,7 +92,9 @@ $(document).ready(function () {
             height: $preview.image.height()
         };
 
-        imageOptions.mode = $('#mode').find(':selected').val();
+        imageOptions.mode = $('#mode :selected').val();
+        imageOptions.addNoise = $('#addNoise').is(':checked');
+        imageOptions.resize = $('#resize').is(':checked');
 
         $form.options.val(JSON.stringify(imageOptions));
 

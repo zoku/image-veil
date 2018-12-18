@@ -45,7 +45,7 @@ class ImageReceiver : HttpServlet() {
         // Add transformers
         transformers.add(Rotator(imageMataData))
 
-        if (Config.imageReceiver_addNoise) {
+        if (options.addNoise) {
             transformers.add(Randomiser())
         }
 
@@ -54,7 +54,7 @@ class ImageReceiver : HttpServlet() {
             "square" -> transformers.add(Pixeliser(options.areas, scaleX, scaleY))
         }
 
-        if (image.width > Config.imageReceiver_maxImageEdgeSize || image.height > Config.imageReceiver_maxImageEdgeSize) {
+        if (options.resize && (image.width > Config.imageReceiver_maxImageEdgeSize || image.height > Config.imageReceiver_maxImageEdgeSize)) {
             transformers.add(Shrinker())
         }
 
