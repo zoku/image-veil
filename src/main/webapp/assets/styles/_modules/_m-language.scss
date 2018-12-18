@@ -11,6 +11,11 @@
 		color: #fff;
 		padding: .5em;
 		cursor: pointer;
+		transition: color 150ms ease-out;
+
+		&:hover {
+			color: #6a0f5a;
+		}
 
 		img {
 			height: 12px;
@@ -26,13 +31,19 @@
 		background: rgba(0,0,0,.8);
 		border-radius: 5px;
 
+		&.m-language--list_is-active {
+			display: block;
+		}
+
 		.m-language--list--item {
 			padding: 0;
 			border-radius: 5px;
 			cursor: pointer;
+			transition: color 150ms ease-out;
 
 			&:hover {
 				background: #aaa;
+				a { color: #6a0f5a; }
 			}
 
 			a {
@@ -42,6 +53,7 @@
 				color: #fff;
 				text-decoration: none;
 				padding: .5em;
+				transition: background-color 150ms ease-out;
 
 				img {
 					height: 12px;
