@@ -14,12 +14,12 @@
 		display: inline-block;
 		color: #fff;
 		text-decoration: none;
-		padding: 0 .5em;
+		padding: 0 .5em 0 0;
+		margin: 0 .5em 0 0;
 		border-right: 1px solid #fff;
 		transition: color 150ms ease-out;
 
-		&:first-of-type { padding: 0 .5em 0 0; }
-		&:last-of-type { padding: 0 0 0 .5em; border-right: none; }
+		&:last-of-type { border-right: none; }
 
 		&:hover {
 			text-decoration: underline;
