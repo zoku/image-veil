@@ -4303,10 +4303,11 @@ body {
     line-height: 60px;
     font-size: 1.5em;
     text-decoration: none;
-    color: #ddd;
-    border-radius: 0 0 10px 0; }
+    color: #fff;
+    border-radius: 0 0 10px 0;
+    transition: color 150ms ease-out; }
     .m-settings .m-settings--toggle:hover {
-      color: #fff; }
+      color: #6a0f5a; }
     .m-settings .m-settings--toggle .m-settings--toggle--cogs {
       display: inline; }
     .m-settings .m-settings--toggle .m-settings--toggle--x {

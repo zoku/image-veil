@@ -39,11 +39,13 @@
 		line-height: 60px;
 		font-size: 1.5em;
 		text-decoration: none;
-		color: #ddd;
+		color: #fff;
 		border-radius: 0 0 10px 0;
 
+		transition: color 150ms ease-out;
+
 		&:hover {
-			color: #fff;
+			color: #6a0f5a;
 		}
 
 		.m-settings--toggle--cogs { display: inline; }
