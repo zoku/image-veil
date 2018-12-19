@@ -18,7 +18,7 @@
 **A**: Ja. Es wird nur ein Mal zur Bearbeitung kurzzeitig im Speicher underes Servers abgelegt und hinterher direkt wieder gelöscht. Wir können dabei nicht auf das Bild zugreifen.
 
 **F**: Kann ich mich beteiligen?
-**A**: Natürlich! Wenn du Kotlin, CSS oder Javascript beherrschst, kannst du gern einen PullRequest bei Github machen. Du kannst uns auch gerne über Fehler informieren und Anregungen schicken. Die Mailadresse steht im [Impressum](impressum).
+**A**: Natürlich! Wenn du Kotlin, CSS oder Javascript beherrschst, kannst du gern einen PullRequest bei [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil) machen. Du kannst uns auch gerne über Fehler informieren und Anregungen schicken. Die Mailadresse steht im [Impressum](impressum).
 
 **F**: Welche Daten werden auf dem Server gespeichert?
 **A**: Nur Datum und Uhrzeit, wann ein Bild bearbeitet wurde. Alle deine Daten gehören nur dir allein.

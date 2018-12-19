@@ -61,7 +61,11 @@ class Pages : HttpServlet() {
         val renderer = HtmlRenderer.builder(options).build()
 
         val document = parser.parse(resource.readText())
-        val html = renderer.render(document)
+        var html = renderer.render(document)
+
+        if (request.getParameter("l") != null) {
+            html = html.replace("""href="(?!https?://)(.+?)"""".toRegex(RegexOption.MULTILINE), """href="$1?l=$lang"""")
+        }
 
         val dom = PageTemplate.site(title, request, pageId) {
             unsafe { +"""<div class="m-page-content">$html</div>""" }
