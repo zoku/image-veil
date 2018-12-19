@@ -3,7 +3,6 @@ package net.imageveil.app.servlets
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
 import net.imageveil.app.model.ImageOptions
-import io.zoku.imageveil.transformers.*
 import net.imageveil.app.transformers.*
 import net.imageveil.app.utils.Config
 import org.slf4j.LoggerFactory
