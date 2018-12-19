@@ -1,4 +1,7 @@
 # ImageVeil App
+ImageVeil is an app for image anonymisation. It can be run in jvm servlet conrainers.
+
+It is written in Kotlin, Javascript (jQuery), HTML5 and CCS3.
 
 Run in Tomcat:
 ```
