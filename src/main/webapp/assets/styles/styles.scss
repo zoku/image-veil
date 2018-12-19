@@ -38,9 +38,10 @@ html, body {
 }
 
 body {
-	// background: #333;
-	background: #1a1a1a url(/assets/img/background.png) no-repeat fixed top left;
+	background: #1e1e1e;
+	background: url(/assets/img/background.png) no-repeat fixed top left, linear-gradient(to bottom, #1e1e1e, #181818);
 	background-size: 90%;
+
 	@include on-large {
 		background-position: top center;
 		background-size: 960px;

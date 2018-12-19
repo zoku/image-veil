@@ -4260,7 +4260,8 @@ html, body {
   color: #000; }
 
 body {
-  background: #1a1a1a url(/assets/img/background.png) no-repeat fixed top left;
+  background: #1e1e1e;
+  background: url(/assets/img/background.png) no-repeat fixed top left, linear-gradient(to bottom, #1e1e1e, #181818);
   background-size: 90%; }
   @media screen and (min-width: 960px) {
     body {
