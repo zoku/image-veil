@@ -1,6 +1,6 @@
 # Impressum
 ## Angaben gemäß § 5 TMG
-Manuel Helbing 
+Manuel Helbing
 
 Kontakt:
 E-Mail: mail<i class="fas fa-at"></i>image-veil.net
