@@ -1,4 +1,4 @@
-## Häufig gestellte Fragen (FAQ)
+# Häufig gestellte Fragen (FAQ)
 **F**: Warum lasst ihr die Bilder nicht verschwimmen, wie in der Vorschau?
 **A**: Einen Bildbereich einfach verschwimmen zu lassen reicht nicht. Es bleiben dabei genügend Daten übrig, um das Bild wiederherzustellen. Wir nutzen nur grobe Mosaikstrukturen und Vollfarben, um eine Wiederherstellung des Bildes unmöglich zu machen.
 

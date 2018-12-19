@@ -1,4 +1,4 @@
-## Frequently asked questions (FAQ)
+# Frequently asked questions (FAQ)
 **Q**: Why do you not blur the images, like you do in the preview?
 **A**: Simply bluring images is not save enough. It is still possible to "un-pixelate" the image. We only use coarse mosaic patterns to pixelate images to make a later de-pixelisation impossible.
 

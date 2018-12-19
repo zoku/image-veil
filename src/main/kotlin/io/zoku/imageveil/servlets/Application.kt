@@ -25,6 +25,7 @@ class Application : HttpServlet() {
         val i18n = I18n(Locale(lang))
 
         val dom = PageTemplate.site("App", request) {
+            h1(classes = "m-headline") { +i18n.get("app.title") }
             div(classes = "m-settings") {
                 a(classes = "m-settings--toggle", href = "#") {
                     i(classes = "fas fa-sliders-h m-settings--toggle--cogs")

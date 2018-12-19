@@ -4,6 +4,7 @@ import io.zoku.imageveil.utils.I18n
 import io.zoku.imageveil.templates.PageTemplate
 import kotlinx.html.div
 import kotlinx.html.dom.serialize
+import kotlinx.html.h1
 import kotlinx.html.h2
 import kotlinx.html.p
 import org.slf4j.LoggerFactory
@@ -29,6 +30,7 @@ class Error : HttpServlet() {
         val i18n = I18n(Locale(lang))
 
         val dom = PageTemplate.site(i18n.get("error.headline"), request) {
+            h1(classes = "m-headline") { +i18n.get("error.headline") }
             div(classes = "m-page-content") {
                 h2 { +"${i18n.get("error.headline")} $statusCode" }
                 p { +i18n.get("error.description.$statusCode") }

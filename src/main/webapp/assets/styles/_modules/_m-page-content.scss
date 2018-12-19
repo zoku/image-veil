@@ -6,17 +6,18 @@
 	border-radius: $default-border-radius;
 	box-shadow: 0 0 5px rgba(0,0,0,.5);
 
-	h2, h3, h4, p {
+	h1, h2, h3, h4, p {
 		margin: 1em 0 0 0;
 	}
 
-	h2, h3, h4 {
+	h1, h2, h3, h4 {
 		font-weight: bold;
 	}
 
-	h2 { font-size: 1.6em; border-bottom: solid 1px #aaa; }
-	h3 { font-size: 1.3em; }
-	h4 { font-size: 1.1em; }
+	h1 { font-size: 1.6em; border-bottom: solid 1px #aaa; }
+	h2 { font-size: 1.3em; }
+	h3 { font-size: 1.1em; }
+	h4 { font-size: 1em; }
 
 	a {
 		color: #6a0f5a;

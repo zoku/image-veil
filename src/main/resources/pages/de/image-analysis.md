@@ -1,4 +1,4 @@
-## Bildanalyse
+# Bildanalyse
 Das hier sind die Daten, die eine einfache Bildanalyse ausgibt. Die Bildanalysesoftware, die wir hierfür genutzt haben ist [FotoForensics <i class="fas fa-external-link-alt"></i>](http://fotoforensics.com). Professionelle Fotoanalystïnnen könnten noch mehr Informationen aus den Bilddaten extrahieren.
 Die GPS-Koordinaten wurden im Nachhinein von uns zensiert, da sie uns zu präzise waren.
 

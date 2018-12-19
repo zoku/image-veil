@@ -1,5 +1,5 @@
-## Anleitung
-### Anonymisierung
+# Anleitung
+## Anonymisierung
 Du kannst ImageVeil entweder mit der Maus oder auf Geräten mit Touchscreen mit dem Finger bedienen.
 
 1. Wähle die gestrichelte Fläche an und wähle im folgenden Dialog eine Datei oder ziehe eine Bilddatei (im Moment unterstützen wir nur Dateien vom Typ JPEG) darauf.

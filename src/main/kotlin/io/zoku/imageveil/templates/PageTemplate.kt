@@ -27,7 +27,6 @@ object PageTemplate {
 
             body {
                 div(classes = "m-constraint") {
-                    h1(classes = "m-headline") { +"ImageVeil | $title" }
                     a(classes = "m-title", href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=$lang" else "" }") {
                         img(classes = "m-title--image", src = "${request.contextPath}/assets/img/logo.png", alt = i18n.get("app.logo.alt"))
                         div(classes = "m-title--text") { +"ImageVeil" }
