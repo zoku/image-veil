@@ -18,12 +18,14 @@
 		left: 50%;
 		z-index: 1;
 		transform: translate(-50%, -50%);
-		background: rgba(0, 0, 0, .8);
+		background: rgba(0, 0, 0, .3);
 		color: #fff;
 		padding: .5em 1em;
 		border: solid 1px #fff;
 		border-radius: 5px;
 		font-size: .5em;
+		min-width: 110px;
+		text-align: center;
 	}
 
 	.m-progress--bar {

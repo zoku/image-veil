@@ -4445,7 +4445,7 @@ body {
   transition: border-color 300ms ease-out, background-color 300ms ease-out; }
   .m-upload:hover {
     border-color: #6a0f5a;
-    background: rgba(255, 255, 255, 0.8); }
+    background: rgba(255, 255, 255, 0.6); }
     .m-upload:hover .m-upload--text {
       color: #6a0f5a; }
   .m-upload .m-upload--text {
@@ -4556,12 +4556,14 @@ body {
     left: 50%;
     z-index: 1;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
     color: #fff;
     padding: .5em 1em;
     border: solid 1px #fff;
     border-radius: 5px;
-    font-size: .5em; }
+    font-size: .5em;
+    min-width: 110px;
+    text-align: center; }
   .m-progress .m-progress--bar {
     position: absolute;
     left: 0;
@@ -4603,7 +4605,7 @@ body {
     cursor: pointer;
     color: #6a0f5a;
     border-color: #6a0f5a;
-    background: rgba(255, 255, 255, 0.8); }
+    background: rgba(255, 255, 255, 0.6); }
   #startButton:disabled {
     opacity: .5;
     cursor: default; }

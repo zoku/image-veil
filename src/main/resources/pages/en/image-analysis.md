@@ -1,5 +1,5 @@
 ## Image analysis
-This is the data a simple image analysis is outputting. The analysis software we used is [FotoForensics](http://fotoforensics.com). Professional image analysts may get even more data from an image.
+This is the data a simple image analysis is outputting. The analysis software we used is [FotoForensics <i class="fas fa-external-link-alt"></i>](http://fotoforensics.com). Professional image analysts may get even more data from an image.
 The GPS coordinates were censored afterwards, because they were too precise for our taste.
 
 | Original | Anonymised |
