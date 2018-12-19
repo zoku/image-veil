@@ -1,6 +1,6 @@
-package io.zoku.imageveil.templates
+package net.imageveil.app.templates
 
-import io.zoku.imageveil.utils.I18n
+import net.imageveil.app.utils.I18n
 import kotlinx.html.*
 import kotlinx.html.dom.createHTMLDocument
 import org.w3c.dom.Document

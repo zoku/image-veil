@@ -1,4 +1,4 @@
-package io.zoku.imageveil.model
+package net.imageveil.app.model
 
 /**
  * Created by Manuel Helbing on 2018-12-16.

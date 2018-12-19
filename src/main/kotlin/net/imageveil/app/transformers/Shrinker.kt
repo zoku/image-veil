@@ -1,6 +1,6 @@
-package io.zoku.imageveil.transformers
+package net.imageveil.app.transformers
 
-import io.zoku.imageveil.utils.Config
+import net.imageveil.app.utils.Config
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt

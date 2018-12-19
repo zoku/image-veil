@@ -1,7 +1,7 @@
-package io.zoku.imageveil.transformers
+package net.imageveil.app.transformers
 
-import io.zoku.imageveil.model.Area
-import io.zoku.imageveil.utils.Config
+import net.imageveil.app.model.Area
+import net.imageveil.app.utils.Config
 import org.slf4j.LoggerFactory
 import java.awt.Color
 import java.awt.Graphics2D

@@ -1,4 +1,4 @@
-package io.zoku.imageveil.transformers
+package net.imageveil.app.transformers
 
 import java.awt.image.BufferedImage
 

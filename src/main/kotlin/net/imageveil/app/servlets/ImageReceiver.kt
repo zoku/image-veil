@@ -1,10 +1,11 @@
-package io.zoku.imageveil.servlets
+package net.imageveil.app.servlets
 
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
-import io.zoku.imageveil.model.ImageOptions
+import net.imageveil.app.model.ImageOptions
 import io.zoku.imageveil.transformers.*
-import io.zoku.imageveil.utils.Config
+import net.imageveil.app.transformers.*
+import net.imageveil.app.utils.Config
 import org.slf4j.LoggerFactory
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig

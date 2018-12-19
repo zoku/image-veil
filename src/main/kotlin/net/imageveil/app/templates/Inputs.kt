@@ -1,4 +1,4 @@
-package io.zoku.imageveil.templates
+package net.imageveil.app.templates
 
 import kotlinx.html.*
 

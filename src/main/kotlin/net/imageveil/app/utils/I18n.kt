@@ -1,4 +1,4 @@
-package io.zoku.imageveil.utils
+package net.imageveil.app.utils
 
 import java.io.IOException
 import java.util.*

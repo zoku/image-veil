@@ -1,4 +1,4 @@
-package io.zoku.imageveil.transformers
+package net.imageveil.app.transformers
 
 import com.drew.metadata.Metadata
 import com.drew.metadata.exif.ExifIFD0Directory

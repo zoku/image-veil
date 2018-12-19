@@ -1,7 +1,7 @@
-package io.zoku.imageveil.servlets
+package net.imageveil.app.servlets
 
-import io.zoku.imageveil.utils.I18n
-import io.zoku.imageveil.templates.PageTemplate
+import net.imageveil.app.utils.I18n
+import net.imageveil.app.templates.PageTemplate
 import kotlinx.html.div
 import kotlinx.html.dom.serialize
 import kotlinx.html.h1

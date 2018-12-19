@@ -1,4 +1,4 @@
-package io.zoku.imageveil.model
+package net.imageveil.app.model
 
 data class ImageData(
         val width: Float,
