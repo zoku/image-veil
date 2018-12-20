@@ -4252,7 +4252,7 @@ readers do not read off random characters that represent icons */
   box-sizing: border-box; }
 
 html, body {
-  min-height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   font-family: 'Fira Sans', sans-serif;
@@ -4364,7 +4364,7 @@ body {
   position: relative;
   width: 100%;
   max-width: 960px;
-  min-height: 100%;
+  min-height: 100vh;
   padding: 1em;
   margin: auto; }
 
