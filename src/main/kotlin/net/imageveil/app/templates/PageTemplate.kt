@@ -19,6 +19,13 @@ object PageTemplate {
                 meta(name = "viewport", content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
                 meta { charset = "utf-8" }
 
+                ogUrl(content = "https://image-veil.net")
+                ogTitle(content = "ImageVeil")
+                ogDescription(content = "ImageVeil is an image anonymisation tool that is free and safe to use.")
+                ogImage(content = "https://image-veil.net/assets/img/fb_preview.jpg")
+                ogType(content = "website")
+                ogLocale(content = "alternate")
+
                 link(rel = "icon", type = "image/png", href = "${request.contextPath}/assets/img/favicon.png")
 
                 styleLink(url = "${request.contextPath}/assets/styles/styles.css")
