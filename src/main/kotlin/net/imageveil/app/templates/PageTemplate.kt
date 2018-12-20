@@ -22,7 +22,9 @@ object PageTemplate {
                 ogUrl(content = "https://image-veil.net")
                 ogTitle(content = "ImageVeil")
                 ogDescription(content = "ImageVeil is an image anonymisation tool that is free and safe to use.")
-                ogImage(content = "https://image-veil.net/assets/img/fb_preview.jpg")
+                ogImage(content = "https://image-veil.net/assets/img/fb_preview3.jpg")
+                ogImageWidth(1080)
+                ogImageHeight(565)
                 ogType(content = "website")
                 ogLocale(content = "alternate")
 

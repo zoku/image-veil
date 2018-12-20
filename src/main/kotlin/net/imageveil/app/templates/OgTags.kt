@@ -18,6 +18,14 @@ fun HEAD.ogImage(content: String, block: OgTag.() -> Unit = {}) {
     OgTag(consumer, "og:image", content).visit(block)
 }
 
+fun HEAD.ogImageWidth(content: Int, block: OgTag.() -> Unit = {}) {
+    OgTag(consumer, "og:image:width", "$content").visit(block)
+}
+
+fun HEAD.ogImageHeight(content: Int, block: OgTag.() -> Unit = {}) {
+    OgTag(consumer, "og:image:height", "$content").visit(block)
+}
+
 fun HEAD.ogType(content: String, block: OgTag.() -> Unit = {}) {
     OgTag(consumer, "og:type", content).visit(block)
 }
