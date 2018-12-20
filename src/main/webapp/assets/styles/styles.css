@@ -4308,7 +4308,7 @@ body {
     border-radius: 0 0 10px 0;
     transition: color 150ms ease-out; }
     .m-settings .m-settings--toggle:hover {
-      color: #6a0f5a; }
+      color: #0d656d; }
     .m-settings .m-settings--toggle .m-settings--toggle--cogs {
       display: inline; }
     .m-settings .m-settings--toggle .m-settings--toggle--x {
@@ -4328,7 +4328,7 @@ body {
     cursor: pointer;
     transition: color 150ms ease-out; }
     .m-language .m-language--preview:hover {
-      color: #6a0f5a; }
+      color: #0d656d; }
     .m-language .m-language--preview img {
       height: 12px; }
   .m-language .m-language--list {
@@ -4348,7 +4348,7 @@ body {
       .m-language .m-language--list .m-language--list--item:hover {
         background: #aaa; }
         .m-language .m-language--list .m-language--list--item:hover a {
-          color: #6a0f5a; }
+          color: #0d656d; }
       .m-language .m-language--list .m-language--list--item a {
         display: block;
         width: 100%;
@@ -4445,10 +4445,10 @@ body {
   user-select: none;
   transition: border-color 300ms ease-out, background-color 300ms ease-out; }
   .m-upload:hover {
-    border-color: #6a0f5a;
+    border-color: #0d656d;
     background: rgba(255, 255, 255, 0.6); }
     .m-upload:hover .m-upload--text {
-      color: #6a0f5a; }
+      color: #0d656d; }
   .m-upload .m-upload--text {
     font-size: 2em;
     color: #fff;
@@ -4571,7 +4571,7 @@ body {
     top: 0;
     height: 100%;
     width: 0;
-    background: #6a0f5a;
+    background: #0d656d;
     transition: width 200ms ease-out; }
 @keyframes bar-animation {
   0% {
@@ -4580,7 +4580,7 @@ body {
     background-position-x: 0; } }
     .m-progress .m-progress--bar.m-progress--bar_indeterminate {
       width: 100% !important;
-      background: repeating-linear-gradient(145deg, transparent 0, transparent 30px, #6a0f5a 30px, #6a0f5a 60px) no-repeat;
+      background: repeating-linear-gradient(145deg, transparent 0, transparent 30px, #0d656d 30px, #0d656d 60px) no-repeat;
       background-size: 200% 40px;
       background-position-x: -106;
       animation: bar-animation 1s infinite;
@@ -4604,8 +4604,8 @@ body {
   transition: border-color 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out; }
   #startButton:hover {
     cursor: pointer;
-    color: #6a0f5a;
-    border-color: #6a0f5a;
+    color: #0d656d;
+    border-color: #0d656d;
     background: rgba(255, 255, 255, 0.6); }
   #startButton:disabled {
     opacity: .5;
@@ -4672,7 +4672,7 @@ body {
   .m-page-content h4 {
     font-size: 1em; }
   .m-page-content a {
-    color: #6a0f5a;
+    color: #0d656d;
     text-decoration: underline;
     transition: color 150ms ease-out; }
     .m-page-content a:hover {
@@ -4720,6 +4720,6 @@ body {
       border-right: none; }
     .m-footer .m-footer--link:hover {
       text-decoration: underline;
-      color: #6a0f5a; }
+      color: #0d656d; }
 
 /*# sourceMappingURL=styles.css.map */

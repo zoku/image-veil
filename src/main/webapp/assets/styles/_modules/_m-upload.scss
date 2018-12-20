@@ -9,11 +9,11 @@
 	transition: border-color 300ms ease-out, background-color 300ms ease-out;
 
 	&:hover {
-		border-color: #6a0f5a;
+		border-color: $default-contrast-color;
 		background: rgba(255, 255, 255, .6);
 
 		.m-upload--text {
-			color: #6a0f5a;
+			color: $default-contrast-color;
 		}
 	}
 

@@ -14,7 +14,7 @@
 		transition: color 150ms ease-out;
 
 		&:hover {
-			color: #6a0f5a;
+			color: $default-contrast-color;
 		}
 
 		img {
@@ -43,7 +43,7 @@
 
 			&:hover {
 				background: #aaa;
-				a { color: #6a0f5a; }
+				a { color: $default-contrast-color; }
 			}
 
 			a {
