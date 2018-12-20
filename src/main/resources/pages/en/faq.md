@@ -94,7 +94,7 @@
         <td>X</td>
         <td>?</td>
         <td>-</td>
-        <td>-</td>
+        <td>?</td>
         <td>-</td>
         <td>O</td>
     </tr>
