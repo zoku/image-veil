@@ -6,7 +6,9 @@ import java.util.*
 /**
  * Created by Manuel Helbing on 2018-12-06.
  */
-class I18n(locale: Locale) {
+class I18n(val locale: Locale) {
+    val lang: String = locale.language
+
     private val dict = try {
         ResourceBundle.getBundle("i18n/app", locale)
     } catch (e: IOException) {

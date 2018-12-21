@@ -24,8 +24,7 @@ import javax.servlet.http.HttpServletResponse
 )
 class Pages : HttpServlet() {
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
-        val lang = request.getParameter("l") ?: request.locale.language
-        val i18n = I18n(Locale(lang))
+        val i18n = request.getAttribute("i18n") as I18n
         val pageName = request.requestURI.split("/").last()
 
         val title: String
@@ -43,7 +42,7 @@ class Pages : HttpServlet() {
         }
 
         val resource = try {
-            File(Pages::class.java.getResource("/pages/$lang/$mdFile").file)
+            File(Pages::class.java.getResource("/pages/${i18n.lang}/$mdFile").file)
         } catch (e: Exception) {
             response.sendError(404)
             return
@@ -64,7 +63,7 @@ class Pages : HttpServlet() {
         var html = renderer.render(document)
 
         if (request.getParameter("l") != null) {
-            html = html.replace("""href="(?!https?://)(.+?)"""".toRegex(RegexOption.MULTILINE), """href="$1?l=$lang"""")
+            html = html.replace("""href="(?!https?://)(.+?)"""".toRegex(RegexOption.MULTILINE), """href="$1?l=${i18n.lang}"""")
         }
 
         val dom = PageTemplate.site(title, request, pageId) {

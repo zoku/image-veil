@@ -9,15 +9,17 @@ import javax.servlet.http.HttpServletRequest
 
 object PageTemplate {
     fun site(title: String, request: HttpServletRequest, pageId: String? = null, block: DIV.() -> Unit = {}): Document {
-        val lang = request.getParameter("l") ?: request.locale.language
-        val i18n = I18n(Locale(lang))
+        val i18n = request.getAttribute("i18n") as I18n
 
         return createHTMLDocument().html {
+            lang = i18n.lang
+
             head {
                 title { +"ImageVeil | $title" }
                 meta(name = "desciption", content = i18n.get("app.description"))
                 meta(name = "viewport", content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
                 meta { charset = "utf-8" }
+                meta(name = "content-language", content = i18n.lang)
 
                 ogUrl(content = "https://image-veil.net")
                 ogTitle(content = "ImageVeil")
@@ -36,7 +38,7 @@ object PageTemplate {
 
             body {
                 div(classes = "m-constraint") {
-                    a(classes = "m-title", href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=$lang" else "" }") {
+                    a(classes = "m-title", href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") {
                         img(classes = "m-title--image", src = "${request.contextPath}/assets/img/logo.png", alt = i18n.get("app.logo.alt"))
                         div(classes = "m-title--text") { +"ImageVeil" }
                     }
@@ -44,10 +46,10 @@ object PageTemplate {
                     val supportedLanguages = arrayListOf("de", "en") // Add rm for Roman Empire and pi for Pirate, also es, fr, it, ru, gr
 
                     div(classes = "m-language") {
-                        div(classes = "m-language--preview") { img(src = "${request.contextPath}/assets/img/flags/$lang.jpg");+" ${lang.toUpperCase()}" }
+                        div(classes = "m-language--preview") { img(src = "${request.contextPath}/assets/img/flags/${i18n.lang}.jpg");+" ${i18n.lang.toUpperCase()}" }
                         ul(classes = "m-language--list") {
                             supportedLanguages.forEach { language ->
-                                if (language != lang) {
+                                if (language != i18n.lang) {
                                     li(classes = "m-language--list--item") {
                                         val pageUri = when {
                                             pageId != null -> "${request.contextPath}/pages/${i18n.get("app.pages.$pageId.uri", Locale(language))}"
@@ -67,11 +69,11 @@ object PageTemplate {
                     block.invoke(this)
 
                     section(classes = "m-footer") {
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.about.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.about") }
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.imprint.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.imprint") }
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.privacy.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.privacy") }
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.howto.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.howto") }
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}${if(request.getParameter("l") != null) "?l=$lang" else "" }") { +i18n.get("app.footer.links.faq") }
+                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.about.uri")}${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") { +i18n.get("app.footer.links.about") }
+                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.imprint.uri")}${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") { +i18n.get("app.footer.links.imprint") }
+                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.privacy.uri")}${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") { +i18n.get("app.footer.links.privacy") }
+                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.howto.uri")}${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") { +i18n.get("app.footer.links.howto") }
+                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") { +i18n.get("app.footer.links.faq") }
                         a(classes = "m-footer--link", href = "https://github.com/zoku/image-veil") { +"${i18n.get("app.footer.links.github")} "; i(classes = "fab fa-github") }
                     }
                 }
