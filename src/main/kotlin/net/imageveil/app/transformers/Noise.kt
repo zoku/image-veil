@@ -3,12 +3,15 @@ package net.imageveil.app.transformers
 import net.imageveil.app.utils.Config
 import java.awt.Color
 import java.awt.image.BufferedImage
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 class Noise : Transformer {
     override fun transform(image: BufferedImage): BufferedImage {
         val pixelCount = image.width * image.height
-        val randomiseCount = (pixelCount * Config.noise_percentageToAdd).roundToInt()
+        val randomiseCount = (pixelCount * Config.transformers_noise_percentageToAdd).roundToInt()
 
         val allPixels = arrayListOf<Pixel>()
         for (x in 0 until image.width) {
@@ -22,44 +25,27 @@ class Noise : Transformer {
 
         randomPixels.forEach { pixel ->
             val originalColor = Color(image.getRGB(pixel.x, pixel.y))
+            val channel = arrayOf("R", "G", "B").random()
 
-            var red = originalColor.red
-            var green = originalColor.green
-            var blue = originalColor.blue
-
-            val direction = Math.random().roundToInt()
-
-            when ((Math.random() * 2).roundToInt()) {
-                0 -> { // R
-                    if (direction == 1) {
-                        red += (Math.random() * Config.noise_intensityOfNoise).roundToInt()
-                    } else {
-                        red -= (Math.random() * Config.noise_intensityOfNoise).roundToInt()
-                    }
-                    if (red > 255) red = 255
-                    if (red < 0) red = 0
-                }
-                1 -> { // G
-                    if (direction == 1) {
-                        green += (Math.random() * Config.noise_intensityOfNoise).roundToInt()
-                    } else {
-                        green -= (Math.random() * Config.noise_intensityOfNoise).roundToInt()
-                    }
-                    if (green > 255) green = 255
-                    if (green < 0) green = 0
-                }
-                2 -> { // B
-                    if (direction == 1) {
-                        blue += (Math.random() * Config.noise_intensityOfNoise).roundToInt()
-                    } else {
-                        blue -= (Math.random() * Config.noise_intensityOfNoise).roundToInt()
-                    }
-                    if (blue > 255) blue = 255
-                    if (blue < 0) blue = 0
-                }
+            val originalChannelColor = when (channel) {
+                "R" -> originalColor.red
+                "G" -> originalColor.green
+                "B" -> originalColor.blue
+                else -> originalColor.red
             }
 
-            image.setRGB(pixel.x, pixel.y, Color(red, green, blue).rgb)
+            val newChannelColor = Random.nextInt(
+                    from = max(a = originalChannelColor - Config.transformers_noise_intensityOfNoise, b = 0),
+                    until = min(a = originalChannelColor + Config.transformers_noise_intensityOfNoise, b = 255)
+            )
+
+            val newColor = Color(
+                    if (channel == "R") newChannelColor else originalColor.red,
+                    if (channel == "G") newChannelColor else originalColor.green,
+                    if (channel == "B") newChannelColor else originalColor.blue
+            )
+
+            image.setRGB(pixel.x, pixel.y, newColor.rgb)
         }
 
         return image

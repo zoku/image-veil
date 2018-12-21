@@ -16,7 +16,7 @@ class I18n(val locale: Locale) {
     }
 
     fun get(key: String, locale: Locale? = null): String {
-        val tmpDict = if (locale == null) {
+        val useDict = if (locale == null) {
             dict
         } else {
             try {
@@ -27,7 +27,7 @@ class I18n(val locale: Locale) {
         }
 
         return try {
-            tmpDict.getString(key)
+            useDict.getString(key)
         } catch (e: MissingResourceException) {
             key
         }
