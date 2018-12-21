@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebFilter
         filterName = "LanguageFilter",
         servletNames = [ "Pages", "ImageVeilApp", "ErrorPage" ]
 )
-class LanguageFilter : Filter {
+class Language : Filter {
     override fun init(filterConfig: FilterConfig) {}
     override fun doFilter(request: ServletRequest, response: ServletResponse, chain: FilterChain) {
         val lang = request.getParameter("l") ?: request.locale.language
