@@ -4370,12 +4370,12 @@ body {
 
 .m-input {
   margin: 1em 0 0 0; }
+  .m-input label {
+    color: #fff; }
   .m-input.m-input_checkbox::after {
     content: '';
     display: table;
     clear: both; }
-  .m-input.m-input_checkbox label {
-    color: #fff; }
   .m-input.m-input_checkbox input {
     width: 25px;
     height: 25px;

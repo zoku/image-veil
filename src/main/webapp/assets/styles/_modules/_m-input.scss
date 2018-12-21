@@ -1,12 +1,12 @@
 .m-input {
 	margin: $default-margin;
 
+	label {
+		color: #fff;
+	}
+
 	&.m-input_checkbox {
 		@include clearfix;
-
-		label {
-			color: #fff;
-		}
 
 		input {
 			width: 25px;
