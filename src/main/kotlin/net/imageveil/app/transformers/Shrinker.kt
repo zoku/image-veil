@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
 class Shrinker : Transformer {
-    override fun run(image: BufferedImage): BufferedImage {
+    override fun transform(image: BufferedImage): BufferedImage {
         val scale = if (image.width > image.height) {
             Config.imageReceiver_maxImageEdgeSize.toDouble() / image.width
         } else {

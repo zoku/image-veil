@@ -46,7 +46,7 @@ class ImageReceiver : HttpServlet() {
         transformers.add(Rotator(imageMataData))
 
         if (options.addNoise) {
-            transformers.add(Randomiser())
+            transformers.add(Noise())
         }
 
         when (options.mode) {
@@ -60,7 +60,7 @@ class ImageReceiver : HttpServlet() {
 
         // Run transformers
         transformers.forEach { transformer ->
-            image = transformer.run(image)
+            image = transformer.transform(image)
         }
 
         // Prepare image as image-uri

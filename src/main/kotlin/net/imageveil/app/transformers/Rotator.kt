@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage
 class Rotator(private val metaData: Metadata) : Transformer {
     private val logger = LoggerFactory.getLogger("Transformers - Rotator")
 
-    override fun run(image: BufferedImage): BufferedImage {
+    override fun transform(image: BufferedImage): BufferedImage {
         val exifDir = metaData.getFirstDirectoryOfType(ExifIFD0Directory::class.java)
 
         if (exifDir.containsTag(0x112)) {

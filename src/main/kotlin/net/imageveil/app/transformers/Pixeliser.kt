@@ -11,7 +11,7 @@ import kotlin.math.roundToInt
 class Pixeliser(private val areas: ArrayList<Area>, private val scaleX: Float, private val scaleY: Float) : Transformer {
     private val logger = LoggerFactory.getLogger("Pixeliser")
 
-    override fun run(image: BufferedImage): BufferedImage {
+    override fun transform(image: BufferedImage): BufferedImage {
         val squareLength = ((if (image.width > image.height) image.width else image.height) * Config.pixeliser_squareMosaic_squareSize).roundToInt()
 
         val squaredImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_RGB)

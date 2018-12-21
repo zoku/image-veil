@@ -5,10 +5,10 @@ import java.awt.Color
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-class Randomiser : Transformer {
-    override fun run(image: BufferedImage): BufferedImage {
+class Noise : Transformer {
+    override fun transform(image: BufferedImage): BufferedImage {
         val pixelCount = image.width * image.height
-        val randomiseCount = (pixelCount * Config.randomiser_percentageToRandomise).roundToInt()
+        val randomiseCount = (pixelCount * Config.noise_percentageToAdd).roundToInt()
 
         val allPixels = arrayListOf<Pixel>()
         for (x in 0 until image.width) {
@@ -32,27 +32,27 @@ class Randomiser : Transformer {
             when ((Math.random() * 2).roundToInt()) {
                 0 -> { // R
                     if (direction == 1) {
-                        red += (Math.random() * Config.randomiser_intensityOfRandomisation).roundToInt()
+                        red += (Math.random() * Config.noise_intensityOfNoise).roundToInt()
                     } else {
-                        red -= (Math.random() * Config.randomiser_intensityOfRandomisation).roundToInt()
+                        red -= (Math.random() * Config.noise_intensityOfNoise).roundToInt()
                     }
                     if (red > 255) red = 255
                     if (red < 0) red = 0
                 }
                 1 -> { // G
                     if (direction == 1) {
-                        green += (Math.random() * Config.randomiser_intensityOfRandomisation).roundToInt()
+                        green += (Math.random() * Config.noise_intensityOfNoise).roundToInt()
                     } else {
-                        green -= (Math.random() * Config.randomiser_intensityOfRandomisation).roundToInt()
+                        green -= (Math.random() * Config.noise_intensityOfNoise).roundToInt()
                     }
                     if (green > 255) green = 255
                     if (green < 0) green = 0
                 }
                 2 -> { // B
                     if (direction == 1) {
-                        blue += (Math.random() * Config.randomiser_intensityOfRandomisation).roundToInt()
+                        blue += (Math.random() * Config.noise_intensityOfNoise).roundToInt()
                     } else {
-                        blue -= (Math.random() * Config.randomiser_intensityOfRandomisation).roundToInt()
+                        blue -= (Math.random() * Config.noise_intensityOfNoise).roundToInt()
                     }
                     if (blue > 255) blue = 255
                     if (blue < 0) blue = 0

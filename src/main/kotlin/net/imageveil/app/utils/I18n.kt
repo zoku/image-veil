@@ -15,19 +15,15 @@ class I18n(val locale: Locale) {
         ResourceBundle.getBundle("i18n/app", Locale("en"))
     }
 
-    fun get(key: String): String {
-        return try {
-            dict.getString(key)
-        } catch (e: MissingResourceException) {
-            key
-        }
-    }
-
-    fun get(key: String, locale: Locale): String {
-        val tmpDict = try {
-            ResourceBundle.getBundle("i18n/app", locale)
-        } catch (e: IOException) {
-            ResourceBundle.getBundle("i18n/app", Locale("en"))
+    fun get(key: String, locale: Locale? = null): String {
+        val tmpDict = if (locale == null) {
+            dict
+        } else {
+            try {
+                ResourceBundle.getBundle("i18n/app", locale)
+            } catch (e: IOException) {
+                ResourceBundle.getBundle("i18n/app", Locale("en"))
+            }
         }
 
         return try {
