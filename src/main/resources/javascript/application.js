@@ -1,4 +1,4 @@
-$(document).ready(function () {
+(function () {
     // Configuration
     var maxAllowedFileSizeMB = 5;
 
@@ -161,15 +161,6 @@ $(document).ready(function () {
         $('.m-download').fadeOut();
     });
 
-    // -- Language selection
-    $('.m-language').on('click', function () {
-        $('.m-language .m-language--list').toggleClass('m-language--list_is-active');
-    });
-
-    $('.m-language .m-language--list').on('mouseleave', function () {
-        $('.m-language .m-language--list').removeClass('m-language--list_is-active');
-    });
-
     // Functions
     function positionToPercent(area, alsoConvertPosition) {
         var $area = $(area);
@@ -252,4 +243,4 @@ $(document).ready(function () {
             })
         );
     }
-});
+})();
