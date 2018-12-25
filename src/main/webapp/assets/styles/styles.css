@@ -4372,6 +4372,9 @@ body {
   margin: 1em 0 0 0; }
   .m-input label {
     color: #fff; }
+  .m-input:disabled,
+  .m-input input:disabled {
+    opacity: .5; }
   .m-input.m-input_checkbox::after {
     content: '';
     display: table;
@@ -4427,8 +4430,6 @@ body {
     background: #0d656d;
     color: #fff;
     font-size: 1.2em; }
-    .m-input.m-input_button:disabled {
-      opacity: .5; }
 
 .m-headline {
   display: none;
