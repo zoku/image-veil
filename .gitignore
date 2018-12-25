@@ -3,4 +3,4 @@
 .DS_Store
 target/*
 .sass-cache/
-src/main/resources/mailer.properties
+/src/main/resources/mailer.properties
