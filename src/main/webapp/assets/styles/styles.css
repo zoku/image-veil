@@ -4427,6 +4427,8 @@ body {
     background: #0d656d;
     color: #fff;
     font-size: 1.2em; }
+    .m-input.m-input_button:disabled {
+      opacity: .5; }
 
 .m-headline {
   display: none;

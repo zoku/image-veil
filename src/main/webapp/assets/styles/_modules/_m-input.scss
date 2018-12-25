@@ -78,5 +78,9 @@
 		background: $default-contrast-color;
 		color: #fff;
 		font-size: 1.2em;
+
+		&:disabled {
+			opacity: .5;
+		}
 	}
 }

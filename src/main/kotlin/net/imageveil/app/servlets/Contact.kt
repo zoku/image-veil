@@ -9,6 +9,7 @@ import net.imageveil.app.templates.mTextBox
 import net.imageveil.app.utils.I18n
 import net.imageveil.app.utils.Mailer
 import org.slf4j.LoggerFactory
+import java.lang.Exception
 import java.time.LocalDateTime
 import java.util.*
 import javax.servlet.annotation.WebServlet
@@ -94,11 +95,17 @@ class Contact : HttpServlet() {
             return
         }
 
-        Mailer.sendMessage(
-                senderMail = email,
-                subject = subject,
-                messageText = message
-        )
+        try {
+            Mailer.sendMessage(
+                    senderMail = email,
+                    subject = subject,
+                    messageText = message
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+            response.writer.append("""{"success":false,"message":"${i18n.get("app.contact.error.unknown")}"}""")
+            return
+        }
 
         response.contentType = "application/json"
 

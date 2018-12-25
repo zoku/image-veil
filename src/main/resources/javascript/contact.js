@@ -10,6 +10,9 @@
 
     $send.on('click', function () {
         $send.prop('disabled', true);
+        $email.prop('disabled', true);
+        $subject.prop('disabled', true);
+        $message.prop('disabled', true);
 
         var messageData = {
             email: $email.val(),

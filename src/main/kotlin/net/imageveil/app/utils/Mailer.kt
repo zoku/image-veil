@@ -1,6 +1,5 @@
 package net.imageveil.app.utils
 
-import java.io.IOException
 import java.util.*
 import javax.mail.*
 import javax.mail.internet.*
@@ -23,42 +22,37 @@ object Mailer {
         val body = StringBuilder()
         body.append(messageText)
 
-        try {
-            // Configure Mail Client
-            val props = Properties()
-            props["mail.smtp.auth"] = CONFIG.getProperty("mail.smtp.auth")
-            props["mail.smtp.starttls.enable"] = CONFIG.getProperty("mail.smtp.starttls.enable")
-            props["mail.smtp.host"] = CONFIG.getProperty("mail.smtp.host")
-            props["mail.smtp.port"] = CONFIG.getProperty("mail.smtp.port")
+        // Configure Mail Client
+        val properties = Properties()
+        properties["mail.smtp.host"] = CONFIG.getProperty("mail.smtp.host")
+        properties["mail.smtp.port"] = CONFIG.getProperty("mail.smtp.port")
+        properties["mail.smtp.socketFactory.port"] = CONFIG.getProperty("mail.smtp.port")
+        properties["mail.smtp.starttls.enable"] = CONFIG.getProperty("mail.smtp.starttls.enable")
+        properties["mail.smtp.auth"] = CONFIG.getProperty("mail.smtp.auth")
+        properties["mail.smtp.socketFactory.class"] = "javax.net.ssl.SSLSocketFactory"
+        properties["mail.smtp.socketFactory.fallback"] = "false"
+        properties["mail.store.protocol"] = "pop3"
+        properties["mail.transport.protocol"] = "smtp"
+        properties["mail.pop3.socketFactory.fallback"] = "false"
 
-            val session = Session.getInstance(props, object : Authenticator() {
-                override fun getPasswordAuthentication(): PasswordAuthentication  {
-                    return PasswordAuthentication(username, password)
-                }
-            })
+        // properties["mail.debug"] = "true"
+        // properties["mail.debug.auth"] = "true"
 
-            // Configure Mail Message
-            val message = MimeMessage(session)
-
-            // Set from- and reply-to
-            message.setFrom(InternetAddress(CONFIG.getProperty("mail.smtp.envelopAddress")))
-            message.replyTo = arrayOf(InternetAddress(senderMail) )
-
-            // Set recipient information
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(CONFIG.getProperty("mail.smtp.recipientAddress")))
-
-            // Set Mail parameters
-            message.subject = subject
-            message.setContent(body, "text/plain; charset=utf-8")
-
-            // Send Mail Message
-            Transport.send(message)
-
-        } catch (e: Exception) {
-            when(e) {
-                is IOException, is MessagingException -> e.printStackTrace()
-                else -> throw e
+        // Get auth-session
+        val session = Session.getInstance(properties, object : Authenticator() {
+            override fun getPasswordAuthentication(): PasswordAuthentication  {
+                return PasswordAuthentication(username, password)
             }
-        }
+        })
+
+        // Prepare message and send it
+        val message = MimeMessage(session)
+        message.setFrom(InternetAddress(CONFIG.getProperty("mail.smtp.envelopAddress")))
+        message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(CONFIG.getProperty("mail.smtp.recipientAddress")))
+        message.replyTo = arrayOf(InternetAddress(senderMail))
+        message.subject = subject
+        message.setText(messageText)
+
+        Transport.send(message)
     }
 }
