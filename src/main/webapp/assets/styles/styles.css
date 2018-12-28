@@ -4248,26 +4248,6 @@ readers do not read off random characters that represent icons */
   src: url("../fonts/fira-sans/FiraSans-Bold.ttf");
   /* IE9 Compat Modes */
   src: url("../fonts/fira-sans/FiraSans-Bold.ttf") format("truetype"); }
-* {
-  box-sizing: border-box; }
-
-html, body {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: 'Fira Sans', sans-serif;
-  font-size: 16px;
-  color: #000; }
-
-body {
-  background: #1e1e1e;
-  background: url(/assets/img/background.png) no-repeat fixed top left, linear-gradient(to bottom, #1e1e1e, #181818);
-  background-size: 90%; }
-  @media screen and (min-width: 960px) {
-    body {
-      background-position: top center;
-      background-size: 960px; } }
-
 .m-settings {
   display: none;
   position: fixed;
@@ -4769,5 +4749,25 @@ body {
     .m-footer .m-footer--link:hover {
       text-decoration: underline;
       color: #0d656d; }
+
+* {
+  box-sizing: border-box; }
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  color: #000; }
+
+body {
+  background: #1e1e1e;
+  background: url(/assets/img/background.png) no-repeat fixed top left, linear-gradient(to bottom, #1e1e1e, #181818);
+  background-size: 90%; }
+  @media screen and (min-width: 960px) {
+    body {
+      background-position: top center;
+      background-size: 960px; } }
 
 /*# sourceMappingURL=styles.css.map */
