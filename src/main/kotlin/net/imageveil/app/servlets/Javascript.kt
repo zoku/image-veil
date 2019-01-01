@@ -18,9 +18,11 @@ class Javascript : HttpServlet() {
             "lib/jquery-3.3.1.min.js",
             "lib/jquery-ui.min.js",
             "lib/jquery-ui.touch-punch.min.js",
+            "lib/chart.bundle.min.js",
             "application.min.js",
             "contact.min.js",
-            "language.min.js"
+            "language.min.js",
+            "statistics.min.js"
     )
 
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {

@@ -33,7 +33,6 @@ class Application : HttpServlet() {
                 mSelect(elementId = "mode", label = i18n.get("app.main.mode.caption")) {
                     option { value = "square"; +i18n.get("app.main.mode.options.square"); attributes["selected"] = "selected" }
                     option { value = "fill"; +i18n.get("app.main.mode.options.fill") }
-                    option { value = "none"; +i18n.get("app.main.mode.options.none") }
                 }
                 mCheckbox(elementId = "addNoise", label = i18n.get("app.main.options.addNoise.label"), checked = true)
                 mCheckbox(elementId = "resize", label = i18n.get("app.main.options.resize.label"), checked = true)

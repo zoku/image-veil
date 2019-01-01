@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter
 
 @WebFilter(
         filterName = "EncodingFilter",
-        servletNames = [ "Pages", "ImageVeilApp", "ErrorPage", "Contact" ]
+        servletNames = [ "Pages", "ImageVeilApp", "ErrorPage", "Contact", "Statistics" ]
 )
 class Encoding : Filter {
     override fun init(filterConfig: FilterConfig) {}
