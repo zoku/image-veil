@@ -43,7 +43,7 @@ class ImageReceiver : HttpServlet() {
         val transformers = arrayListOf<Transformer>()
 
         // Add transformers
-        transformers.add(Rotator(imageMataData))
+        transformers.add(Rotate(imageMataData))
 
         if (options.addNoise) {
             transformers.add(Noise())
@@ -51,11 +51,11 @@ class ImageReceiver : HttpServlet() {
 
         when (options.mode) {
             "fill" -> transformers.add(Fill(options.areas, scaleX, scaleY))
-            "square" -> transformers.add(Pixeliser(options.areas, scaleX, scaleY))
+            "square" -> transformers.add(SquareMosaic(options.areas, scaleX, scaleY))
         }
 
-        if (options.resize && (image.width > Config.imageReceiver_maxImageEdgeSize || image.height > Config.imageReceiver_maxImageEdgeSize)) {
-            transformers.add(Shrinker())
+        if (options.resize && (image.width > Config.transformers_scaleDown_maxImageEdgeSize || image.height > Config.transformers_scaleDown_maxImageEdgeSize)) {
+            transformers.add(ScaleDown())
         }
 
         // Run transformers

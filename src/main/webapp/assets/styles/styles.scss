@@ -24,6 +24,22 @@ $default-font-size: 16px;
 $default-font-color: #000;
 $default-contrast-color: #0d656d;
 
+// Modules
+@import "_modules/m-settings";
+@import "_modules/m-language";
+@import "_modules/m-constraint";
+@import "_modules/m-input";
+@import "_modules/m-headline";
+@import "_modules/m-title";
+@import "_modules/m-upload";
+@import "_modules/m-preview";
+@import "_modules/m-progress";
+@import "_modules/m-start-button";
+@import "_modules/m-download";
+@import "_modules/m-page-content";
+@import "_modules/m-contact";
+@import "_modules/m-footer";
+
 // Styles
 * {
 	box-sizing: border-box;
@@ -48,18 +64,3 @@ body {
 		background-size: 960px;
 	}
 }
-
-// Modules
-@import "_modules/m-settings";
-@import "_modules/m-language";
-@import "_modules/m-constraint";
-@import "_modules/m-input";
-@import "_modules/m-headline";
-@import "_modules/m-title";
-@import "_modules/m-upload";
-@import "_modules/m-preview";
-@import "_modules/m-progress";
-@import "_modules/m-start-button";
-@import "_modules/m-download";
-@import "_modules/m-page-content";
-@import "_modules/m-footer";

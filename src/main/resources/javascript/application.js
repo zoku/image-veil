@@ -1,4 +1,4 @@
-$(document).ready(function () {
+(function () {
     // Configuration
     var maxAllowedFileSizeMB = 5;
 
@@ -161,15 +161,6 @@ $(document).ready(function () {
         $('.m-download').fadeOut();
     });
 
-    // -- Language selection
-    $('.m-language').on('click', function () {
-        $('.m-language .m-language--list').toggleClass('m-language--list_is-active');
-    });
-
-    $('.m-language .m-language--list').on('mouseleave', function () {
-        $('.m-language .m-language--list').removeClass('m-language--list_is-active');
-    });
-
     // Functions
     function positionToPercent(area, alsoConvertPosition) {
         var $area = $(area);
@@ -208,6 +199,25 @@ $(document).ready(function () {
     }
 
     function makeArea(x, y, w, h) {
+        x = x - w / 2;
+        y = y - h / 2;
+
+        if (x < 0) {
+            x = 0;
+        }
+
+        if (y < 0) {
+            y = 0;
+        }
+
+        if (x > $preview.areas.width() - w) {
+            x = $preview.areas.width() - w
+        }
+
+        if (y > $preview.areas.height() - h) {
+            y = $preview.areas.height() - h
+        }
+
         $preview.areas.append($('<div/>')
             .addClass('m-preview--areas--area')
             .css({
@@ -252,4 +262,4 @@ $(document).ready(function () {
             })
         );
     }
-});
+})();

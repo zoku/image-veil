@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage
 /**
  * Created by Manuel Helbing on 2018-12-16.
  */
-class Rotator(private val metaData: Metadata) : Transformer {
-    private val logger = LoggerFactory.getLogger("Transformers - Rotator")
+class Rotate(private val metaData: Metadata) : Transformer {
+    private val logger = LoggerFactory.getLogger("Transformers - Rotate")
 
     override fun transform(image: BufferedImage): BufferedImage {
         val exifDir = metaData.getFirstDirectoryOfType(ExifIFD0Directory::class.java)

@@ -3,7 +3,7 @@
 Manuel Helbing 
 
 Contact:
-E-mail: mail<i class="fas fa-at"></i>image-veil.net
+Please use the [contact form](../contact).
 
 ## Disclaimor: 
 ### Liability for links

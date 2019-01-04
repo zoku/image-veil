@@ -5,6 +5,11 @@
 		color: #fff;
 	}
 
+	&:disabled,
+	input:disabled {
+		opacity: .5;
+	}
+
 	&.m-input_checkbox {
 		@include clearfix;
 
@@ -27,5 +32,56 @@
 			color: #fff;
 			background: #333;
 		}
+	}
+
+	&.m-input_text-box {
+		label {
+			margin: $default-margin;
+			color: $default-font-color;
+		}
+
+		input {
+			display: block;
+			width: 100%;
+			min-height: 40px;
+			margin: .5em 0 0 0;
+			padding: .5em 1em;
+			border: solid 2px $default-contrast-color;
+			border-radius: $default-border-radius;
+			background: rgba(255, 255, 255, .7);
+			font-size: 1.2em;
+		}
+	}
+
+	&.m-input_text-area {
+		label {
+			margin: $default-margin;
+			color: $default-font-color;
+		}
+
+		textarea {
+			display: block;
+			width: 100%;
+			min-height: 10em;
+			margin: .5em 0 0 0;
+			padding: .5em 1em;
+			border: solid 2px $default-contrast-color;
+			border-radius: $default-border-radius;
+			background: rgba(255, 255, 255, .7);
+			font-size: 1.2em;
+		}
+	}
+
+	&.m-input_button {
+		display: block;
+		width: 100%;
+		min-height: 40px;
+		margin: $default-margin;
+		padding: .5em 1em;
+		border: solid 2px $default-contrast-color;
+		border-radius: $default-border-radius;
+		background: $default-contrast-color;
+		color: #fff;
+		font-size: 1.2em;
 	}
 }

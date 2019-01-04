@@ -9,11 +9,11 @@ import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
 class Fill(private val areas: ArrayList<Area>, private val scaleX: Float, private val scaleY: Float) : Transformer {
-    private val logger = LoggerFactory.getLogger("Fill")
+    private val logger = LoggerFactory.getLogger("Transformers - Fill")
 
     override fun transform(image: BufferedImage): BufferedImage {
         val g2d = image.graphics as Graphics2D
-        g2d.color = Color(Config.pixeliser_fill_color)
+        g2d.color = Color(Config.transformers_masks_fill_color)
 
         areas.forEach { area ->
             var x = (area.x * scaleX).roundToInt()

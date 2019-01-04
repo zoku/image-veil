@@ -5,12 +5,12 @@ import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-class Shrinker : Transformer {
+class ScaleDown : Transformer {
     override fun transform(image: BufferedImage): BufferedImage {
         val scale = if (image.width > image.height) {
-            Config.imageReceiver_maxImageEdgeSize.toDouble() / image.width
+            Config.transformers_scaleDown_maxImageEdgeSize.toDouble() / image.width
         } else {
-            Config.imageReceiver_maxImageEdgeSize.toDouble() / image.height
+            Config.transformers_scaleDown_maxImageEdgeSize.toDouble() / image.height
         }
 
         val scaledImage = BufferedImage((image.width * scale).roundToInt(), (image.height * scale).roundToInt(), BufferedImage.TYPE_INT_RGB)

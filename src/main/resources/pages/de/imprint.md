@@ -3,7 +3,7 @@
 Manuel Helbing
 
 Kontakt:
-E-Mail: mail<i class="fas fa-at"></i>image-veil.net
+Bitte nutze das [Kontaktformular](../contact).
 
 ## Haftungsausschluss: 
 ### Haftung für Links
