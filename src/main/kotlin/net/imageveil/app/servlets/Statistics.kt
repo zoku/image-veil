@@ -37,12 +37,12 @@ class Statistics : HttpServlet() {
         }
 
         val firstDate = dates.min() ?: LocalDateTime.now()
-        val lastDate = dates.max() ?: LocalDateTime.now()
+        // val lastDate = dates.max() ?: LocalDateTime.now()
 
         val dataDates = arrayListOf<String>()
         val dataNumbers = arrayListOf<Int>()
 
-        for (day in 0 until DAYS.between(firstDate, LocalDateTime.now())) {
+        for (day in 0 until DAYS.between(firstDate, LocalDateTime.now().plusDays(1))) {
             val currentDate = firstDate.plusDays(day)
 
             val events = dates.filter {

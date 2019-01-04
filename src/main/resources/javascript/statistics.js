@@ -1,7 +1,7 @@
 (function () {
+    if ($('#m-statistics').length === 0) { return; }
 
-    var ctx = document.getElementById("m-statistics").getContext('2d');
-    var chart = new Chart(ctx, {
+    new Chart('m-statistics', {
         type: 'line',
         data: {
             labels: dates,
