@@ -15,32 +15,22 @@ class Rotator(private val metaData: Metadata) : Transformer {
     override fun transform(image: BufferedImage): BufferedImage {
         val exifDir = metaData.getFirstDirectoryOfType(ExifIFD0Directory::class.java)
 
-        if (exifDir.containsTag(0x112)) {
+        if (exifDir != null && exifDir.containsTag(0x112)) {
             val orientation = exifDir.getInt(0x112)
 
             when (orientation) {
                 ImageOrientations.LANDSCAPE_0_O -> return image
-                ImageOrientations.LANDSCAPE_0_M -> return Scalr.rotate(image, Scalr.Rotation.FLIP_HORZ)
-                ImageOrientations.LANDSCAPE_90_O -> return rotate(image, 90)
-                ImageOrientations.LANDSCAPE_90_M -> return Scalr.rotate(rotate(image, 90), Scalr.Rotation.FLIP_HORZ)
-                ImageOrientations.LANDSCAPE_180_O -> return rotate(image, 180)
-                ImageOrientations.LANDSCAPE_180_M -> return Scalr.rotate(rotate(image, 180), Scalr.Rotation.FLIP_HORZ)
-                ImageOrientations.LANDSCAPE_270_O -> return rotate(image, 270)
-                ImageOrientations.LANDSCAPE_270_M -> return Scalr.rotate(rotate(image, 270), Scalr.Rotation.FLIP_HORZ)
+                ImageOrientations.LANDSCAPE_0_M -> return image.flip()
+                ImageOrientations.LANDSCAPE_90_O -> return image.rotate90()
+                ImageOrientations.LANDSCAPE_90_M -> return image.rotate90().flip()
+                ImageOrientations.LANDSCAPE_180_O -> return image.rotate180()
+                ImageOrientations.LANDSCAPE_180_M -> return image.rotate180().flip()
+                ImageOrientations.LANDSCAPE_270_O -> return image.rotate270()
+                ImageOrientations.LANDSCAPE_270_M -> return image.rotate270().flip()
                 else -> logger.warn("Unknown image orientation: $orientation")
             }
         }
         return image
-    }
-
-    private fun rotate(image: BufferedImage, deg: Int): BufferedImage {
-        return when (deg) {
-            0 -> image
-            90 -> Scalr.rotate(image, Scalr.Rotation.CW_90)
-            180 -> Scalr.rotate(image, Scalr.Rotation.CW_180)
-            270 -> Scalr.rotate(image, Scalr.Rotation.CW_270)
-            else -> image
-        }
     }
 
     private object ImageOrientations {
@@ -55,5 +45,21 @@ class Rotator(private val metaData: Metadata) : Transformer {
 
         const val LANDSCAPE_270_O = 8
         const val LANDSCAPE_270_M = 7
+    }
+
+    private fun BufferedImage.flip(): BufferedImage {
+        return Scalr.rotate(this, Scalr.Rotation.FLIP_HORZ)
+    }
+
+    private fun BufferedImage.rotate90(): BufferedImage {
+        return Scalr.rotate(this, Scalr.Rotation.CW_90)
+    }
+
+    private fun BufferedImage.rotate180(): BufferedImage {
+        return Scalr.rotate(this, Scalr.Rotation.CW_180)
+    }
+
+    private fun BufferedImage.rotate270(): BufferedImage {
+        return Scalr.rotate(this, Scalr.Rotation.CW_270)
     }
 }
