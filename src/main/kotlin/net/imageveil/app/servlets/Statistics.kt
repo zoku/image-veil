@@ -24,6 +24,8 @@ import java.time.temporal.ChronoUnit.*
 class Statistics : HttpServlet() {
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
 
+        val mode = request.getParameter("m") ?: "d"
+
         val dates = try {
             val logFile = File("${System.getProperty("user.home")}/imageveil-uses.log")
             val textDates = logFile.readLines()
@@ -36,28 +38,64 @@ class Statistics : HttpServlet() {
             arrayListOf<LocalDateTime>()
         }
 
-        val firstDate = dates.min() ?: LocalDateTime.now()
-        val lastDate = dates.max() ?: LocalDateTime.now()
+        val firstDate = when(mode) {
+            "d" -> LocalDateTime.now().minusMonths(1)
+            "m" -> LocalDateTime.now().minusMonths(12)
+            "y" -> LocalDateTime.now().minusYears(5)
+            else -> dates.min() ?: LocalDateTime.now()
+        }
 
         val dataDates = arrayListOf<String>()
         val dataNumbers = arrayListOf<Int>()
 
-        for (day in 0 until DAYS.between(firstDate, LocalDateTime.now())) {
-            val currentDate = firstDate.plusDays(day)
+        if (mode == "d") {
+            for (day in 0 until DAYS.between(firstDate, LocalDateTime.now().plusDays(1))) {
+                val currentDate = firstDate.plusDays(day)
 
-            val events = dates.filter {
-                it.year == currentDate.year &&
-                it.month == currentDate.month &&
-                it.dayOfMonth == currentDate.dayOfMonth
-            }.size
+                val events = dates.filter {
+                    it.year == currentDate.year && it.month == currentDate.month && it.dayOfMonth == currentDate.dayOfMonth
+                }.size
 
-            dataDates.add("${currentDate.year}-${currentDate.month.value}-${currentDate.dayOfMonth}")
-            dataNumbers.add(events)
+                dataDates.add("${currentDate.year}-${currentDate.month.value}-${currentDate.dayOfMonth}")
+                dataNumbers.add(events)
+            }
+        }
+
+        if (mode == "m") {
+            for (month in 0 until MONTHS.between(firstDate, LocalDateTime.now().plusMonths(1))) {
+                val currentDate = firstDate.plusMonths(month)
+
+                val events = dates.filter {
+                    it.year == currentDate.year && it.month == currentDate.month
+                }.size
+
+                dataDates.add("${currentDate.month} ${currentDate.year}")
+                dataNumbers.add(events)
+            }
+        }
+
+        if (mode == "y") {
+            for (year in 0 until YEARS.between(firstDate, LocalDateTime.now().plusYears(1))) {
+                val currentDate = firstDate.plusYears(year)
+
+                val events = dates.filter {
+                    it.year == currentDate.year
+                }.size
+
+                dataDates.add("${currentDate.year}")
+                dataNumbers.add(events)
+            }
         }
 
         val dom = PageTemplate.site(title = "Statistics", request = request) {
             div(classes = "m-page-content") {
                 h1 { +"Statistics" }
+
+                div(classes = "m-statistics--switches") {
+                    div(classes = "m-statistics--switches--switch") { a(href = "?m=d") { +"Days" } }
+                    div(classes = "m-statistics--switches--switch") { a(href = "?m=m") { +"Months" } }
+                    div(classes = "m-statistics--switches--switch") { a(href = "?m=y") { +"Years" } }
+                }
 
                 canvas { id = "m-statistics" }
 
