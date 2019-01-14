@@ -42,7 +42,7 @@ class Pages : HttpServlet() {
         }
 
         val resource = try {
-            File(Pages::class.java.getResource("/pages/${i18n.lang}/$mdFile").file)
+            File(Pages::class.java.getResource("/pages/${i18n.lang}/$mdFile").file.replace("%20", " "))
         } catch (e: Exception) {
             response.sendError(404)
             return

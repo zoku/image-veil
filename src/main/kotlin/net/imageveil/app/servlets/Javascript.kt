@@ -30,7 +30,7 @@ class Javascript : HttpServlet() {
 
         scripts.forEach {script ->
             val scriptFile = Javascript::class.java.getResource("/javascript/$script").file
-            packagedScripts.append(File(scriptFile).readText())
+            packagedScripts.append(File(scriptFile.replace("%20", " ")).readText())
         }
 
         response.contentType = "text/javascript"
