@@ -40,8 +40,8 @@
         <td>O</td>
         <td>?</td>
         <td>O</td>
-        <td>?</td>
-        <td>?</td>
+        <td>O</td>
+        <td>O</td>
         <td>O</td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@
         <td>?</td>
         <td>O</td>
         <td>?</td>
-        <td>?</td>
+        <td>O</td>
         <td>O</td>
     </tr>
     <tr>
@@ -58,7 +58,7 @@
         <td>-</td>
         <td>-</td>
         <td>O</td>
-        <td>!</td>
+        <td>?</td>
         <td>-</td>
         <td>-</td>
     </tr>
@@ -68,7 +68,7 @@
         <td>?</td>
         <td>O</td>
         <td>?</td>
-        <td>?</td>
+        <td>O</td>
         <td>!</td>
     </tr>
     <tr>
@@ -77,7 +77,7 @@
         <td>?</td>
         <td>O</td>
         <td>?</td>
-        <td>?</td>
+        <td>O</td>
         <td>O</td>
     </tr>
     <tr>
