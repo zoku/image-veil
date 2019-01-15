@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import kotlinx.html.*
 import kotlinx.html.dom.serialize
 import net.imageveil.app.templates.PageTemplate
+import org.slf4j.LoggerFactory
 import java.io.File
 import java.lang.Exception
 import java.time.LocalDateTime
@@ -22,12 +23,15 @@ import java.time.temporal.ChronoUnit.*
         urlPatterns = [ "/statistics" ]
 )
 class Statistics : HttpServlet() {
+    private val logger = LoggerFactory.getLogger("Statistics")
+
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
 
         val mode = request.getParameter("m") ?: "d"
 
+        val statsFilePath = servletContext.getRealPath(File.separator) + "../imageveil-uses.csv"
         val dates = try {
-            val logFile = File("${System.getProperty("user.home")}/imageveil-uses.log")
+            val logFile = File(statsFilePath)
             val textDates = logFile.readLines()
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS")
 
@@ -35,6 +39,7 @@ class Statistics : HttpServlet() {
                 LocalDateTime.from(formatter.parse(it))
             }
         } catch (e: Exception) {
+            logger.error("Stats file '$statsFilePath' could not be read.")
             arrayListOf<LocalDateTime>()
         }
 

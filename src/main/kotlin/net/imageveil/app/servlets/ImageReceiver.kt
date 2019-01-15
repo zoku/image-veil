@@ -71,11 +71,12 @@ class ImageReceiver : HttpServlet() {
         val imageString = "data:image/jpeg;base64,$data"
 
         // Log process
+        val statsFilePath = servletContext.getRealPath(File.separator) + "../imageveil-uses.csv"
         try {
-            val logFile = File("${System.getProperty("user.home")}/imageveil-uses.log")
+            val logFile = File(statsFilePath)
             logFile.appendText(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").format(LocalDateTime.now()) + "\n")
         } catch (e: Exception) {
-            logger.error("Log file could not be written.")
+            logger.error("Stats file '$statsFilePath' could not be written.")
         }
 
         // Output image

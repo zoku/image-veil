@@ -4,3 +4,4 @@
 target/*
 .sass-cache/
 /src/main/resources/mailer.properties
+imageveil-uses.csv
