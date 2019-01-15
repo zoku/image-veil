@@ -9,7 +9,7 @@
 **A**: Look what we write [about us](about-us)!
 
 **Q**: Can I use this via TOR?
-**A**: Yes! The TOR-service is on [eygnd6udnfwfo4ea.onion](http://eygnd6udnfwfo4ea.onion).
+**A**: Yes! The TOR-service is on [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
 
 **Q**: Do you track?
 **A**: No. We only save a timestamp to see if the app is used at all.

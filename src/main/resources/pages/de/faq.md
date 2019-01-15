@@ -9,7 +9,7 @@
 **A**: Schau, was wir [über uns](ueber-uns) schreiben!
 
 **F**: Https ist mir nicht sicher genug! Kann ich die Anwendung auch mit [Tor <i class="fas fa-external-link-alt"></i>](https://www.torproject.org) nutzen?
-**A**: Ja! Der Tor-Service liegt unter [eygnd6udnfwfo4ea.onion](http://eygnd6udnfwfo4ea.onion).
+**A**: Ja! Der Tor-Service liegt unter [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
 
 **F**: Benutzt ihr Tracker?
 **A**: Nein. Wir speichern ausschließlich Datum und Uhrzeit einer Bildbearbeitung, um einen Überblick zu behalten, wie gut ImageVeil genutzt wird. Wir nutzen *keine* Tracking-Software, *keine* Facebook-, Twitter- oder Google-Plugins und *kein* Werbenetzwerk.
