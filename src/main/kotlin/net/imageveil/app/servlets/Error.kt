@@ -26,7 +26,7 @@ class Error : HttpServlet() {
         val statusCode = request.getAttribute("javax.servlet.error.status_code") as Int?
         val servletName = request.getAttribute("javax.servlet.error.servlet_name") as String?
 
-        val i18n = request.getAttribute("i18n") as I18n
+        val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
 
         val dom = PageTemplate.site(i18n.get("error.headline"), request) {
             h1(classes = "m-headline") { +i18n.get("error.headline") }

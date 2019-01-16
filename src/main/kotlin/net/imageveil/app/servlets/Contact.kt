@@ -29,7 +29,7 @@ class Contact : HttpServlet() {
     private val tokens = hashMapOf<String, LocalDateTime>()
 
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
-        val i18n = request.getAttribute("i18n") as I18n
+        val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
 
         val currentToken = UUID.randomUUID().toString()
         tokens[currentToken] = LocalDateTime.now().plusMinutes(30)

@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse
 )
 class Pages : HttpServlet() {
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
-        val i18n = request.getAttribute("i18n") as I18n
+        val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
         val pageName = request.requestURI.split("/").last()
 
         val title: String

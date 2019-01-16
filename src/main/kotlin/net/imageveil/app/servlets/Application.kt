@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse
 
 import kotlinx.html.*
 import kotlinx.html.dom.*
+import java.util.*
 
 @WebServlet(
         name = "ImageVeilApp",
@@ -20,7 +21,7 @@ import kotlinx.html.dom.*
 )
 class Application : HttpServlet() {
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
-        val i18n = request.getAttribute("i18n") as I18n
+        val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
 
         val dom = PageTemplate.site("App", request) {
             h1(classes = "m-headline") { +i18n.get("app.title") }
