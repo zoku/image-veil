@@ -15,7 +15,7 @@ mail.smtp.auth=true
 mail.smtp.starttls.enable=true
 
 # - How to display the "from" field in your mail program
-mail.smtp.envelopAddress=formmailer@image-veil.net
+mail.smtp.envelopAddress=
 
 # - To whom should the mail be sent?
-mail.smtp.recipientAddress=mail@image-veil.net
+mail.smtp.recipientAddress=
