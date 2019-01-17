@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest
 
 object PageTemplate {
     fun site(title: String, request: HttpServletRequest, pageId: String? = null, block: DIV.() -> Unit = {}): Document {
-        val i18n = request.getAttribute("i18n") as I18n
+        val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
 
         return createHTMLDocument().html {
             lang = i18n.lang

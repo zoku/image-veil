@@ -23,8 +23,9 @@ class Error : HttpServlet() {
     private val logger = LoggerFactory.getLogger("ErrorServlet")
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
         val throwable = request.getAttribute("javax.servlet.error.exception") as Throwable?
-        val statusCode = request.getAttribute("javax.servlet.error.status_code") as Int?
-        val servletName = request.getAttribute("javax.servlet.error.servlet_name") as String?
+        val statusCode = request.getAttribute("javax.servlet.error.status_code") as Int? ?: 0
+        val servletName = request.getAttribute("javax.servlet.error.servlet_name") as String? ?: "n/a"
+        val originalRequestUri = request.getAttribute("javax.servlet.error.request_uri") as String? ?: "n/a"
 
         val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
 
@@ -36,7 +37,7 @@ class Error : HttpServlet() {
             }
         }
 
-        logger.error("$servletName threw: $statusCode because of '${throwable?.message}'")
+        logger.error("$servletName threw: $statusCode because of '${throwable?.message ?: "unknown"}' for '$originalRequestUri' (${i18n.lang})")
 
         response.writer.append(dom.serialize(prettyPrint = true))
     }

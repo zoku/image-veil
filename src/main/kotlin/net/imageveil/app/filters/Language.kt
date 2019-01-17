@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebFilter
 
 @WebFilter(
         filterName = "LanguageFilter",
-        servletNames = [ "Pages", "ImageVeilApp", "ErrorPage", "Contact", "Statistics" ]
+        urlPatterns = [ "*" ]
 )
 class Language : Filter {
     override fun init(filterConfig: FilterConfig) {}
