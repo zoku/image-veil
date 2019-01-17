@@ -10,7 +10,7 @@ ImageVeil's code is open source and publicly available on [Github.com <i class="
 
 Also we do not use any trackers, ad networks or social media plugins. When using ImageVeil, you are connected only with us.
 
-## We do things different!
+## We do things differently!
 Additional to pixelisation of areas, we remove all metadata like e.g. the EXIF-tables and we try our best to prevent forensic image analysis, which can identify the unique camera chip used to take the picture (see [image analysis](image-analysis)). To do this, we add a barely visible, random noise pattern to your image, which overlays the inherent noise of your camera's chip. This will make a forensic analysis harder or even impossible. We also resize large images to further aggrabate image analysis.
 
 Of course you can turn off both noise and resizing, but we strongly discurrage you to do this unless you really know, what you are doing.

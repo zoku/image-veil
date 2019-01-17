@@ -1,0 +1,77 @@
+.m-versions {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	.m-versions--version {
+		margin: $default-margin;
+		padding: 0;
+
+		.m-versions--version--title {
+			background: $default-contrast-color;
+			color: #fff;
+			padding: .5em;
+
+			cursor: pointer;
+		}
+
+		.m-versions--version--details {
+			@include clearfix;
+			display: none;
+
+			&.m-versions--version--details_show {
+				display: block;
+			}
+
+			.m-versions--version--details--simple {
+				float: left;
+				width: 100%;
+
+				padding: .5em;
+
+				.m-versions--version--details--simple--switch {
+					display: inline-block;
+
+					margin: .5em 0 0 0;
+					padding: .5em;
+
+					background: $default-contrast-color;
+					color: #fff;
+					text-decoration: none;
+
+					cursor: pointer;
+				}
+			}
+
+			.m-versions--version--details--all {
+				display: none;
+				float: left;
+				width: 50%;
+
+				padding: .5em;
+
+				.m-versions--version--details--all--section-head {
+					margin: .5em 0 0 0;
+
+					&:first-child {
+						margin-top: 0;
+					}
+				}
+
+				.m-versions--version--details--all--section-item {
+					margin: .5em 0 0 1em;
+				}
+			}
+
+			&.m-versions--version--details_show-tech {
+				.m-versions--version--details--simple {
+					width: 50%;
+				}
+
+				.m-versions--version--details--all {
+					display: block;
+				}
+			}
+		}
+	}
+}

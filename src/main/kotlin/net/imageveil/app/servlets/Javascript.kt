@@ -22,7 +22,8 @@ class Javascript : HttpServlet() {
             "application.min.js",
             "contact.min.js",
             "language.min.js",
-            "statistics.min.js"
+            "statistics.min.js",
+            "version-history.js"
     )
 
     override fun doGet(request: HttpServletRequest, response: HttpServletResponse) {
