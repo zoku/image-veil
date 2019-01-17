@@ -4675,7 +4675,8 @@ readers do not read off random characters that represent icons */
   margin: 1em 0 0 0;
   padding: 1em;
   border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  word-break: break-word; }
   .m-page-content h1, .m-page-content h2, .m-page-content h3, .m-page-content h4, .m-page-content p {
     margin: 1em 0 0 0; }
   .m-page-content h1, .m-page-content h2, .m-page-content h3, .m-page-content h4 {
