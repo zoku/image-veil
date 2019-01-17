@@ -21,7 +21,7 @@
 **A**: Sure! If you know Kotlin or Javascript, you can make a pull request on [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil). You can also report errors and suggest improvements. Use our [contact form](contact).
 
 **Q**: What data is saved on your server?
-**A**: Only date and time when you edited your image. Your data is your's and your's alone!
+**A**: Only date and time when you edited your image (see [statistics](statistics)). Your data is your's and your's alone!
 
 **Q**: In which browsers does ImageVeil run?
 **A**:

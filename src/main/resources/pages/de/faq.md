@@ -21,7 +21,7 @@
 **A**: Natürlich! Wenn du Kotlin, CSS oder Javascript beherrschst, kannst du gern einen Pull Request bei [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil) machen. Du kannst uns auch gerne über Fehler informieren und Anregungen schicken. Nutze dazu unser [Kontaktformular](contact).
 
 **F**: Welche Daten werden auf dem Server gespeichert?
-**A**: Nur Datum und Uhrzeit, wann ein Bild bearbeitet wurde. Alle deine Daten gehören nur dir allein.
+**A**: Nur Datum und Uhrzeit, wann ein Bild bearbeitet wurde (s. [Statistik](statistics)). Alle deine Daten gehören nur dir allein.
 
 **F**: In welchen Browsern funktioniert ImageVeil?
 **A**:
