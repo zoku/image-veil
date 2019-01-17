@@ -81,7 +81,7 @@ object PageTemplate {
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}$lang") { +i18n.get("app.footer.links.faq") }
                         a(classes = "m-footer--link", href = "https://github.com/zoku/image-veil") { +"${i18n.get("app.footer.links.github")} "; i(classes = "fab fa-github") }
 
-                        val currentVersion = File(VersionHistory::class.java.getResource("/versions").file).list().filter { it.endsWith(".json") }.reversed().firstOrNull() ?: "?.?.?"
+                        val currentVersion = File(PageTemplate::class.java.getResource("/versions").toURI()).list().filter { it.endsWith(".json") }.reversed().firstOrNull() ?: "?.?.?"
                         a(classes = "m-footer--link m-footer--link_right", href = "${request.contextPath}/version-history") { +"v${currentVersion.replace(".json", "")}" }
                     }
                 }

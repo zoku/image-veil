@@ -1,10 +1,8 @@
 # How to use
-## Anonymisation
-1. Click or tap on the area with the dashed outline and in the following dialogue select a file, or drag an image file (at the moment we only support JPEG-files) onto it.
-1. Click or tap on the preview image to add one or more pixelation areas. You can resize them by grabbing their sides, move them with your mouse or finger and delete them by clicking or tapping the "trash" button.
-1. Now you can select the anonymisation settings (e.g. the type of pixelation) by opening the menu from the upper left corner of the app.
-1. Click on 'Anonymise!' to start the anonymisation process. Your image will be transferred to our server and be edited.
-1. When the editing process is finished, your anonymised and pixelated image will be shown to you. To save it, right click it and select 'Save image as...'.
+You can use ImageVeil either with your mouse or with your fingertip on a device featuring a touchscreen.
 
-## What does the app do different than the others?
-In addition to pixelisation and removal of meta data like EXIF-tables, we try to prevent scientific image analysis which could be used to identify the exact chip which has been used to record the image (see [Image analysis](image-analysis?l=en)). To do this we add a barely visible, random noise to the image, which overlays the noise inherent in the camera chip, making it invisible to the analysis software.
+1. Click or touch the dashed area and choose a file. You can also drag a file onto it (at the moment we only support JPEG-images).
+1. Click or touch the preview image to add one or more pixelisation areas. You can resize them by dragging the sides and move them by dragging the center. Delete them by clicking or touching the X button in the upper right corner of the area.
+1. (Optional) In the upper left corner you can open the options dialogue. There you can choose the type of pixelisation and toggle anonymisation methods on or off. The presets are safe!
+1. Choose 'Start' to start the anonymisation process. Your image will be transferred to our server and will be edited.
+1. When the editing process is finished, the anonymised image will be shown to you. To save it, right click on it and choose "Save image as..." or tap and hold the image with your finger to save it to your device, if you are using a touch screen.

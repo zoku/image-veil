@@ -1,11 +1,14 @@
-.ui-resizable-n { height: 20px; }
-.ui-resizable-e { width: 20px; }
-.ui-resizable-s { height: 20px; }
-.ui-resizable-w { width: 20px; }
+$handle-size: 35px;
+$handle-offset: -($handle-size - $handle-size / 2);
 
-.ui-resizable-nw { width: 20px; height: 20px; }
-.ui-resizable-ne { width: 20px; height: 20px; }
-.ui-resizable-sw { width: 20px; height: 20px; }
-.ui-resizable-se { width: 20px; height: 20px; }
+.ui-resizable-n { height: $handle-size; top: $handle-offset; }
+.ui-resizable-e { width: $handle-size; right: $handle-offset; }
+.ui-resizable-s { height: $handle-size; bottom: $handle-offset; }
+.ui-resizable-w { width: $handle-size; left: $handle-offset; }
+
+.ui-resizable-nw { width: $handle-size; height: $handle-size; left: $handle-offset; top: $handle-offset; }
+.ui-resizable-ne { width: $handle-size; height: $handle-size; right: $handle-offset; top: $handle-offset; }
+.ui-resizable-sw { width: $handle-size; height: $handle-size; left: $handle-offset; bottom: $handle-offset; }
+.ui-resizable-se { width: $handle-size; height: $handle-size; right: $handle-offset; bottom: $handle-offset; }
 
 .ui-icon-gripsmall-diagonal-se { background: none; }
