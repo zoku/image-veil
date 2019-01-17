@@ -1,29 +1,29 @@
 # Frequently asked questions (FAQ)
-**Q**: Why do you not blur the images, like you do in the preview?
-**A**: Simply bluring images is not save enough. It is still possible to "un-pixelate" the image. We only use coarse mosaic patterns to pixelate images to make a later de-pixelisation impossible.
+**Q**: Why don't you blur the images, like in the preview?
+**A**: Simply bluring an image is not quite enough. In blured images, enough information remains to recover most of it's details. Therefor we only use coarse mosaic patterns and plain colors to securely prevent a recovery of the anonymised portions of an image. 
 
-**Q**: What about meta-data like the EXIF tables?
-**A**: The app creates a completely new image. All meta-data is lost in the process (see [Image analysis](image-analysis?l=en)).
+**Q**: What happens to my image's meta-data (e.g. EXIF-tables)?
+**A**: The application creates a new image internally, which only uses the images visual data. All other data, including meta data, is lost in the process (see [image analysis](image-analysis)).
 
-**Q**: Why do you host this app?
-**A**: Look what we write [about us](about-us)!
+**Q**: Why do you provide this application?
+**A**: Read what we're writing [about us](about).
 
-**Q**: Can I use this via TOR?
-**A**: Yes! The TOR-service is on [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
+**Q**: Https is not secure enough for me! Can I use ImageVeil via [Tor <i class="fas fa-external-link-alt"></i>](https://www.torproject.org)?
+**A**: Yes! We have a Tor service on [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
 
-**Q**: Do you track?
-**A**: No. We only save a timestamp to see if the app is used at all.
+**Q**: Do you use tracking software?
+**A**: No. We only save date and time of an editing process to maintain an overview on how well ImageVeil is received. We use *no* trackers, *no* Facebook-, Twitter-, or Google-plugins and *no* advertisement network.
 
-**Q**: Is my image secure?
-**A**: Yes. It will only be uploaded for the processing and will not be saved anywhere on our servers.
+**Q**: Is my image safe with you?
+**A**: Yes. It will be in our server's memory briefly while being edited and deleted immediately afterwards. In the meantime we cannot access your image.
 
 **Q**: Can I contribute?
-**A**: Sure! If you can program Kotlin or Javascript you can make a PullRequest on Github. You can also report errors or make suggestions.
+**A**: Sure! If you know Kotlin or Javascript, you can make a pull request on [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil). You can also report errors and suggest improvements. Use our [contact form](contact).
 
-**Q**: What data will be saved on you server?
-**A**: Only a timestamp. All your data will stay yours and yours alone.
+**Q**: What data is saved on your server?
+**A**: Only date and time when you edited your image. Your data is your's and your's alone!
 
-**Q**: In which browsers does this app work?
+**Q**: In which browsers does ImageVeil run?
 **A**:
 <table>
     <tr>
