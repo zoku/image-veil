@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://image-veil.net</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/pages/imprint</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/impressum?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/imprint?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/pie-de-imprenta?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/pages/privacy</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/datenschutz?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/privacy?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/declaracion-de-privacidad?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/pages/about-us</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/ueber-uns?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/about-us?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/sobre-nosotros?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/contact</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/contact?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/contact?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/contact?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/pages/howto</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/anleitung?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/howto?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/instrucciones?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/pages/faq</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/faq?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/faq?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/faq?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/pages/image-analysis</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/bildanalyse?l=de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/image-analysis?l=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/analisis-de-imagenes?l=es"/>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/version-history</loc>
+    </url>
+
+    <url>
+        <loc>https://image-veil.net/statistics</loc>
+    </url>
+</urlset>
