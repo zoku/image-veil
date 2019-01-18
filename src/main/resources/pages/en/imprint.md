@@ -5,6 +5,16 @@ Manuel Helbing
 Contact:
 Please use the [contact form](../contact).
 
+## Translations
+<!--Arabic: ...-->
+German: Manuel Helbing
+English: Manuel Helbing / Angela Klimek
+Spanish: Angela Klimek
+<!--French: ...-->
+<!--Greek: ...-->
+<!--Italian: ...-->
+<!--Russian: ...-->
+
 ## Disclaimor: 
 ### Liability for links
 Our service contains links to external websites of third parties on who's content we cannot take any influence. Therefor we cannot take any responsibility for those contents. The respective provider or operator is responsible for the contents of linkes pages. At the time of linking we checked the linked page for possible copyright infringements. At that time illegitimate contents were not obvious. A permanent check of contents of linked pages is not reasonable without prior indications of copyright infringements. When we get to know about copyright infringements, we will remove those links immediately. 
