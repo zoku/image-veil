@@ -45,7 +45,7 @@ object PageTemplate {
                         div(classes = "m-title--text") { +"ImageVeil" }
                     }
 
-                    val supportedLanguages = arrayListOf("de", "en") // Add rm for Roman Empire and pi for Pirate, also es, fr, it, ru, gr
+                    val supportedLanguages = arrayListOf("de", "en", "es") // Add rm for Roman Empire and pi for Pirate, also fr, it, ru, gr
 
                     div(classes = "m-language") {
                         div(classes = "m-language--preview") { img(src = "${request.contextPath}/assets/img/flags/${i18n.lang}.jpg");+" ${i18n.lang.toUpperCase()}" }
