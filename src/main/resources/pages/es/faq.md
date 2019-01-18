@@ -6,7 +6,7 @@
 **R:** La aplicación crea una nueva imagen internamente y sólo utiliza los datos de la imagen en sí. Todos los demás datos, así como los metadatos, se perderán (véase [Análisis de imágenes](analisis-de-imagenes)).
 
 **P:** ¿Por qué proporcionan esta aplicación?
-**R:** ¡Mira lo que escribimos [sobre nosotros](ueber-uns)!
+**R:** ¡Mira lo que escribimos [sobre nosotros](sobre-nosotros)!
 
 **P:** ¡Https no es lo suficientemente seguro para mí! ¿Puedo usar también la aplicación con [Tor <i class="fas fa-external-link-alt"></i>](https://www.torproject.org)?
 **R:** ¡Sí! El servicio de Tor está bajo [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).

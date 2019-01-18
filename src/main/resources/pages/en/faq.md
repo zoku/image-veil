@@ -6,7 +6,7 @@
 **A**: The application creates a new image internally, which only uses the images visual data. All other data, including meta data, is lost in the process (see [image analysis](image-analysis)).
 
 **Q**: Why do you provide this application?
-**A**: Read what we're writing [about us](about).
+**A**: Read what we're writing [about us](about-us).
 
 **Q**: Https is not secure enough for me! Can I use ImageVeil via [Tor <i class="fas fa-external-link-alt"></i>](https://www.torproject.org)?
 **A**: Yes! We have a Tor service on [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
@@ -18,7 +18,7 @@
 **A**: Yes. It will be in our server's memory briefly while being edited and deleted immediately afterwards. In the meantime we cannot access your image.
 
 **Q**: Can I contribute?
-**A**: Sure! If you know Kotlin or Javascript, you can make a pull request on [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil). You can also report errors and suggest improvements. Use our [contact form](contact).
+**A**: Sure! If you know Kotlin or Javascript, you can make a pull request on [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil). You can also report errors and suggest improvements. Use our [contact form](../contact).
 
 **Q**: What data is saved on your server?
 **A**: Only date and time when you edited your image (see [statistics](../statistics)). Your data is your's and your's alone!
