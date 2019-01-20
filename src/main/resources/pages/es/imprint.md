@@ -5,6 +5,17 @@ Manuel Helbing
 Contacto:
 Por favor, utilice [el formulario de contacto](../contact).
 
+## Traducciones
+Alemán: Manuel Helbing
+Castellano: Angela Klimek
+Inglés: Manuel Helbing / Angela Klimek
+
+<!--Italiano: ...-->
+<!--Francés: ...-->
+<!--Griego: ...-->
+<!--Árabe: ...-->
+<!--Ruso: ...-->
+
 ## Exclusión de responsabilidad 
 ### La responsabilidad por los enlaces
 Nuestra oferta contiene enlaces a páginas web externas de terceros sobre cuyos contenidos no tenemos ninguna influencia.  Por lo tanto, no podemos asumir ninguna responsabilidad por estos contenidos externos. El proveedor u operador de las páginas enlazadas es siempre responsable de los contenidos de las páginas enlazadas. En el momento de establecer el enlace, las páginas enlazadas fueron revisadas en busca de posibles infracciones legales. Los contenidos ilegales no eran reconocibles en el momento de la vinculación. Sin embargo, un control permanente de los contenidos de las páginas enlazadas no es razonable sin pruebas concretas de una violación de la ley.  Eliminaremos dichos enlaces inmediatamente después de tener conocimiento de cualquier violación de la ley. 
