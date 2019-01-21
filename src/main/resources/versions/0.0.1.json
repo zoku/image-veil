@@ -4,6 +4,7 @@
   "simple": "First stable version of ImageVeil. It can Pixelise portions of images and add noise. It also can resize large images. Available languages are German, English and Spanish.",
   "details": {
     "fix": [
+      "VersionHistory: Use correct categories",
       "VersionHistory: Use URI to deal with spaces in paths",
       "faq (de/en/es): Internal links",
       "*: Various bugs and oddities",
