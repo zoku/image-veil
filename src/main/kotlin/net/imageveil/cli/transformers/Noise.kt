@@ -1,6 +1,5 @@
-package net.imageveil.app.transformers
+package net.imageveil.cli.transformers
 
-import net.imageveil.app.utils.Config
 import java.awt.Color
 import java.awt.image.BufferedImage
 import kotlin.math.max
@@ -8,10 +7,10 @@ import kotlin.math.min
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
-class Noise : Transformer {
+class Noise(private val percentageToAdd: Double, private val intensity: Int) : Transformer {
     override fun transform(image: BufferedImage): BufferedImage {
         val pixelCount = image.width * image.height
-        val randomiseCount = (pixelCount * Config.transformers_noise_percentageToAdd).roundToInt()
+        val randomiseCount = (pixelCount * percentageToAdd).roundToInt()
 
         val allPixels = arrayListOf<Pixel>()
         for (x in 0 until image.width) {
@@ -35,8 +34,8 @@ class Noise : Transformer {
             }
 
             val newChannelColor = Random.nextInt(
-                    from = max(a = originalChannelColor - Config.transformers_noise_intensityOfNoise, b = 0),
-                    until = min(a = originalChannelColor + Config.transformers_noise_intensityOfNoise, b = 255)
+                    from = max(a = originalChannelColor - intensity, b = 0),
+                    until = min(a = originalChannelColor + intensity, b = 255)
             )
 
             val newColor = Color(

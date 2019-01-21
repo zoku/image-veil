@@ -1,4 +1,4 @@
-package net.imageveil.app.transformers
+package net.imageveil.cli.transformers
 
 import java.awt.image.BufferedImage
 

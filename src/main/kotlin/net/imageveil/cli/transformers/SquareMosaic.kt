@@ -1,14 +1,14 @@
-package net.imageveil.app.transformers
+package net.imageveil.cli.transformers
 
-import net.imageveil.app.model.Area
-import net.imageveil.app.utils.Config
+import net.imageveil.cli.domain.Area
+import net.imageveil.cli.Config
 import org.slf4j.LoggerFactory
 import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt
 
-class SquareMosaic(private val areas: ArrayList<Area>, private val scaleX: Float, private val scaleY: Float) : Transformer {
+class SquareMosaic(private val areas: ArrayList<Area>, private val scaleX: Float = 1f, private val scaleY: Float = 1f) : Transformer {
     private val logger = LoggerFactory.getLogger("Transformers - SquareMosaic")
 
     override fun transform(image: BufferedImage): BufferedImage {

@@ -1,4 +1,4 @@
-package net.imageveil.app.model
+package net.imageveil.cli.domain
 
 data class Area(
         val x: Int,

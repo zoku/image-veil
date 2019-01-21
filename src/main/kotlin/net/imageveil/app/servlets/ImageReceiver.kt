@@ -3,8 +3,8 @@ package net.imageveil.app.servlets
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
 import net.imageveil.app.model.ImageOptions
-import net.imageveil.app.transformers.*
-import net.imageveil.app.utils.Config
+import net.imageveil.cli.transformers.*
+import net.imageveil.cli.Config
 import org.slf4j.LoggerFactory
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig
@@ -46,7 +46,7 @@ class ImageReceiver : HttpServlet() {
         transformers.add(Rotate(imageMataData))
 
         if (options.addNoise) {
-            transformers.add(Noise())
+            transformers.add(Noise(Config.transformers_noise_percentageToAdd, Config.transformers_noise_intensityOfNoise))
         }
 
         when (options.mode) {

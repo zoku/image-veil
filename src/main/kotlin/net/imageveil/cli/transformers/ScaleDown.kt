@@ -1,6 +1,6 @@
-package net.imageveil.app.transformers
+package net.imageveil.cli.transformers
 
-import net.imageveil.app.utils.Config
+import net.imageveil.cli.Config
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import kotlin.math.roundToInt

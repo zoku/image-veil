@@ -1,5 +1,7 @@
 package net.imageveil.app.model
 
+import net.imageveil.cli.domain.Area
+
 /**
  * Created by Manuel Helbing on 2018-12-16.
  */
