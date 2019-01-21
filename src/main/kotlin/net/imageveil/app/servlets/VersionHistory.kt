@@ -57,12 +57,12 @@ class VersionHistory : HttpServlet() {
                                     }
 
                                     p(classes = "m-versions--version--details--all--section-head") { strong { +"Features" } }
-                                    jVersion.details.fix.forEach { feat ->
+                                    jVersion.details.feat.forEach { feat ->
                                         p(classes = "m-versions--version--details--all--section-item") { +feat }
                                     }
 
                                     p(classes = "m-versions--version--details--all--section-head") { strong { +"Chores" } }
-                                    jVersion.details.fix.forEach { chore ->
+                                    jVersion.details.chore.forEach { chore ->
                                         p(classes = "m-versions--version--details--all--section-item") { +chore }
                                     }
                                 }
