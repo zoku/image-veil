@@ -1,4 +1,4 @@
-package net.imageveil.cli
+package net.imageveil.app.utils
 
 import java.util.*
 

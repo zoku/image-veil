@@ -3,8 +3,8 @@ package net.imageveil.app.servlets
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
 import net.imageveil.app.model.ImageOptions
+import net.imageveil.app.utils.Config
 import net.imageveil.lib.transformers.*
-import net.imageveil.lib.Config
 import net.imageveil.lib.ImageVeil
 import net.imageveil.lib.domain.Area
 import org.slf4j.LoggerFactory
@@ -60,8 +60,8 @@ class ImageReceiver : HttpServlet() {
         }
 
         when (options.mode) {
-            "fill" -> veil.addTransformerToQueue(Fill(areas))
-            "square" -> veil.addTransformerToQueue(SquareMosaic(areas))
+            "fill" -> veil.addTransformerToQueue(Fill(areas, Config.transformers_masks_fill_color))
+            "square" -> veil.addTransformerToQueue(SquareMosaic(areas, Config.transformers_masks_squareMosaic_squareSize))
         }
 
         if (options.resize && (image.width > Config.transformers_scaleDown_maxImageEdgeSize || image.height > Config.transformers_scaleDown_maxImageEdgeSize)) {
