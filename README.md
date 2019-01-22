@@ -3,6 +3,8 @@ ImageVeil is an app for image anonymisation. It can be run in jvm servlet conrai
 
 It is written in Kotlin, Javascript (jQuery), HTML5 and CCS3.
 
+*ImageVeil App* uses *[ImageVeil Lib](https://github.com/zoku/image-veil-lib)* to process images.
+
 ## Installation
 ### Config
 Do net forget to rename or copy `/src/main/resources/mailer.properties.tpl` to `/src/main/resources/mailer.properties` and fill out the missing fields! Otherwise the contact form will not work!

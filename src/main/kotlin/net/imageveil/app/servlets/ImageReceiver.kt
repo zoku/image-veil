@@ -3,8 +3,10 @@ package net.imageveil.app.servlets
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
 import net.imageveil.app.model.ImageOptions
-import net.imageveil.cli.transformers.*
-import net.imageveil.cli.Config
+import net.imageveil.lib.transformers.*
+import net.imageveil.lib.Config
+import net.imageveil.lib.ImageVeil
+import net.imageveil.lib.domain.Area
 import org.slf4j.LoggerFactory
 import javax.imageio.ImageIO
 import javax.servlet.annotation.MultipartConfig
@@ -18,6 +20,7 @@ import java.io.File
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 
 @WebServlet(
         name = "ImageReceiver",
@@ -40,28 +43,33 @@ class ImageReceiver : HttpServlet() {
         val scaleX = image.width / options.data.width
         val scaleY = image.height / options.data.height
 
-        val transformers = arrayListOf<Transformer>()
+        val areas = options.areas.map { Area(
+                (it.x * scaleX).roundToInt(),
+                (it.y * scaleY).roundToInt(),
+                (it.width * scaleX).roundToInt(),
+                (it.height * scaleY).roundToInt()
+        ) }
+
+        val veil = ImageVeil(imagePart.inputStream)
 
         // Add transformers
-        transformers.add(Rotate(imageMataData))
+        veil.addTransformerToQueue(Rotate(imageMataData))
 
         if (options.addNoise) {
-            transformers.add(Noise(Config.transformers_noise_percentageToAdd, Config.transformers_noise_intensityOfNoise))
+            veil.addTransformerToQueue(Noise(Config.transformers_noise_percentageToAdd, Config.transformers_noise_intensityOfNoise))
         }
 
         when (options.mode) {
-            "fill" -> transformers.add(Fill(options.areas, scaleX, scaleY))
-            "square" -> transformers.add(SquareMosaic(options.areas, scaleX, scaleY))
+            "fill" -> veil.addTransformerToQueue(Fill(areas))
+            "square" -> veil.addTransformerToQueue(SquareMosaic(areas))
         }
 
         if (options.resize && (image.width > Config.transformers_scaleDown_maxImageEdgeSize || image.height > Config.transformers_scaleDown_maxImageEdgeSize)) {
-            transformers.add(ScaleDown())
+            veil.addTransformerToQueue(ScaleDown())
         }
 
         // Run transformers
-        transformers.forEach { transformer ->
-            image = transformer.transform(image)
-        }
+        image = veil.run()
 
         // Prepare image as image-uri
         val baos = ByteArrayOutputStream()

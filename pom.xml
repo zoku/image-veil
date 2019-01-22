@@ -3,9 +3,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.zoku</groupId>
+    <groupId>net.imageveil</groupId>
     <artifactId>image-veil</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
     <packaging>war</packaging>
 
     <name>ImageVeil</name>
@@ -17,6 +17,13 @@
     </properties>
 
     <dependencies>
+        <!-- ImageVeil lib -->
+        <dependency>
+            <groupId>net.imageveil</groupId>
+            <artifactId>image-veil-lib</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
         <!-- WebApp -->
         <dependency>
             <groupId>javax.servlet</groupId>

@@ -1,0 +1,16 @@
+{
+  "id": "0.1.0",
+  "releaseDate": "2019-01-22",
+  "simple": "This version externalises the image processing functionality to make it easier to use for third parties. You can visit the repositories on GitHub.",
+  "details": {
+    "fix": [
+      "none"
+    ],
+    "feat": [
+      "*: Extract image processing into its own project and repository 'image-veil-lib'"
+    ],
+    "chore": [
+      "*: Start to extract ImageVeil functionality from website into cli"
+    ]
+  }
+}
