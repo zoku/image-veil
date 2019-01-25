@@ -10,6 +10,7 @@
       "i18n: Add italian translations"
     ],
     "chore": [
+      "pom: Use latest kotlin compiler and further reduce dependencies",
       "versions: Prepare release of ImageVeil 0.1.1",
       "pages: Make links in image-analysis relative",
       "pom: Remove unnecessary dependencies",
