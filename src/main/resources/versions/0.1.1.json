@@ -1,0 +1,19 @@
+{
+  "id": "0.1.1",
+  "releaseDate": "2019-01-2?",
+  "simple": "Adds italian translation and further cleans up ImageVeil's code.",
+  "details": {
+    "fix": [
+      "none"
+    ],
+    "feat": [
+      "i18n: Add italian translations"
+    ],
+    "chore": [
+      "versions: Prepare release of ImageVeil 0.1.1",
+      "pages: Make links in image-analysis relative",
+      "pom: Remove unnecessary dependencies",
+      "lib: Use current version of image-veil-lib"
+    ]
+  }
+}
