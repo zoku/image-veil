@@ -4,11 +4,11 @@ Las coordenadas GPS fueron censuradas por nosotros posteriormente porque eran de
 
 | Original | Anonimizado |
 |:----------|:--------------|
-| !P[Imagen original](/assets/img/analysis/o-image.jpg) | !P[Imagen anonimizado](/assets/img/analysis/a-image.jpg) |
+| !P[Imagen original](../assets/img/analysis/o-image.jpg) | !P[Imagen anonimizado](../assets/img/analysis/a-image.jpg) |
 | **Imagen ELA original** | **Imagen ELA anonimizado** |
-| !P[Imagen ELA original](/assets/img/analysis/o-ela.png) | !P[Imagen ELA anonimizado](/assets/img/analysis/a-ela.png) |
+| !P[Imagen ELA original](../assets/img/analysis/o-ela.png) | !P[Imagen ELA anonimizado](../assets/img/analysis/a-ela.png) |
 | **JPEG original** | **JPEG anonimizado** |
-| !P[JPEG original](/assets/img/analysis/o-jpeg.png) | !P[JPEG anonimizado](/assets/img/analysis/a-jpeg.png) |
+| !P[JPEG original](../assets/img/analysis/o-jpeg.png) | !P[JPEG anonimizado](../assets/img/analysis/a-jpeg.png) |
 | **Metadatos originales** | **Metadatos anonimizados** |
 | **FILE** | **FILE** |
 | **File type:** JPEG | **File Type:** JPEG |
