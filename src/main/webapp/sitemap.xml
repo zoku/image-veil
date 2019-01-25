@@ -5,6 +5,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net?l=it"/>
     </url>
 
     <url>
@@ -12,6 +13,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/impressum?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/imprint?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/pie-de-imprenta?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/pages/impressum?l=it"/>
     </url>
 
     <url>
@@ -19,6 +21,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/datenschutz?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/privacy?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/declaracion-de-privacidad?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/pages/privacy?l=it"/>
     </url>
 
     <url>
@@ -26,6 +29,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/ueber-uns?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/about-us?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/sobre-nosotros?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/pages/chi-siamo?l=it"/>
     </url>
 
     <url>
@@ -33,6 +37,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/contact?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/contact?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/contact?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/contact?l=it"/>
     </url>
 
     <url>
@@ -40,6 +45,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/anleitung?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/howto?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/instrucciones?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/pages/istruzioni?l=it"/>
     </url>
 
     <url>
@@ -47,6 +53,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/faq?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/faq?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/faq?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/pages/faq?l=it"/>
     </url>
 
     <url>
@@ -54,6 +61,7 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://image-veil.net/pages/bildanalyse?l=de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://image-veil.net/pages/image-analysis?l=en"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://image-veil.net/pages/analisis-de-imagenes?l=es"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://image-veil.net/pages/analisi-immagine?l=it"/>
     </url>
 
     <url>
