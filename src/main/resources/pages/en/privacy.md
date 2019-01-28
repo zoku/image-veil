@@ -1,12 +1,12 @@
-# Privacy policy
+# Privacy Statement
 ## Personal data
-We do not save any personal data, especialy not your ip-address or user-agent in our log files.
+We do not save any personal data - especially IP addresses or user-agents - in our log files.
 
 ## Tracking
-We do not use any tracking software. We only save the date and time of an image-anonymisation to keep track of how often the service is used.
+We do not use any tracking software. We only save the date and time of an image anonymisation to keep track of how often the service is used.
 
-## Secure transfer
-The site is only securely available via SSL/TLS (https:// in your browser's address bar). You can also use TOR to visit our site.
+## Reliable Data Transmission
+The site is securely available solely via SSL/TLS (https:// in your browser's address bar). You can also use Tor to visit our site.
 
-## Saving of images
-We do not save the images you upload to our server. They are edited and deleted from memory immediately afterwards. The image is only transfered to our server when you click the 'START'-Button.
+## Recording of Images
+We do not save the images you upload on our server. They are immediately deleted from memory after editing them. The images are only transferred to our server once you click the 'START' button.

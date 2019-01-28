@@ -1,6 +1,6 @@
-# Image analysis
-This is the data a simple image analysis is outputting. The analysis software we used is [FotoForensics <i class="fas fa-external-link-alt"></i>](http://fotoforensics.com). Professional image analysts may get even more data from an image.
-The GPS coordinates were censored afterwards, because they were too precise for our taste.
+# Image Analysis
+Below you find the data resulting from a simple image. We used [FotoForensics <i class="fas fa-external-link-alt"></i>](http://fotoforensics.com) for this analysis. Professional image analysts may find even more data in an image.
+GPS coordinates were censored afterwards, since they were too precise for our liking.
 
 | Original | Anonymised |
 |:----------|:--------------|

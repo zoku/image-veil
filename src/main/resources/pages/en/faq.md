@@ -1,29 +1,29 @@
-# Frequently asked questions (FAQ)
-**Q**: Why don't you blur the images, like in the preview?
-**A**: Simply bluring an image is not quite enough. In blured images, enough information remains to recover most of it's details. Therefor we only use coarse mosaic patterns and plain colors to securely prevent a recovery of the anonymised portions of an image. 
+# Frequently Asked Questions (FAQ)
+**Q**: Why don’t you blur the images as previewed?
+**A**: Simply blurring an image is not enough. Enough information remains to recover the image. Therefore, we only use coarse mosaic patterns and full colours to prevent the recovery of anonymised images.
 
 **Q**: What happens to my image's meta-data (e.g. EXIF-tables)?
-**A**: The application creates a new image internally, which only uses the images visual data. All other data, including meta data, is lost in the process (see [image analysis](image-analysis)).
+**A**: The application internally creates a new image, which only uses the images visual data. All other data, including the meta data, are lost in the process (see [image analysis](image-analysis)).
 
 **Q**: Why do you provide this application?
-**A**: Read what we're writing [about us](about-us).
+**A**: More information can be found in the [about us](about-us) section.
 
-**Q**: Https is not secure enough for me! Can I use ImageVeil via [Tor <i class="fas fa-external-link-alt"></i>](https://www.torproject.org)?
-**A**: Yes! We have a Tor service on [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
+**Q**: Https is not secure enough for me! Can I use ImageVeil via [Tor](https://www.torproject.org)?
+**A**: Yes! We have a Tor service under [xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion](http://xdnjs7n2hlr53h22mm3cgudowl3vyi2jvvrubopomlkb2njiotfjacyd.onion).
 
 **Q**: Do you use tracking software?
-**A**: No. We only save date and time of an editing process to maintain an overview on how well ImageVeil is received. We use *no* trackers, *no* Facebook-, Twitter-, or Google-plugins and *no* advertisement network.
+**A**: No. We only save date and time of an editing process to maintain an overview on how often ImageVeil is used. We do *not* use any trackers, any Facebook-, Twitter-, or Google-plugins neither any advertisement network.
 
 **Q**: Is my image safe with you?
-**A**: Yes. It will be in our server's memory briefly while being edited and deleted immediately afterwards. In the meantime we cannot access your image.
+**A**: Yes. It will be briefly stored in our server's memory while being edited and will be immediately deleted afterwards. Meanwhile, we cannot access your image.
 
-**Q**: Can I contribute?
-**A**: Sure! If you know Kotlin or Javascript, you can make a pull request on [Github <i class="fab fa-github"></i>](https://github.com/zoku/image-veil). You can also report errors and suggest improvements. Use our [contact form](../contact).
+**Q**: Am I able to contribute to your service?
+**A**: Definitely! If you master Kotlin or Javascript, you can make a pull request on [Github](https://github.com/zoku/image-veil). Additionally, you can report errors and suggest improvements. For this, please use our [contact form](../contact).
 
-**Q**: What data is saved on your server?
-**A**: Only date and time when you edited your image (see [statistics](../statistics)). Your data is your's and your's alone!
+**Q**: Which data are saved on your server?
+**A**: Only date and time of editing your image (see [statistics](../statistics)). Your data is yours and yours alone!
 
-**Q**: In which browsers does ImageVeil run?
+**Q**: Which browsers do support ImageVeil?
 **A**:
 <table>
     <tr>
@@ -100,7 +100,7 @@
     </tr>
 </table>
 
-O = Without limitations
-! = With limitations
-X = Not usable
-? = Not tested
+O = unrestricted
+! = restricted
+X = unusable
+? = not tested
