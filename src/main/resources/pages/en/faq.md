@@ -3,7 +3,7 @@
 **A**: Simply blurring an image is not enough. Enough information remains to recover the image. Therefore, we only use coarse mosaic patterns and full colours to prevent the recovery of anonymised images.
 
 **Q**: What happens to my image's meta-data (e.g. EXIF-tables)?
-**A**: The application internally creates a new image, which only uses the images visual data. All other data, including the meta data, are lost in the process (see [image analysis](image-analysis)).
+**A**: The application internally creates a new image, which only uses the images visual data. Further data, including meta data, are lost in the process (see [image analysis](image-analysis)).
 
 **Q**: Why do you provide this application?
 **A**: More information can be found in the [about us](about-us) section.
@@ -23,7 +23,7 @@
 **Q**: Which data are saved on your server?
 **A**: Only date and time of editing your image (see [statistics](../statistics)). Your data is yours and yours alone!
 
-**Q**: Which browsers do support ImageVeil?
+**Q**: Which browsers support ImageVeil?
 **A**:
 <table>
     <tr>

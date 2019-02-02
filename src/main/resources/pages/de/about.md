@@ -1,5 +1,5 @@
 # Über uns
-ImageVail ist eine App, mit der du ganz einfach und ohne Bildbearbeitungssoftware deine Fotos anonymisieren kannst.
+ImageVeil ist eine App, mit der du ganz einfach und ohne Bildbearbeitungssoftware deine Fotos anonymisieren kannst.
 
 Wir sind der Meinung, dass jeder Mensch ein Recht darauf hat, auf Bildern unerkannt zu bleiben. Im Zeitalter der sozialen Medien weiß man nie, wer so ein Foto zu sehen bekommt. Leider gibt es neben der komplizierten Methode mit Photoshop und exiftool kaum eine Software, die Bilder wirklich anonym behandelt. Entweder wird das Bild auf einen Server hochgeladen, der nicht vertrauenswürdig ist, oder die Website ist voller Werbung, Tracker und Social Media Plugins. Darum stellen wir ImageVeil allen zur Verfügung, die sich nicht darauf verlassen wollen, was ein kommerzieller Anbieter mit ihren Daten macht.
 
