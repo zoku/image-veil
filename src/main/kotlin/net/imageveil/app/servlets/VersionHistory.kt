@@ -33,7 +33,10 @@ class VersionHistory : HttpServlet() {
 
                 ol(classes = "m-versions") {
 
-                    val versions = File(VersionHistory::class.java.getResource("/versions").toURI()).listFiles().filter { it.name.endsWith(".json") }.reversed()
+                    val versions = File(VersionHistory::class.java.getResource("/versions").toURI())
+                            .listFiles()
+                            .filter { it.name.endsWith(".json") }
+                            .sortedByDescending { it.name }
 
                     versions.forEachIndexed { index, version ->
                         val jVersion = gson.fromJson(version.readText(), VersionDescription::class.java) ?: return@forEachIndexed

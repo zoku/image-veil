@@ -1,7 +1,7 @@
 {
   "id": "0.1.2",
   "releaseDate": "2019-02-03",
-  "simple": "First stable release.<br>ImageVeil can anonymise and pixelise images, harden images against analysis and works with most browsers and devices.",
+  "simple": "First stable release. ImageVeil can anonymise and pixelise images, harden images against analysis and works with most browsers and devices.",
   "details": {
     "fix": [
       "none"
