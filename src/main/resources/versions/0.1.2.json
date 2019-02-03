@@ -11,6 +11,7 @@
       "PageTemplate: Add theme-color for mobile-chrome zoku 02/02/2019 14:53"
     ],
     "chore": [
+      "pom: Update version number to 0.1.2",
       "versions: Prepare release of ImageVeil 0.1.2",
       "img/i18n: Replace logos with SVG and fix typos in en and es",
       "PageTemplate: Temporarily remove Italian from language list",
