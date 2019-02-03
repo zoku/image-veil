@@ -3,7 +3,9 @@ package net.imageveil.app.servlets
 import com.drew.imaging.ImageMetadataReader
 import com.google.gson.GsonBuilder
 import net.imageveil.app.model.ImageOptions
+import net.imageveil.app.model.ImageResponse
 import net.imageveil.app.utils.Config
+import net.imageveil.app.utils.I18n
 import net.imageveil.lib.transformers.*
 import net.imageveil.lib.ImageVeil
 import net.imageveil.lib.domain.Area
@@ -20,6 +22,7 @@ import java.io.File
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 import kotlin.math.roundToInt
 
 @WebServlet(
@@ -34,9 +37,37 @@ class ImageReceiver : HttpServlet() {
     private val gson = GsonBuilder().setPrettyPrinting().create()
 
     override fun doPost(request: HttpServletRequest, response: HttpServletResponse) {
+        val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
+
         // Define variables
         val options = gson.fromJson(request.getParameter("options")?:"", ImageOptions::class.java)
         val imagePart = request.getPart("image")
+
+        if (imagePart.size > 5_242_880) {
+            response.writer.append(
+                    gson.toJson(
+                            ImageResponse(success = false, error = i18n
+                                    .get(key = "js.fileSizeHint")
+                                    .replace("[size1]", "%.2f".format(imagePart.size / 1024f / 1024f))
+                                    .replace("[size2]", "%.2f".format(5_242_880 / 1024f / 1024f))
+                            )
+                    )
+            )
+            return
+        }
+
+        if (imagePart.contentType != "image/jpeg") {
+            response.writer.append(
+                    gson.toJson(
+                            ImageResponse(success = false, error = i18n
+                                    .get(key = "js.fileTypeHint")
+                                    .replace("[type]", imagePart.contentType)
+                            )
+                    )
+            )
+            return
+        }
+
         var image = ImageIO.read(imagePart.inputStream)
         val imageMataData = ImageMetadataReader.readMetadata(imagePart.inputStream)
 
@@ -89,6 +120,6 @@ class ImageReceiver : HttpServlet() {
 
         // Output image
         response.setIntHeader("Content-Length", imageString.length)
-        response.writer.append(imageString)
+        response.writer.append(gson.toJson(ImageResponse(success = true, image = imageString)))
     }
 }

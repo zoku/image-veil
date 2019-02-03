@@ -41,6 +41,7 @@ class Application : HttpServlet() {
 
             div(classes = "m-upload") {
                 attributes["data-i18n--file-size-hint"] = i18n.get("js.fileSizeHint")
+                attributes["data-i18n--file-type-hint"] = i18n.get("js.fileTypeHint")
                 attributes["data-i18n--new-file-hint"] = i18n.get("js.newFileHint")
 
                 p(classes = "m-upload--text") { +i18n.get("app.main.upload.startHint") }

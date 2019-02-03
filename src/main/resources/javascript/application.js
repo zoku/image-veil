@@ -59,6 +59,12 @@
             return;
         }
 
+        if (file.type !== 'image/jpeg') {
+            $upload.text.text($upload.module.data('i18n--file-type-hint').replace('[type]', file.type));
+            $preview.module.hide();
+            return;
+        }
+
         $upload.text.addClass('m-upload--text_small').html(file.name + '<br>' + $upload.module.data('i18n--new-file-hint'));
 
         previewImage(this);
@@ -134,16 +140,23 @@
                 return xhr;
             }
         })
-            .done(function (response) {
+        .done(function (response) {
+            var _response = JSON.parse(response);
+
+            if (_response.success) {
                 var $download = $('.m-download');
-                $download.find('img').attr('src', response);
+                $download.find('img').attr('src', _response.image);
                 $download.fadeIn();
-            })
-            .always(function () {
-                $progress.bar.removeClass('m-progress--bar_indeterminate');
-                $progress.module.hide();
-                $startButton.show();
-            });
+            } else {
+                $upload.text.text(_response.error).removeClass('m-upload--text_small');
+                $preview.module.hide();
+            }
+        })
+        .always(function () {
+            $progress.bar.removeClass('m-progress--bar_indeterminate');
+            $progress.module.hide();
+            $startButton.show();
+        });
     });
 
     $preview.areas.on('click', function (e) {
