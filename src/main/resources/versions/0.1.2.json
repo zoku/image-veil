@@ -1,0 +1,24 @@
+{
+  "id": "0.1.2",
+  "releaseDate": "2019-02-03",
+  "simple": "First stable release.<br>ImageVeil can anonymise and pixelise images, harden images against analysis and works with most browsers and devices.",
+  "details": {
+    "fix": [
+      "none"
+    ],
+    "feat": [
+      "js/imagereceiver: Add file size and -type checking fe and be zoku 03/02/2019 14:27",
+      "PageTemplate: Add theme-color for mobile-chrome zoku 02/02/2019 14:53"
+    ],
+    "chore": [
+      "versions: Prepare release of ImageVeil 0.1.2",
+      "img/i18n: Replace logos with SVG and fix typos in en and es",
+      "PageTemplate: Temporarily remove Italian from language list",
+      "i18n(en): Fix a typo and update source files",
+      "i18n(en): Update pages' texts",
+      "i18n (it): Fix technical typo",
+      "i18n: Add prepared translation sources",
+      "pom: Use latest kotlin compiler and further reduce dependencies"
+    ]
+  }
+}
