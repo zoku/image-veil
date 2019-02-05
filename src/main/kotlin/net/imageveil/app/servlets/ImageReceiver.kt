@@ -119,7 +119,8 @@ class ImageReceiver : HttpServlet() {
         }
 
         // Output image
-        response.setIntHeader("Content-Length", imageString.length)
-        response.writer.append(gson.toJson(ImageResponse(success = true, image = imageString)))
+        val jsonString = gson.toJson(ImageResponse(success = true, image = imageString))
+        response.setIntHeader("Content-Length", jsonString.length)
+        response.writer.append(jsonString)
     }
 }
