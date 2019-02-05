@@ -52,10 +52,12 @@ class Application : HttpServlet() {
                 }
             }
 
-            div(classes = "m-preview") {
-                div(classes = "m-preview--shadow")
-                div(classes = "m-preview--areas")
-                img(classes = "m-preview--image", src = "${request.contextPath}/assets/img/preview.png", alt = i18n.get("app.main.preview.image.alt"))
+            div(classes = "m-preview-container") {
+                i(classes = "m-preview-container--touch-help fas fa-hand-point-up")
+                div(classes = "m-preview") {
+                    div(classes = "m-preview--areas")
+                    img(classes = "m-preview--image", src = "", alt = i18n.get("app.main.preview.image.alt"))
+                }
             }
 
             div(classes = "m-progress") {

@@ -15,9 +15,8 @@
     };
 
     var $preview = {
-        module: $('.m-preview'),
+        container: $('.m-preview-container'),
         image: $('.m-preview .m-preview--image'),
-        shadow: $('.m-preview .m-preview--shadow'),
         areas: $('.m-preview .m-preview--areas')
     };
 
@@ -55,13 +54,13 @@
 
         if (file.size > maxAllowedFileSizeMB * 1024 * 1024) {
             $upload.text.text($upload.module.data('i18n--file-size-hint').replace('[size1]', (file.size / 1024 / 1024).toFixed(2)).replace('[size2]', maxAllowedFileSizeMB));
-            $preview.module.hide();
+            $preview.container.hide();
             return;
         }
 
         if (file.type !== 'image/jpeg') {
             $upload.text.text($upload.module.data('i18n--file-type-hint').replace('[type]', file.type));
-            $preview.module.hide();
+            $preview.container.hide();
             return;
         }
 
@@ -149,7 +148,7 @@
                 $download.fadeIn();
             } else {
                 $upload.text.text(_response.error).removeClass('m-upload--text_small');
-                $preview.module.hide();
+                $preview.container.hide();
             }
         })
         .always(function () {
@@ -200,6 +199,33 @@
         }
     }
 
+    // Bind preview image loading
+    var animationTime = 800;
+
+    $preview.image.on('load', function () {
+        $preview.container.show();
+
+        if ($preview.container.width() < $preview.image.width()) {
+            $preview.container
+                .scrollLeft(($preview.image.width() - $preview.container.width()) / 2)
+                .find('.m-preview-container--touch-help').fadeIn(animationTime, function () {
+                $preview.container.animate({
+                    scrollLeft: $preview.image.width() - $preview.container.width()
+                }, animationTime, function () {
+                    $preview.container.animate({
+                        scrollLeft: 0
+                    }, animationTime, function () {
+                        $preview.container.animate({
+                            scrollLeft: ($preview.image.width() - $preview.container.width()) / 2
+                        }, animationTime, function () {
+                            $preview.container.find('.m-preview-container--touch-help').fadeOut(animationTime);
+                        });
+                    });
+                });
+            });
+        }
+    });
+
     function previewImage(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -207,7 +233,6 @@
                 $preview.image.attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
-            $preview.module.show();
         }
     }
 
