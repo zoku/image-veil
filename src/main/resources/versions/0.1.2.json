@@ -7,8 +7,8 @@
       "none"
     ],
     "feat": [
-      "js/imagereceiver: Add file size and -type checking fe and be zoku 03/02/2019 14:27",
-      "PageTemplate: Add theme-color for mobile-chrome zoku 02/02/2019 14:53"
+      "js/imagereceiver: Add file size and -type checking frontend and backend",
+      "PageTemplate: Add theme-color for mobile-chrome"
     ],
     "chore": [
       "pom: Update version number to 0.1.2",
