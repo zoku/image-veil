@@ -105,7 +105,7 @@
         $form.options.val(JSON.stringify(imageOptions));
 
         $.ajax({
-            url: '/imagereceiver',
+            url: './imagereceiver',
             type: 'POST',
             data: new FormData($form.module[0]),
             cache: false,
@@ -149,10 +149,10 @@
                 $download.find('.m-download--content--cta').on('click', function (e) {
                     e.preventDefault();
                     var blob = new Blob([base64ToArrayBuffer(_response.image)], {type: "image/jpeg"});
-                    var link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = 'anonymous-image.jpg';
-                    link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+                    $('<a/>')
+                        .attr('href', window.URL.createObjectURL(blob))
+                        .attr('download', 'anonymous-image.jpg')
+                        .click();
                 });
 
                 $download.fadeIn();
