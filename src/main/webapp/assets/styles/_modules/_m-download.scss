@@ -43,5 +43,16 @@
 			width: 100%;
 			margin: auto;
 		}
+
+		.m-download--content--cta {
+			display: inline-block;
+			margin: 1em 0 0 0;
+			padding: .5em 1em;
+			color: #fff;
+			text-decoration: none;
+			background: #0d656d;
+			border-radius: 5px;
+			box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+		}
 	}
 }

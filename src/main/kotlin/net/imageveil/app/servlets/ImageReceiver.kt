@@ -102,12 +102,25 @@ class ImageReceiver : HttpServlet() {
         // Run transformers
         image = veil.run()
 
-        // Prepare image as image-uri
+        // Output image
         val baos = ByteArrayOutputStream()
         ImageIO.write(image, "JPEG", baos)
 
-        val data = DatatypeConverter.printBase64Binary(baos.toByteArray())
-        val imageString = "data:image/jpeg;base64,$data"
+//        val hashBytes = MessageDigest.getInstance("SHA-256").digest(baos.toByteArray())
+//        val hash = DatatypeConverter.printHexBinary(hashBytes)
+
+//        val cipherImage = try {
+//            Crypt.encrypt(baos.toByteArray())
+//        } catch (e: Exception) {
+//            response.sendError(500, "Could not encrypt image")
+//            return
+//        }
+
+//        ImagePool[hash] = ImagePool.ImagePoolImage(cipherImage.message, LocalDateTime.now().plusHours(1))
+
+        val jsonString = gson.toJson(ImageResponse(success = true, image = DatatypeConverter.printBase64Binary(baos.toByteArray())))
+        response.setIntHeader("Content-Length", jsonString.length)
+        response.writer.append(jsonString)
 
         // Log process
         val statsFilePath = servletContext.getRealPath(File.separator) + "../imageveil-uses.csv"
@@ -117,10 +130,5 @@ class ImageReceiver : HttpServlet() {
         } catch (e: Exception) {
             logger.error("Stats file '$statsFilePath' could not be written.")
         }
-
-        // Output image
-        val jsonString = gson.toJson(ImageResponse(success = true, image = imageString))
-        response.setIntHeader("Content-Length", jsonString.length)
-        response.writer.append(jsonString)
     }
 }

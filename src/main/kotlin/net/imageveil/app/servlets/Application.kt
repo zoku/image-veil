@@ -77,7 +77,8 @@ class Application : HttpServlet() {
                 div(classes = "m-download--content") {
                     h2 { +i18n.get("app.download.headline") }
                     p { +i18n.get("app.download.hint") }
-                    img(src = "${request.contextPath}/assets/img/preview.png", alt = i18n.get("app.download.image.alt"))
+                    img(src = "#", alt = i18n.get("app.download.image.alt"))
+                    a(href = "#", classes = "m-download--content--cta") { +i18n.get("app.download.cta.label") }
                 }
             }
         }

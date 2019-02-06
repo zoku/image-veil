@@ -144,7 +144,17 @@
 
             if (_response.success) {
                 var $download = $('.m-download');
-                $download.find('img').attr('src', _response.image);
+                $download.find('img').attr('src', 'data:image/jpeg;base64,' + _response.image);
+
+                $download.find('.m-download--content--cta').on('click', function (e) {
+                    e.preventDefault();
+                    var blob = new Blob([base64ToArrayBuffer(_response.image)], {type: "image/jpeg"});
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'anonymous-image.jpg';
+                    link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+                });
+
                 $download.fadeIn();
             } else {
                 $upload.text.text(_response.error).removeClass('m-upload--text_small');
@@ -174,6 +184,16 @@
     });
 
     // Functions
+    function base64ToArrayBuffer(base64) {
+        var binaryString = window.atob(base64);
+        var binaryLen = binaryString.length;
+        var bytes = new Uint8Array(binaryLen);
+        for (var i = 0; i < binaryLen; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes;
+    }
+
     function positionToPercent(area, alsoConvertPosition) {
         var $area = $(area);
         var $areaBG = $area.find('.m-preview--areas--area--image-container--image');

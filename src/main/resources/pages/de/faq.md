@@ -82,7 +82,7 @@
     </tr>
     <tr>
         <td align="right"><i class="fab fa-internet-explorer"></i></td>
-        <td>O</td>
+        <td>!</td>
         <td>?</td>
         <td>-</td>
         <td>-</td>
@@ -91,7 +91,7 @@
     </tr>
     <tr>
         <td align="right"><i class="fab fa-edge"></i></td>
-        <td>X</td>
+        <td>O</td>
         <td>?</td>
         <td>-</td>
         <td>?</td>

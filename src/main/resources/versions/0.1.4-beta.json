@@ -1,0 +1,16 @@
+{
+  "id": "0.1.4-beta",
+  "releaseDate": "2019-02-06",
+  "simple": "ImageVeil does now provide a download button for anonymised images.",
+  "details": {
+    "fix": [
+      "none"
+    ],
+    "feat": [
+      "ImageVeil can now convert the image data to a link, so you can download the image simply by clicking on the button."
+    ],
+    "chore": [
+      "none"
+    ]
+  }
+}
