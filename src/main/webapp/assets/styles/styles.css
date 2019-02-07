@@ -5962,6 +5962,18 @@ readers do not read off random characters that represent icons */
 .m-preview-container .m-preview {
   width: 960px;
 }
+.m-preview-container .m-preview.m-preview_portrait {
+  width: unset;
+  height: 960px;
+}
+.m-preview-container .m-preview.m-preview_portrait .m-preview--areas {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.m-preview-container .m-preview.m-preview_portrait .m-preview--image {
+  width: unset;
+  margin: auto;
+}
 .m-preview-container .m-preview .m-preview--areas {
   position: absolute;
   top: 0;
@@ -6005,10 +6017,10 @@ readers do not read off random characters that represent icons */
 }
 .m-preview-container .m-preview .m-preview--areas .m-preview--areas--area .m-preview--areas--area--remove {
   position: absolute;
-  top: -15px;
-  right: -15px;
-  width: 25px;
-  height: 25px;
+  top: -20px;
+  right: -20px;
+  width: 40px;
+  height: 40px;
   z-index: 100;
   color: #fff;
   text-decoration: none;
@@ -6016,7 +6028,8 @@ readers do not read off random characters that represent icons */
   border: solid 1px #fff;
   border-radius: 50%;
   text-align: center;
-  line-height: 22px;
+  line-height: 1;
+  font-size: 20px;
   cursor: pointer;
 }
 .m-preview-container .m-preview .m-preview--image {
@@ -6151,7 +6164,7 @@ readers do not read off random characters that represent icons */
 }
 .m-download .m-download--content .m-download--content--cta {
   display: inline-block;
-  margin: 1em 0 0 0;
+  margin: 1em 0;
   padding: 0.5em 1em;
   color: #fff;
   text-decoration: none;

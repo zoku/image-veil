@@ -16,6 +16,7 @@
 
     var $preview = {
         container: $('.m-preview-container'),
+        module: $('.m-preview'),
         image: $('.m-preview .m-preview--image'),
         areas: $('.m-preview .m-preview--areas')
     };
@@ -149,10 +150,14 @@
                 $download.find('.m-download--content--cta').on('click', function (e) {
                     e.preventDefault();
                     var blob = new Blob([base64ToArrayBuffer(_response.image)], {type: "image/jpeg"});
-                    $('<a/>')
-                        .attr('href', window.URL.createObjectURL(blob))
-                        .attr('download', 'anonymous-image.jpg')
-                        .click();
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'anonymous-image.jpg';
+                    $(link).click();
+                    // $('<a/>')
+                    //     .attr('href', window.URL.createObjectURL(blob))
+                    //     .attr('download', 'anonymous-image.jpg')
+                    //     .click();
                 });
 
                 $download.fadeIn();
@@ -176,6 +181,18 @@
         $('.m-preview--areas--area--image').each(function () {
             positionToPercent(this);
         });
+
+        if ($preview.image.width() < $preview.image.height() && $preview.image.width() >= $preview.container.width()) {
+            $preview.areas.css({
+                left: '0',
+                transform: 'none'
+            });
+        } else {
+            $preview.areas.css({
+                left: '',
+                transform: ''
+            });
+        }
     });
 
     $('.m-download--close').on('click', function (e) {
@@ -224,6 +241,34 @@
 
     $preview.image.on('load', function () {
         $preview.container.show();
+
+        if ($preview.image.width() < $preview.image.height()) {
+            $preview.module.addClass('m-preview_portrait');
+            $preview.areas.css({
+                width: $preview.image.width(),
+                height: $preview.image.height()
+            });
+
+            if ($preview.image.width() >= $preview.container.width()) {
+                $preview.areas.css({
+                    left: '0',
+                    transform: 'none'
+                });
+            } else {
+                $preview.areas.css({
+                    left: '',
+                    transform: ''
+                });
+            }
+        } else {
+            $preview.module.removeClass('m-preview_portrait');
+            $preview.areas.css({
+                width: '',
+                height: '',
+                left: '',
+                transform: ''
+            });
+        }
 
         if ($preview.container.width() < $preview.image.width()) {
             $preview.container
