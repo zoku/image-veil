@@ -148,11 +148,10 @@
 
                 $download.find('.m-download--content--cta').on('click', function (e) {
                     e.preventDefault();
-                    var blob = new Blob([base64ToArrayBuffer(_response.image)], {type: "image/jpeg"});
-                    $('<a/>')
-                        .attr('href', window.URL.createObjectURL(blob))
-                        .attr('download', 'anonymous-image.jpg')
-                        .click();
+                    $('a')
+                    .attr('href', window.URL.createObjectURL(base64ToBlob(_response.image)))
+                    .attr('download', 'anonymous-image.jpg')
+                    .click();
                 });
 
                 $download.fadeIn();
@@ -184,14 +183,15 @@
     });
 
     // Functions
-    function base64ToArrayBuffer(base64) {
-        var binaryString = window.atob(base64);
-        var binaryLen = binaryString.length;
-        var bytes = new Uint8Array(binaryLen);
-        for (var i = 0; i < binaryLen; i++) {
-            bytes[i] = binaryString.charCodeAt(i);
+    function base64ToBlob(base64) {
+        var binary = atob(base64);
+        var len = binary.length;
+        var buffer = new ArrayBuffer(len);
+        var view = new Uint8Array(buffer);
+        for ( var i = 0; i < len; i++) {
+            view[i] = binary.charCodeAt(i);
         }
-        return bytes;
+        return new Blob([view]);
     }
 
     function positionToPercent(area, alsoConvertPosition) {
