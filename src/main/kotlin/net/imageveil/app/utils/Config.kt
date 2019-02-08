@@ -12,6 +12,9 @@ object Config {
 
     val transformers_masks_squareMosaic_squareSize: Double
 
+    val transformers_masks_crystallize_cells: Int
+    val transformers_masks_crystallize_scaleFactor: Int
+
     val transformers_masks_fill_color: Int
 
     init {
@@ -23,6 +26,9 @@ object Config {
         transformers_noise_intensityOfNoise = config["transformers.noise.intensityOfNoise"].toString().toInt()
 
         transformers_masks_squareMosaic_squareSize = config["transformers.masks.squareMosaic.squareSize"].toString().toDouble()
+
+        transformers_masks_crystallize_cells = config["transformers.masks.crystallize.cells"].toString().toInt()
+        transformers_masks_crystallize_scaleFactor = config["transformers.masks.crystallize.scaleFactor"].toString().toInt()
 
         transformers_masks_fill_color = Integer.parseInt(config["transformers.masks.fill.color"].toString(), 16)
     }

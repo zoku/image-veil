@@ -147,14 +147,10 @@
                 var $download = $('.m-download');
                 $download.find('img').attr('src', 'data:image/jpeg;base64,' + _response.image);
 
-                $download.find('.m-download--content--cta').on('click', function (e) {
-                    e.preventDefault();
-                    var a = document.createElement("a");
-                    a.href = window.URL.createObjectURL(base64ToBlob(_response.image));
-                    a.download = "anonymous-image.jpg";
-                    document.body.appendChild(a);
-                    a.click();
-                });
+                $download
+                    .find('.m-download--content--cta')
+                    .attr('href', window.URL.createObjectURL(base64ToBlob(_response.image)))
+                    .attr('download', 'anonymous-image.jpg');
 
                 $download.fadeIn();
             } else {
