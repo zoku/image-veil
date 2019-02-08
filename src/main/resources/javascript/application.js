@@ -149,15 +149,12 @@
 
                 $download.find('.m-download--content--cta').on('click', function (e) {
                     e.preventDefault();
-                    var blob = new Blob([base64ToArrayBuffer(_response.image)], {type: "image/jpeg"});
-                    var link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = 'anonymous-image.jpg';
-                    $(link).click();
-                    // $('<a/>')
-                    //     .attr('href', window.URL.createObjectURL(blob))
-                    //     .attr('download', 'anonymous-image.jpg')
-                    //     .click();
+                    console.log('start download');
+                    var a = document.createElement("a");
+                    a.href = window.URL.createObjectURL(base64ToBlob(_response.image));
+                    a.download = "test.jpg";
+                    document.body.appendChild(a);
+                    a.click();
                 });
 
                 $download.fadeIn();
@@ -201,14 +198,15 @@
     });
 
     // Functions
-    function base64ToArrayBuffer(base64) {
-        var binaryString = window.atob(base64);
-        var binaryLen = binaryString.length;
-        var bytes = new Uint8Array(binaryLen);
-        for (var i = 0; i < binaryLen; i++) {
-            bytes[i] = binaryString.charCodeAt(i);
+    function base64ToBlob(base64) {
+        var binary = atob(base64);
+        var len = binary.length;
+        var buffer = new ArrayBuffer(len);
+        var view = new Uint8Array(buffer);
+        for ( var i = 0; i < len; i++) {
+            view[i] = binary.charCodeAt(i);
         }
-        return bytes;
+        return new Blob([view], { type: 'image/jpeg' });
     }
 
     function positionToPercent(area, alsoConvertPosition) {
