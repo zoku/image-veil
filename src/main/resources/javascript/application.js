@@ -149,10 +149,9 @@
 
                 $download.find('.m-download--content--cta').on('click', function (e) {
                     e.preventDefault();
-                    console.log('start download');
                     var a = document.createElement("a");
                     a.href = window.URL.createObjectURL(base64ToBlob(_response.image));
-                    a.download = "test.jpg";
+                    a.download = "anonymous-image.jpg";
                     document.body.appendChild(a);
                     a.click();
                 });
