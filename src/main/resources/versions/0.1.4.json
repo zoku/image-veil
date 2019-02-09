@@ -1,0 +1,18 @@
+{
+  "id": "0.1.4",
+  "releaseDate": "2019-02-09",
+  "simple": "ImageVeil does now provide a download button for anonymised images and a new pixelisation method 'Crystallize'. You can select the Crystallize pixelisation from the options menu. Also ImageVeil now provides settings to add it to your home screen on mobile devices with Android. You will still need an internet connection but you'll have a streamlined interface with less distractions.",
+  "details": {
+    "fix": [
+      "none"
+    ],
+    "feat": [
+      "ImageVeil can now convert the image data to a link, so you can download the image simply by clicking on the button.",
+      "You can now choose the pixelisation method 'Crystallize', which uses a Voronoi diagram to mask your anonymisation areas. It looks really cool :D",
+      "If you choose to add ImageVeil to the home screen of your Android device, you'll now get a liter, streamlined interface and more space to work with. It still needs an internet connection, though."
+    ],
+    "chore": [
+      "The translations for English, German and Spanish now cover the new features."
+    ]
+  }
+}
