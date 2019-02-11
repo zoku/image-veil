@@ -16,6 +16,7 @@
 
     var $preview = {
         container: $('.m-preview-container'),
+        module: $('.m-preview'),
         image: $('.m-preview .m-preview--image'),
         areas: $('.m-preview .m-preview--areas')
     };
@@ -146,13 +147,10 @@
                 var $download = $('.m-download');
                 $download.find('img').attr('src', 'data:image/jpeg;base64,' + _response.image);
 
-                $download.find('.m-download--content--cta').on('click', function (e) {
-                    e.preventDefault();
-                    $('a')
+                $download
+                    .find('.m-download--content--cta')
                     .attr('href', window.URL.createObjectURL(base64ToBlob(_response.image)))
-                    .attr('download', 'anonymous-image.jpg')
-                    .click();
-                });
+                    .attr('download', 'anonymous-image.jpg');
 
                 $download.fadeIn();
             } else {
@@ -175,6 +173,18 @@
         $('.m-preview--areas--area--image').each(function () {
             positionToPercent(this);
         });
+
+        if ($preview.image.width() < $preview.image.height() && $preview.image.width() >= $preview.container.width()) {
+            $preview.areas.css({
+                left: '0',
+                transform: 'none'
+            });
+        } else {
+            $preview.areas.css({
+                left: '',
+                transform: ''
+            });
+        }
     });
 
     $('.m-download--close').on('click', function (e) {
@@ -191,7 +201,7 @@
         for ( var i = 0; i < len; i++) {
             view[i] = binary.charCodeAt(i);
         }
-        return new Blob([view]);
+        return new Blob([view], { type: 'image/jpeg' });
     }
 
     function positionToPercent(area, alsoConvertPosition) {
@@ -224,6 +234,34 @@
 
     $preview.image.on('load', function () {
         $preview.container.show();
+
+        if ($preview.image.width() < $preview.image.height()) {
+            $preview.module.addClass('m-preview_portrait');
+            $preview.areas.css({
+                width: $preview.image.width(),
+                height: $preview.image.height()
+            });
+
+            if ($preview.image.width() >= $preview.container.width()) {
+                $preview.areas.css({
+                    left: '0',
+                    transform: 'none'
+                });
+            } else {
+                $preview.areas.css({
+                    left: '',
+                    transform: ''
+                });
+            }
+        } else {
+            $preview.module.removeClass('m-preview_portrait');
+            $preview.areas.css({
+                width: '',
+                height: '',
+                left: '',
+                transform: ''
+            });
+        }
 
         if ($preview.container.width() < $preview.image.width()) {
             $preview.container

@@ -93,6 +93,7 @@ class ImageReceiver : HttpServlet() {
         when (options.mode) {
             "fill" -> veil.addTransformerToQueue(Fill(areas, Config.transformers_masks_fill_color))
             "square" -> veil.addTransformerToQueue(SquareMosaic(areas, Config.transformers_masks_squareMosaic_squareSize))
+            "crystallize" -> veil.addTransformerToQueue(Crystallize(areas, Config.transformers_masks_crystallize_cells, Config.transformers_masks_crystallize_scaleFactor))
         }
 
         if (options.resize && (image.width > Config.transformers_scaleDown_maxImageEdgeSize || image.height > Config.transformers_scaleDown_maxImageEdgeSize)) {

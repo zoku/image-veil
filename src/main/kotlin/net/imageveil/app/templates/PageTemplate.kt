@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest
 object PageTemplate {
     fun site(title: String, request: HttpServletRequest, pageId: String? = null, block: DIV.() -> Unit = {}): Document {
         val i18n = (request.getAttribute("i18n") ?: I18n(Locale.ENGLISH)) as I18n
+        val standalone = request.getParameter("app") == "true"
 
         return createHTMLDocument().html {
             lang = i18n.lang
@@ -35,6 +36,7 @@ object PageTemplate {
                 ogLocale(content = "alternate")
 
                 link(rel = "icon", type = "image/png", href = "${request.contextPath}/assets/img/favicon.png")
+                link(rel = "manifest", href="/manifest.json")
 
                 styleLink(url = "${request.contextPath}/assets/styles/styles.css")
 
@@ -42,9 +44,11 @@ object PageTemplate {
 
             body {
                 div(classes = "m-constraint") {
-                    a(classes = "m-title", href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") {
-                        img(classes = "m-title--image", src = "${request.contextPath}/assets/img/logo.svg", alt = i18n.get("app.logo.alt"))
-                        div(classes = "m-title--text") { +"ImageVeil" }
+                    if (!standalone) {
+                        a(classes = "m-title", href = "${request.contextPath}/${if(request.getParameter("l") != null) "?l=${i18n.lang}" else "" }") {
+                            img(classes = "m-title--image", src = "${request.contextPath}/assets/img/logo.svg", alt = i18n.get("app.logo.alt"))
+                            div(classes = "m-title--text") { +"ImageVeil" }
+                        }
                     }
 
                     val supportedLanguages = arrayListOf("de", "en", "es") // Add rm for Roman Empire and pi for Pirate, also fr, ru, gr, it
@@ -61,7 +65,7 @@ object PageTemplate {
                                             else -> request.requestURI
                                         }
 
-                                        a(href = "$pageUri?l=$language") {
+                                        a(href = "$pageUri?l=$language${if(standalone) "&app=true" else ""}") {
                                             img(src = "${request.contextPath}/assets/img/flags/$language.jpg"); + " ${language.toUpperCase()}"
                                         }
                                     }
@@ -72,16 +76,18 @@ object PageTemplate {
 
                     block.invoke(this)
 
-                    val lang = if(request.getParameter("l") != null) "?l=${i18n.lang}" else ""
+                    var lang = if(request.getParameter("l") != null) "?l=${i18n.lang}" else ""
+                    if (standalone && lang.isBlank()) { lang = "?app=true" } else { lang += "&app=true" }
 
                     section(classes = "m-footer") {
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.about.uri")}$lang") { +i18n.get("app.footer.links.about") }
-                        a(classes = "m-footer--link", href = "${request.contextPath}/contact$lang") { +i18n.get("app.footer.links.contact") }
+                        if (standalone) a(classes = "m-footer--link", href = "${request.contextPath}/$lang") { +i18n.get("app.title") }
+                        if (!standalone) a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.about.uri")}$lang") { +i18n.get("app.footer.links.about") }
+                        if (!standalone) a(classes = "m-footer--link", href = "${request.contextPath}/contact$lang") { +i18n.get("app.footer.links.contact") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.imprint.uri")}$lang") { +i18n.get("app.footer.links.imprint") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.privacy.uri")}$lang") { +i18n.get("app.footer.links.privacy") }
                         a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.howto.uri")}$lang") { +i18n.get("app.footer.links.howto") }
-                        a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}$lang") { +i18n.get("app.footer.links.faq") }
-                        a(classes = "m-footer--link", href = "https://github.com/zoku/image-veil") { +"${i18n.get("app.footer.links.github")} "; i(classes = "fab fa-github") }
+                        if (!standalone) a(classes = "m-footer--link", href = "${request.contextPath}/pages/${i18n.get("app.pages.faq.uri")}$lang") { +i18n.get("app.footer.links.faq") }
+                        if (!standalone) a(classes = "m-footer--link", href = "https://github.com/zoku/image-veil") { +"${i18n.get("app.footer.links.github")} "; i(classes = "fab fa-github") }
 
                         val currentVersion = File(PageTemplate::class.java.getResource("/versions").toURI()).list().filter { it.endsWith(".json") }.sortedByDescending { it }.firstOrNull() ?: "?.?.?"
                         a(classes = "m-footer--link m-footer--link_right", href = "${request.contextPath}/version-history") { +"v${currentVersion.replace(".json", "")}" }

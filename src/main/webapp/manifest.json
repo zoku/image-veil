@@ -1,0 +1,21 @@
+{
+  "short_name": "ImageVeil",
+  "name": "ImageVeil Anonylisation App",
+  "icons": [
+    {
+      "src": "/assets/img/logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/img/logo_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?app=true",
+  "background_color": "#0d656d",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0d656d"
+}
