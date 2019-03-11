@@ -1,0 +1,16 @@
+{
+  "id": "0.1.5",
+  "releaseDate": "2019-03-11",
+  "simple": "Speed up of the crystallisation pixelisation (which is now the default one).",
+  "details": {
+    "fix": [
+      "none"
+    ],
+    "feat": [
+      "Major speed up of the Voronoi diagram generation. Image scaling is no longer needed and the process takes half a second instead of eight seconds with the reference image."
+    ],
+    "chore": [
+      "none"
+    ]
+  }
+}
