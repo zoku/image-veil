@@ -77,7 +77,13 @@ object PageTemplate {
                     block.invoke(this)
 
                     var lang = if(request.getParameter("l") != null) "?l=${i18n.lang}" else ""
-                    if (standalone && lang.isBlank()) { lang = "?app=true" } else { lang += "&app=true" }
+                    if (standalone) {
+                        if (lang.isBlank()) {
+                            lang = "?app=true"
+                        } else {
+                            lang += "&app=true"
+                        }
+                    }
 
                     section(classes = "m-footer") {
                         if (standalone) a(classes = "m-footer--link", href = "${request.contextPath}/$lang") { +i18n.get("app.title") }

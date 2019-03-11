@@ -107,18 +107,6 @@ class ImageReceiver : HttpServlet() {
         val baos = ByteArrayOutputStream()
         ImageIO.write(image, "JPEG", baos)
 
-//        val hashBytes = MessageDigest.getInstance("SHA-256").digest(baos.toByteArray())
-//        val hash = DatatypeConverter.printHexBinary(hashBytes)
-
-//        val cipherImage = try {
-//            Crypt.encrypt(baos.toByteArray())
-//        } catch (e: Exception) {
-//            response.sendError(500, "Could not encrypt image")
-//            return
-//        }
-
-//        ImagePool[hash] = ImagePool.ImagePoolImage(cipherImage.message, LocalDateTime.now().plusHours(1))
-
         val jsonString = gson.toJson(ImageResponse(success = true, image = DatatypeConverter.printBase64Binary(baos.toByteArray())))
         response.setIntHeader("Content-Length", jsonString.length)
         response.writer.append(jsonString)
