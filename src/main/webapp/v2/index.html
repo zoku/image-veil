@@ -1,0 +1,78 @@
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<title>IV v2 Test</title>
+
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="background"></div>
+	<div class="canvas">
+		<div id="canvasContainer" class="canvas--container">
+			<canvas id="imageCanvas" class="canvas--container--image">Your browser cannot canvas :(</canvas>
+		</div>
+	</div>
+	<div class="windows"></div>
+	<div class="tools">
+		<div class="tools--title">Tools</div>
+		<ul class="tools--list">
+			<li class="tools--list--tool">Brush</li>
+			<li class="tools--list--tool">Eraser</li>
+			<li class="tools--list--tool">Rotate</li>
+			<li class="tools--list--tool">Move</li>
+			<li class="tools--list--tool">Zoom</li>
+		</ul>
+	</div>
+	<div class="menus">
+		<ul class="menus--items">
+			<li class="menus--items--item">File
+				<ul class="menus--items--item--submenu">
+					<li class="menus--items--item--submenu--item">Open</li>
+					<li class="menus--items--item--submenu--item">Save As...</li>
+				</ul>
+			</li>
+			<li class="menus--items--item">Edit
+				<ul class="menus--items--item--submenu">
+					<li class="menus--items--item--submenu--item">Reset</li>
+				</ul>
+			</li>
+			<li class="menus--items--item">Settings
+				<ul class="menus--items--item--submenu">
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_has-submenu">Brush Style
+						<ul class="menus--items--item--submenu">
+							<li class="menus--items--item--submenu--item">Crystallize <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio" checked></li>
+							<li class="menus--items--item--submenu--item">Square Mosaic <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio"></li>
+							<li class="menus--items--item--submenu--item">Fill <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio"></li>
+						</ul>
+					</li>
+					<li class="menus--items--item--submenu--item">Add Noise <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
+					<li class="menus--items--item--submenu--item">Resize Large Images <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
+				</ul>
+			</li>
+			<li class="menus--items--item">Help
+				<ul class="menus--items--item--submenu">
+					<li class="menus--items--item--submenu--item">Manual</li>
+					<li class="menus--items--item--submenu--item">FAQ</li>
+					<li class="menus--items--item--submenu--item">Privacy Policy</li>
+					<li class="menus--items--item--submenu--item">Imprint</li>
+					<li class="menus--items--item--submenu--item">About ImageVeil</li>
+				</ul>
+			</li>
+			<li class="menus--items--item menus--items--item_push-right">EN O</li>
+		</ul>
+	</div>
+	<div class="status-bar">
+		<ul class="status-bar--items">
+			<li class="status-bar--items--item">Zoom: - 100% +</li>
+			<li class="status-bar--items--item">Add noise: Yes</li>
+			<li class="status-bar--items--item">Resize large images: Yes</li>
+			<li class="status-bar--items--item">Brush style: Crystallize</li>
+			<li class="status-bar--items--item">640&times;480</li>
+			<li class="status-bar--items--item status-bar--items--item_push-right">v1.0.0 beta</li>
+		</ul>
+	</div>
+	<div class="alerts"></div>
+
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

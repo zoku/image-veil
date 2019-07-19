@@ -104,6 +104,7 @@
                 <configuration>
                     <charset>UTF-8</charset>
                     <path>/</path>
+                    <port>8281</port>
                 </configuration>
             </plugin>
 

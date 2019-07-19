@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #fff;
+  cursor: default; }
+  body .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: #191919; }
+  body .canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200; }
+    body .canvas .canvas--container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px;
+      height: 480px;
+      background-color: #fff;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 12px 12px;
+      background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); }
+      body .canvas .canvas--container .canvas--container--image {
+        width: 100%;
+        height: 100%; }
+  body .tools {
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    z-index: 300;
+    background: #343434;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); }
+    body .tools .tools--title {
+      background: linear-gradient(to bottom, #212121 0%, #181818 100%);
+      border-radius: 5px 5px 0 0;
+      text-align: center;
+      padding: .25em;
+      font-size: .8em; }
+    body .tools .tools--list {
+      list-style: none;
+      padding: .5em;
+      margin: 0; }
+      body .tools .tools--list .tools--list--tool {
+        margin: 0;
+        padding: 0;
+        text-align: center; }
+  body .windows {
+    display: none;
+    z-index: 400; }
+  body .alerts {
+    display: none;
+    z-index: 500; }
+  body .menus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    z-index: 601;
+    background: #343434;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); }
+    body .menus .menus--items {
+      height: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      body .menus .menus--items .menus--items--item {
+        position: relative;
+        display: inline-block;
+        line-height: 24px;
+        padding: 0 .5em;
+        font-size: .8em; }
+        body .menus .menus--items .menus--items--item:hover {
+          background: #444; }
+        body .menus .menus--items .menus--items--item.menus--items--item_push-right {
+          float: right; }
+        body .menus .menus--items .menus--items--item .menus--items--item--submenu {
+          display: none;
+          position: absolute;
+          top: 24px;
+          left: 0;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          background: #343434;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); }
+          body .menus .menus--items .menus--items--item .menus--items--item--submenu .menus--items--item--submenu--item {
+            position: relative;
+            padding: .25em 2em .25em 1em;
+            margin: 0;
+            white-space: nowrap; }
+            body .menus .menus--items .menus--items--item .menus--items--item--submenu .menus--items--item--submenu--item:hover {
+              background: #444; }
+            body .menus .menus--items .menus--items--item .menus--items--item--submenu .menus--items--item--submenu--item.menus--items--item--submenu--item_has-submenu::before {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: .25em;
+              transform: translateY(-50%);
+              width: 0;
+              height: 0;
+              border: 5px solid transparent;
+              border-left-color: #fff; }
+            body .menus .menus--items .menus--items--item .menus--items--item--submenu .menus--items--item--submenu--item .menus--items--item--submenu--item--checkbox,
+            body .menus .menus--items .menus--items--item .menus--items--item--submenu .menus--items--item--submenu--item .menus--items--item--submenu--item--radio {
+              position: absolute;
+              right: .5em;
+              top: 50%;
+              transform: translateY(-50%);
+              border: solid 1px #fff;
+              background: transparent;
+              margin: 0; }
+            body .menus .menus--items .menus--items--item .menus--items--item--submenu .menus--items--item--submenu--item .menus--items--item--submenu {
+              top: 5px;
+              left: 100%; }
+  body .status-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    z-index: 600;
+    background: #343434; }
+    body .status-bar .status-bar--items {
+      list-style: none;
+      height: 24px;
+      margin: 0;
+      padding: 0;
+      font-size: .8em; }
+      body .status-bar .status-bar--items .status-bar--items--item {
+        display: inline-block;
+        line-height: 24px;
+        padding: 0 .5em;
+        border-left: 1px solid #aaa; }
+        body .status-bar .status-bar--items .status-bar--items--item:first-child {
+          border-left: none; }
+        body .status-bar .status-bar--items .status-bar--items--item.status-bar--items--item_push-right {
+          float: right;
+          border: none; }
+
+/*# sourceMappingURL=styles.css.map */
