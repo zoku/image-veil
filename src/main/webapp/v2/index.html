@@ -1,14 +1,15 @@
 <html lang="de">
 <head>
 	<meta charset="UTF-8">
-	<title>IV v2 Test</title>
+	<title>Editor | ImageVeil v2</title>
 
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<div class="background"></div>
 	<div class="canvas">
-		<div id="canvasContainer" class="canvas--container">
+		<input type="file" id="canvas-file-input" style="margin: 40px;">
+		<div id="canvasContainer" class="canvas--container" style="display: none;">
 			<canvas id="imageCanvas" class="canvas--container--image">Your browser cannot canvas :(</canvas>
 		</div>
 	</div>
@@ -16,11 +17,11 @@
 	<div class="tools">
 		<div class="tools--title">Tools</div>
 		<ul class="tools--list">
-			<li class="tools--list--tool">Brush</li>
-			<li class="tools--list--tool">Eraser</li>
-			<li class="tools--list--tool">Rotate</li>
-			<li class="tools--list--tool">Move</li>
-			<li class="tools--list--tool">Zoom</li>
+			<li class="tools--list--tool" id="tools--tool--brush" title="Brush (B)">Br</li>
+			<li class="tools--list--tool" id="tools--tool--eraser" title="Eraser (E)">Er</li>
+			<li class="tools--list--tool" id="tools--tool--rotate" title="Rotate (R)">Ro</li>
+			<li class="tools--list--tool" id="tools--tool--move" title="Move (M)">Mo</li>
+			<li class="tools--list--tool" id="tools--tool--zoom" title="Zoom (Z)">Zo</li>
 		</ul>
 	</div>
 	<div class="menus">
@@ -63,11 +64,9 @@
 	</div>
 	<div class="status-bar">
 		<ul class="status-bar--items">
-			<li class="status-bar--items--item">Zoom: - 100% +</li>
-			<li class="status-bar--items--item">Add noise: Yes</li>
-			<li class="status-bar--items--item">Resize large images: Yes</li>
-			<li class="status-bar--items--item">Brush style: Crystallize</li>
-			<li class="status-bar--items--item">640&times;480</li>
+			<li class="status-bar--items--item">Zoom: <span id="status--zoom">100%</span></li>
+			<li class="status-bar--items--item">Brush style: <span id="status--brush">Crystallize</span></li>
+			<li class="status-bar--items--item"><span id="status--size"></span></li>
 			<li class="status-bar--items--item status-bar--items--item_push-right">v1.0.0 beta</li>
 		</ul>
 	</div>

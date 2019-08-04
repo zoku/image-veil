@@ -40,6 +40,15 @@ class Application : HttpServlet() {
                 mCheckbox(elementId = "resize", label = i18n.get("app.main.options.resize.label"), checked = true)
             }
 
+            div(classes = "m-editor") {
+                canvas {
+                    id = "m-editor--canvas"
+                    width = "800"
+                    height = "600"
+                    +"This browser doesn't know how to canvas :("
+                }
+            }
+
             div(classes = "m-upload") {
                 attributes["data-i18n--file-size-hint"] = i18n.get("js.fileSizeHint")
                 attributes["data-i18n--file-type-hint"] = i18n.get("js.fileTypeHint")

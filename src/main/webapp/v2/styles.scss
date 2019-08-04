@@ -9,6 +9,7 @@ $status-bar--height: 24px;
 
 * {
 	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
 	font-size: 16px;
 	color: #fff;
 	cursor: default;
+	overflow: hidden;
 
 	.background {
 		position: absolute;
@@ -38,9 +40,7 @@ body {
 
 		.canvas--container {
 			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
+			// Position is calculated by JS
 			width: 640px;
 			height: 480px;
 
@@ -90,8 +90,15 @@ body {
 
 			.tools--list--tool {
 				margin: 0;
-				padding: 0;
+				padding: .5em;
 				text-align: center;
+
+				border-radius: 5px;
+
+				&.is-active,
+				&:hover {
+					background: $color--menus_hover;
+				}
 			}
 		}
 	}
@@ -227,5 +234,25 @@ body {
 				}
 			}
 		}
+	}
+
+	.is-draggable {
+		cursor: grab;
+
+		&:active {
+			cursor: grabbing;
+		}
+	}
+
+	.is-zoomable {
+		cursor: zoom-in;
+
+		&.is-zoomable_out {
+			cursor: zoom-out;
+		}
+	}
+
+	.is-brushable {
+		cursor: crosshair;
 	}
 }
