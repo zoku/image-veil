@@ -1,4 +1,4 @@
-(function () {
+
     // Variables
     // -- Image and canvas
     var canvasContainer = document.getElementById('canvasContainer');
@@ -8,6 +8,23 @@
     var crystallizedImg = new Image();
     var originalImageDimensions = { width: 0, height: 0 };
 
+    // Toolbox
+    var tools = document.getElementById('tools');
+
+    // Helpers
+    var brushOutline_canvas = document.getElementById('brushOutline');
+    var brushOutline_ctx = brushOutline_canvas.getContext('2d');
+    var brushOutline_setSize = function (size) {
+        var _size = size * zoomFactor;
+        brushOutline_canvas.width = _size;
+        brushOutline_canvas.height = _size;
+
+        brushOutline_ctx.strokeStyle =  'rgb(0,0,0)';
+        brushOutline_ctx.beginPath();
+        brushOutline_ctx.arc(_size / 2, _size / 2, _size / 2, 0, Math.PI * 2, true);
+        brushOutline_ctx.stroke();
+    };
+
     // -- Tool helpers
     // -- -- Zooming
     var zoomFactor = 1;
@@ -16,8 +33,20 @@
 
     // -- -- Brush
     var isBrushing = false;
+    var wasBrushing = false;
     var isErasing = false;
-    var brushSize = 20;
+    var brushSize = 100;
+    brushOutline_setSize(brushSize);
+
+    // -- Tool Settings
+    var toolSettings = document.getElementById('tool-settings');
+    var toolSettingsRail = document.getElementById('tool-settings-rail');
+    var toolSettingsKnob = document.getElementById('tool-settings-knob');
+    var toolSettingsLabel = document.getElementById('tool-settings-label');
+    var toolSettingsCallback = function (value) {};
+
+    // -- Menus
+    var menuIsOpen = false;
 
     // Open a file on fileInput change
     function openFile(file) { // TODO: Make available through open dialog (trigger click on element)
@@ -35,7 +64,6 @@
     originalImg.onload = function () {
         loadImage(this);
     };
-    // originalImg.src = 'demo.png';
 
     function loadImage(_this) {
         canvasContainer.style.display = 'none';
@@ -92,7 +120,75 @@
         document.getElementById('tools--tool--brush').classList.add('is-active');
 
         canvasContainer.style.display = 'block';
+        tools.style.display = 'block';
+
+        document.getElementById('menu--file--save').classList.remove('menus--items--item--submenu--item_disabled');
+        closeAllMenus();
     }
+
+    // Bind menus
+    var menuItems = document.getElementsByClassName('menus--items--item');
+    var submenus = document.getElementsByClassName('menus--items--item--submenu');
+    function closeAllMenus() {
+        for (var i=0; i < submenus.length; i++) {
+            submenus[i].style.display = 'none';
+        }
+    }
+
+    for (var i=0; i<menuItems.length; i++) {
+        var menuItem = menuItems[i];
+
+        menuItem.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            if (this.getElementsByClassName('menus--items--item--submenu')[0].style.display === 'block') {
+                this.getElementsByClassName('menus--items--item--submenu')[0].style.display = 'none';
+                menuIsOpen = false;
+            } else {
+                closeAllMenus();
+                this.getElementsByClassName('menus--items--item--submenu')[0].style.display = 'block';
+                menuIsOpen = true;
+            }
+        });
+        menuItem.addEventListener('mouseenter', function() {
+            if (!menuIsOpen) {
+                return;
+            }
+
+            if (this.getElementsByClassName('menus--items--item--submenu')[0].style.display !== 'block') {
+                closeAllMenus();
+                this.getElementsByClassName('menus--items--item--submenu')[0].style.display = 'block';
+            }
+        });
+    }
+    document.getElementsByTagName('body')[0].addEventListener('click', function () {
+        closeAllMenus();
+        menuIsOpen = false;
+    });
+
+    // -- File
+    // -- -- Open
+    document.getElementById('menu--file--open').addEventListener('click', function () {
+        closeAllMenus();
+        document.getElementById('canvas-file-input').click();
+    });
+
+    // -- -- Save as
+    document.getElementById('menu--file--save').addEventListener('click', function () {
+        if (this.classList.contains('menus--items--item--submenu--item_disabled')) {
+            return;
+        }
+
+        closeAllMenus();
+
+        var $download = document.createElement('a');
+
+        $download.setAttribute('href', canvas.toDataURL('image/jpeg', .8));
+        $download.setAttribute('target', '_blank');
+        $download.setAttribute('download', 'anonymous-image.jpg');
+
+        $download.click();
+    });
 
     // Bind toolbox
     // -- Move
@@ -163,6 +259,11 @@
     document.addEventListener('keydown', function (e) {
         e.stopPropagation();
         if (e.code === 'Space') {
+            if (canvasContainer.getAttribute('data-is-brushable') === 'true') {
+                setBrushable(canvasContainer, false);
+                wasBrushing = true;
+            }
+
             setDraggable(canvasContainer);
             canvasContainer.classList.remove('zoom');
         }
@@ -176,6 +277,11 @@
     document.addEventListener('keyup', function (e) {
         if (e.code === 'Space') {
             setDraggable(canvasContainer, false);
+
+            if (wasBrushing) {
+                wasBrushing = false;
+                setBrushable(canvasContainer);
+            }
         }
 
         if (e.code === 'KeyY') {
@@ -215,6 +321,80 @@
     });
 
     // Tool functions
+    // -- Tool settings
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+
+        if (toolSettings.getAttribute('data-tool') === 'none') {
+            return;
+        }
+
+        if (toolSettings.getAttribute('data-tool') === 'brush') { // Also eraser
+            toolSettingsCallback = function() {
+                setBrushSize(toolSettings.getAttribute('data-value-log'));
+                brushOutline_canvas.style.left = e.offsetX - brushSize * zoomFactor / 2;
+                brushOutline_canvas.style.top = e.offsetY - brushSize * zoomFactor / 2;
+            };
+        }
+
+        if (toolSettings.getAttribute('data-tool') === 'zoom') {
+            // toolSettings.setAttribute('data-value-percent', (settingsPercent * 100).toFixed(2));
+        }
+
+        toolSettings.style.left = e.clientX + 'px';
+        toolSettings.style.top = e.clientY + 'px';
+        toolSettings.style.display = 'block';
+    });
+    document.addEventListener('click', function () {
+        toolSettings.style.display = 'none';
+    });
+    toolSettingsKnob.addEventListener('mousedown', function () {
+        document.addEventListener('mousemove', moveToolSettingsKnob);
+        document.addEventListener('mouseup', unmoveToolSettingsKnob);
+        toolSettingsLabel.style.display = 'block';
+    });
+    function unmoveToolSettingsKnob() {
+        document.removeEventListener('mousemove', moveToolSettingsKnob);
+        document.removeEventListener('mouseup', unmoveToolSettingsKnob);
+        toolSettingsLabel.style.display = 'none';
+        toolSettings.style.display = 'none';
+
+        toolSettingsCallback();
+    }
+    function moveToolSettingsKnob(e) {
+        var settingsOffset = offset(toolSettingsRail).left;
+        var settingsMinPx = 0 - (toolSettingsKnob.clientWidth / 2);
+        var settingsMaxPx = toolSettingsRail.clientWidth - (toolSettingsKnob.clientWidth / 2);
+        var newSettingsPositionPx = e.clientX - settingsOffset - (toolSettingsKnob.clientWidth / 2);
+
+        if (newSettingsPositionPx < settingsMinPx) { newSettingsPositionPx = settingsMinPx; }
+        if (newSettingsPositionPx > settingsMaxPx) { newSettingsPositionPx = settingsMaxPx; }
+
+        var settingsPercent = (newSettingsPositionPx + (toolSettingsKnob.clientWidth / 2)) / (settingsMaxPx + (toolSettingsKnob.clientWidth / 2));
+        var settingsLog = getLogValues(settingsPercent, 1, 3000);
+
+        toolSettingsKnob.style.left = newSettingsPositionPx;
+
+        if (toolSettings.getAttribute('data-label-mode') === '%') {
+            toolSettingsLabel.innerHTML = (settingsPercent * 100).toFixed(0) + ' %';
+        } else if (toolSettings.getAttribute('data-label-mode') === 'log') {
+            toolSettingsLabel.innerHTML = settingsLog.toFixed(0) + ' px';
+        } else {
+            toolSettingsLabel.innerHTML = settingsPercent.toFixed(2);
+        }
+
+        toolSettings.setAttribute('data-value-percent', (settingsPercent * 100).toFixed(2));
+        toolSettings.setAttribute('data-value-log', settingsLog.toFixed(2));
+    }
+    function getLogValues(position, min, max) {
+        var minP = 0;
+        var maxP = 100;
+        var minV = Math.log(min);
+        var maxV = Math.log(max);
+        var scale = (maxV - minV) / (maxP - minP);
+        return Math.exp(minV + scale * (position * 100 - minP));
+    }
+
     // -- Zooming
     var zoomClickHelper = function (e) {
         if (this.getAttribute('data-is-draggable') === 'true') return;
@@ -232,6 +412,8 @@
             element.addEventListener('click', zoomClickHelper);
             element.setAttribute('data-is-zoomable', true);
             element.classList.add('is-zoomable');
+
+            toolSettings.setAttribute('data-tool', 'zoom');
         } else {
             element.removeEventListener('click', zoomClickHelper);
             element.setAttribute('data-is-zoomable', false);
@@ -267,6 +449,10 @@
         element.style.left = offset(element).left + deltaWidth * (deltaOffsetX / (originalImageDimensions.width * zoomFactor));
         element.style.top = offset(element).top + deltaHeight * (deltaOffsetY / (originalImageDimensions.height * zoomFactor));
 
+        brushOutline_setSize(brushSize);
+        brushOutline_canvas.style.left = mouseEvent.offsetX - brushSize * zoomFactor / 2;
+        brushOutline_canvas.style.top = mouseEvent.offsetY - brushSize * zoomFactor / 2;
+
         document.getElementById('status--zoom').innerHTML = (zoomFactor * 100).toFixed(0) + '%';
     }
 
@@ -287,7 +473,6 @@
             this.style.top = (e.clientY - this.getAttribute('data-drag-offset-y')) + 'px';
         }
     };
-
     function setDraggable(element, activate) {
         var _activate = activate !== false;
 
@@ -317,6 +502,8 @@
         element.addEventListener('mouseout', deactivateDrag);
         element.addEventListener('mousemove', doDrag);
 
+        toolSettings.setAttribute('data-tool', 'none');
+
         return element;
     }
 
@@ -330,12 +517,22 @@
     };
 
     var doBrush = function (e) {
-        if (!isBrushing) {
+        var x = e.offsetX;
+        var y = e.offsetY;
+
+        brushOutline_canvas.style.display = 'block';
+        brushOutline_canvas.style.left = x - brushSize * zoomFactor / 2;
+        brushOutline_canvas.style.top = y - brushSize * zoomFactor / 2;
+
+        if (!isBrushing && e.type !== 'click') {
             return;
         }
 
-        var x = e.offsetX;
-        var y = e.offsetY;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x / zoomFactor, y / zoomFactor, brushSize / 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.clip();
 
         ctx.drawImage(
             e.shiftKey || isErasing? originalImg : crystallizedImg,
@@ -348,6 +545,12 @@
             brushSize,
             brushSize
         );
+
+        ctx.restore();
+    };
+
+    var brushLeaves = function (e) {
+        brushOutline_canvas.style.display = 'none';
     };
 
     function setBrushable(element, activate) {
@@ -364,6 +567,10 @@
             canvas.removeEventListener('mousedown', startBrush);
             canvas.removeEventListener('mouseup', stopBrush);
             canvas.removeEventListener('mousemove', doBrush);
+            canvas.removeEventListener('click', doBrush);
+            canvas.removeEventListener('mouseleave', brushLeaves);
+
+            brushOutline_canvas.style.display = 'none';
 
             return element;
         }
@@ -374,8 +581,18 @@
         canvas.addEventListener('mousedown', startBrush);
         canvas.addEventListener('mouseup', stopBrush);
         canvas.addEventListener('mousemove', doBrush);
+        canvas.addEventListener('click', doBrush);
+        canvas.addEventListener('mouseleave', brushLeaves);
+
+        toolSettings.setAttribute('data-tool', 'brush');
 
         return element;
+    }
+
+    // -- Brush size
+    function setBrushSize(size) {
+        brushSize = size;
+        brushOutline_setSize(size);
     }
 
     // Helper functions
@@ -453,4 +670,3 @@
         imageData.data.set(buffer);
         ctx.putImageData(imageData, 0, 0);
     }
-})();

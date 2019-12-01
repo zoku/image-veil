@@ -6,60 +6,94 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div class="background"></div>
+	<div class="background">
+        <div class="background--help">
+            Shortcuts:<br>
+            - Brush: B<br>
+            - Eraser: E (or hold shift key while brush is active)<br>
+            - Move: M (or hold space key)<br>
+            - Zoom: Z (or hold Z and mousewheel)<br>
+            <br>
+            CAUTION: Images are not treated with anti-analysis techniques, yet!
+        </div>
+    </div>
 	<div class="canvas">
-		<input type="file" id="canvas-file-input" style="margin: 40px;">
+		<input type="file" id="canvas-file-input" style="display: none;">
 		<div id="canvasContainer" class="canvas--container" style="display: none;">
+			<canvas id="brushOutline">Your browser cannot canvas :(</canvas>
 			<canvas id="imageCanvas" class="canvas--container--image">Your browser cannot canvas :(</canvas>
 		</div>
 	</div>
 	<div class="windows"></div>
-	<div class="tools">
+	<div class="tool-settings" id="tool-settings" data-label-mode="log" data-value-percent="23" data-tool="none">
+		<div class="tool-settings--slider">
+			<div class="tool-settings--slider--icon_left"></div>
+			<div class="tool-settings--slider--rail" id="tool-settings-rail">
+				<div class="tool-settings--slider--rail--knob" id="tool-settings-knob">
+					<div class="tool-settings--slider--rail--knob--label" id="tool-settings-label"><!-- Will be set by JS --></div>
+				</div>
+			</div>
+			<div class="tool-settings--slider--icon_right"></div>
+		</div>
+	</div>
+	<div class="tools" id="tools" style="display: none;">
 		<div class="tools--title">Tools</div>
 		<ul class="tools--list">
 			<li class="tools--list--tool" id="tools--tool--brush" title="Brush (B)">Br</li>
 			<li class="tools--list--tool" id="tools--tool--eraser" title="Eraser (E)">Er</li>
-			<li class="tools--list--tool" id="tools--tool--rotate" title="Rotate (R)">Ro</li>
+			<li class="tools--list--tool" id="tools--tool--rotate" title="Rotate (R)" style="display: none;">Ro</li>
 			<li class="tools--list--tool" id="tools--tool--move" title="Move (M)">Mo</li>
 			<li class="tools--list--tool" id="tools--tool--zoom" title="Zoom (Z)">Zo</li>
 		</ul>
 	</div>
+    <div class="splash" id="splash">
+        <img src="../assets/img/background.svg" alt="ImageVeil Logo">
+        <!-- Open file -->
+        <!-- Imprint -->
+        <!-- Privacy policy -->
+        <!-- Help -->
+    </div>
 	<div class="menus">
 		<ul class="menus--items">
 			<li class="menus--items--item">File
 				<ul class="menus--items--item--submenu">
-					<li class="menus--items--item--submenu--item">Open</li>
-					<li class="menus--items--item--submenu--item">Save As...</li>
+					<li class="menus--items--item--submenu--item" id="menu--file--open">Open</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled" id="menu--file--save">Save As...</li>
 				</ul>
 			</li>
 			<li class="menus--items--item">Edit
 				<ul class="menus--items--item--submenu">
-					<li class="menus--items--item--submenu--item">Reset</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Reset</li>
 				</ul>
 			</li>
 			<li class="menus--items--item">Settings
 				<ul class="menus--items--item--submenu">
-					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_has-submenu">Brush Style
-						<ul class="menus--items--item--submenu">
-							<li class="menus--items--item--submenu--item">Crystallize <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio" checked></li>
-							<li class="menus--items--item--submenu--item">Square Mosaic <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio"></li>
-							<li class="menus--items--item--submenu--item">Fill <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio"></li>
-						</ul>
-					</li>
-					<li class="menus--items--item--submenu--item">Add Noise <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
-					<li class="menus--items--item--submenu--item">Resize Large Images <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_group">Brush style</li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Crystallize <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio" checked disabled></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Square Mosaic <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio" disabled></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Fill <input type="radio" name="brushType" class="menus--items--item--submenu--item--radio" disabled></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_separator"></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_group">Saving</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Add Noise <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked disabled></li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Resize Large Images <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked disabled></li>
 				</ul>
 			</li>
 			<li class="menus--items--item">Help
 				<ul class="menus--items--item--submenu">
-					<li class="menus--items--item--submenu--item">Manual</li>
-					<li class="menus--items--item--submenu--item">FAQ</li>
-					<li class="menus--items--item--submenu--item">Privacy Policy</li>
-					<li class="menus--items--item--submenu--item">Imprint</li>
-					<li class="menus--items--item--submenu--item">About ImageVeil</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Manual</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">FAQ</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Privacy Policy</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Imprint</li>
+					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">About ImageVeil</li>
 				</ul>
 			</li>
-			<li class="menus--items--item menus--items--item_push-right">EN O</li>
+			<li class="menus--items--item menus--items--item_push-right">EN <img class="menus--items--item--image" src="../assets/img/flags/en.jpg" alt="Flag EN">
+                <ul class="menus--items--item--submenu">
+                    <li class="menus--items--item--submenu--item">English  <img class="menus--items--item--image" src="../assets/img/flags/en.jpg" alt="Flag EN"> <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">German <img class="menus--items--item--image" src="../assets/img/flags/de.jpg" alt="Flag DE"> <input type="checkbox" class="menus--items--item--submenu--item--checkbox" disabled></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Español <img class="menus--items--item--image" src="../assets/img/flags/es.jpg" alt="Flag ES"> <input type="checkbox" class="menus--items--item--submenu--item--checkbox" disabled></li>
+                </ul>
+            </li>
 		</ul>
 	</div>
 	<div class="status-bar">
