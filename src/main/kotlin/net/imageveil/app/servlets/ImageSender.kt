@@ -4,11 +4,11 @@ import net.imageveil.app.utils.Crypt
 import net.imageveil.app.utils.ImagePool
 import java.lang.Exception
 import java.time.LocalDateTime
+import java.util.*
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import javax.xml.bind.DatatypeConverter
 
 @WebServlet(
         name = "ImageSender",
@@ -47,7 +47,7 @@ class ImageSender : HttpServlet() {
         }
 
         val image = try {
-            Crypt.decrypt(ImagePool[hash]!!.image, DatatypeConverter.parseHexBinary(key))
+            Crypt.decrypt(ImagePool[hash]!!.image, Base64.getDecoder().decode(key))
         } catch (e: Exception) {
             response.sendError(403, "Could not decrypt image")
             return

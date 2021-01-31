@@ -1,0 +1,56 @@
+@import "fonts";
+@import "variables";
+
+@import "mixins/responsive";
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  font-family: 'Fira Sans', 'Arial', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  cursor: default;
+  overflow: hidden;
+
+  @import "modules/background";
+  @import "modules/canvas";
+  @import "modules/tools";
+  @import "modules/tool-settings";
+  @import "modules/splash";
+  @import "modules/alerts";
+  @import "modules/menus";
+  @import "modules/status-bar";
+  @import "modules/progress";
+
+  .is-draggable {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  .is-zoomable {
+    cursor: zoom-in;
+
+    &.is-zoomable_out {
+      cursor: zoom-out;
+    }
+  }
+
+  .is-brushable {
+    cursor: crosshair;
+  }
+
+  .helpers {
+    display: none;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    z-index: 1000000;
+    border: #f0f;
+  }
+}

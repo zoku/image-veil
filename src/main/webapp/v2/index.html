@@ -1,22 +1,19 @@
-<html lang="de">
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
 	<title>Editor | ImageVeil v2</title>
 
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles.css"> n 
 </head>
 <body>
 	<div class="background">
         <div class="background--help">
-            Shortcuts:<br>
-            - Brush: B<br>
-            - Eraser: E (or hold shift key while brush is active)<br>
-            - Move: M (or hold space key)<br>
-            - Zoom: Z (or hold Z and mousewheel)<br>
-            <br>
             CAUTION: Images are not treated with anti-analysis techniques, yet!
         </div>
     </div>
+
 	<div class="canvas">
 		<input type="file" id="canvas-file-input" style="display: none;">
 		<div id="canvasContainer" class="canvas--container" style="display: none;">
@@ -24,7 +21,9 @@
 			<canvas id="imageCanvas" class="canvas--container--image">Your browser cannot canvas :(</canvas>
 		</div>
 	</div>
+
 	<div class="windows"></div>
+
 	<div class="tool-settings" id="tool-settings" data-label-mode="log" data-value-percent="23" data-tool="none">
 		<div class="tool-settings--slider">
 			<div class="tool-settings--slider--icon_left"></div>
@@ -36,16 +35,19 @@
 			<div class="tool-settings--slider--icon_right"></div>
 		</div>
 	</div>
+
 	<div class="tools" id="tools" style="display: none;">
 		<div class="tools--title">Tools</div>
 		<ul class="tools--list">
 			<li class="tools--list--tool" id="tools--tool--brush" title="Brush (B)">Br</li>
 			<li class="tools--list--tool" id="tools--tool--eraser" title="Eraser (E)">Er</li>
 			<li class="tools--list--tool" id="tools--tool--rotate" title="Rotate (R)" style="display: none;">Ro</li>
-			<li class="tools--list--tool" id="tools--tool--move" title="Move (M)">Mo</li>
-			<li class="tools--list--tool" id="tools--tool--zoom" title="Zoom (Z)">Zo</li>
+			<li class="tools--list--tool tools--list--tool_desktop" id="tools--tool--move" title="Move (M)">Mo</li>
+			<li class="tools--list--tool tools--list--tool_desktop" id="tools--tool--zoom" title="Zoom (Z)">Zo</li>
+			<li class="tools--list--tool tools--list--tool_mobile" id="tools--tool--brush-size" title="Brush Size">BS</li>
 		</ul>
 	</div>
+
     <div class="splash" id="splash">
         <img src="../assets/img/background.svg" alt="ImageVeil Logo">
         <!-- Open file -->
@@ -53,8 +55,23 @@
         <!-- Privacy policy -->
         <!-- Help -->
     </div>
+
+	<div class="progress progress_hidden">
+		<div class="progress--message">
+			Loading...
+		</div>
+		<div class="progress--bar-container">
+			<div class="progress--bar-container--bar"></div>
+		</div>
+	</div>
+
+	<div class="top-bar">
+		<a href="#" class="menus--toggle" id="menu-open">=</a>
+	</div>
+
 	<div class="menus">
 		<ul class="menus--items">
+			<li class="menus--items--item menus--items--item--close" id="menu-close"><-</li>
 			<li class="menus--items--item">File
 				<ul class="menus--items--item--submenu">
 					<li class="menus--items--item--submenu--item" id="menu--file--open">Open</li>
@@ -78,7 +95,7 @@
 					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Resize Large Images <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked disabled></li>
 				</ul>
 			</li>
-			<li class="menus--items--item">Help
+			<li class="menus--items--item">Help / Legal
 				<ul class="menus--items--item--submenu">
 					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Manual</li>
 					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">FAQ</li>
@@ -87,15 +104,16 @@
 					<li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">About ImageVeil</li>
 				</ul>
 			</li>
-			<li class="menus--items--item menus--items--item_push-right">EN <img class="menus--items--item--image" src="../assets/img/flags/en.jpg" alt="Flag EN">
+			<li class="menus--items--item menus--items--item_push-right">Lang: EN
                 <ul class="menus--items--item--submenu">
-                    <li class="menus--items--item--submenu--item">English  <img class="menus--items--item--image" src="../assets/img/flags/en.jpg" alt="Flag EN"> <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
-                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">German <img class="menus--items--item--image" src="../assets/img/flags/de.jpg" alt="Flag DE"> <input type="checkbox" class="menus--items--item--submenu--item--checkbox" disabled></li>
-                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Español <img class="menus--items--item--image" src="../assets/img/flags/es.jpg" alt="Flag ES"> <input type="checkbox" class="menus--items--item--submenu--item--checkbox" disabled></li>
+                    <li class="menus--items--item--submenu--item">English <input type="checkbox" class="menus--items--item--submenu--item--checkbox" checked></li>
+                    <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">German <input type="checkbox" class="menus--items--item--submenu--item--checkbox" disabled></li>
+                    <!-- <li class="menus--items--item--submenu--item menus--items--item--submenu--item_disabled">Español <input type="checkbox" class="menus--items--item--submenu--item--checkbox" disabled></li> -->
                 </ul>
             </li>
 		</ul>
 	</div>
+
 	<div class="status-bar">
 		<ul class="status-bar--items">
 			<li class="status-bar--items--item">Zoom: <span id="status--zoom">100%</span></li>

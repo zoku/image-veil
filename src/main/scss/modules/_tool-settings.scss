@@ -1,0 +1,96 @@
+.tool-settings {
+  display: none;
+  position: absolute;
+  top: unset;
+  left: 50%;
+  bottom: $status-bar--height + 10px;
+  transform: translateX(-50%);
+
+  background: $color--menus;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+  width: 90%;
+  height: 40px;
+  z-index: 205;
+
+  @include respond-to('600') {
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+    transform: translate(-50%, -50%);
+    height: 2em;
+    width: auto;
+    min-width: 250px;
+  }
+
+  .tool-settings--slider {
+    .tool-settings--slider--icon_left {
+
+    }
+
+    .tool-settings--slider--icon_right {
+
+    }
+
+    .tool-settings--slider--rail {
+      position: absolute;
+      left: .5em;
+      right: .5em;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(100% - 1em);
+      height: .5em;
+      border-radius: 5px;
+      background: linear-gradient(to bottom, #333 0%, #555 50%, #333 100%);
+      box-shadow: 1px 1px 2px rgba(0,0,0,.5) inset;
+
+      .tool-settings--slider--rail--knob {
+        position: absolute;
+        left: 23%; // Will be set by JS
+        top: 50%;
+        transform-origin: 50% 50%;
+        transform: translateY(-50%);
+        width: 1.5em;
+        height: 1.5em;
+
+        border-radius: 100%;
+        background: #16363e;//radial-gradient(#172833 0%, #172833 50%, #315169 100%);
+        box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+
+        .tool-settings--slider--rail--knob--label {
+          display: none;
+          position: absolute;
+          bottom: 2.3em;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: .25em 1em;
+          background: #333;
+          white-space: nowrap;
+          color: #fff;
+          border: solid 1px #aaa;
+          border-radius: 3px;
+
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: solid 12px transparent;
+            border-top-color: #aaa;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -23px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: solid 12px transparent;
+            border-top-color: #333;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,189 @@
+.top-bar {
+  display: flex;
+  @include respond-to('600') {
+    display: none;
+  }
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 601;
+
+  width: 100%;
+  height: $menu--height_mobile;
+
+  background: $color--menus;
+
+  .menus--toggle {
+    display: block;
+    @include respond-to('600') { display: none; }
+    color: #fefefe;
+    text-decoration: none;
+    padding: 0 .5em;
+    line-height: $menu--height_mobile;
+  }
+}
+
+.menus {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: -320px;
+  z-index: 602;
+
+  width: 300px;
+  height: 100%;
+  @include respond-to('600') {
+    left: 0;
+    width: 100%;
+    height: $menu--height;
+  }
+
+  background: $color--menus;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+  transition: left 300ms ease-out;
+
+  &.menus_is-active {
+    left: 0;
+  }
+
+  .menus--items {
+    display: flex;
+    flex-direction: column;
+    @include respond-to('600') { flex-direction: row; }
+
+    width: 100%;
+    height: $menu--height_mobile;
+    @include respond-to('600') { height: 100%; }
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .menus--items--item {
+      position: relative;
+      line-height: $menu--height_mobile;
+
+      @include respond-to('600') {
+        height: 100%;
+        line-height: $menu--height;
+      }
+
+      padding: 0 .5em;
+      font-size: .8em;
+
+      &:hover {
+        background: $color--menus_hover;
+      }
+
+      &.menus--items--item_push-right {
+        align-self: flex-end;
+        margin-top: auto;
+        @include respond-to('600') { margin-left: auto; margin-top: 0; }
+
+        .menus--items--item--submenu {
+          left: unset;
+          right: 0;
+
+          text-align: right;
+        }
+      }
+
+      &.menus--items--item--close {
+        @include respond-to('600') { display: none; }
+      }
+
+      .menus--items--item--image {
+        height: 10px;
+      }
+
+      .menus--items--item--submenu {
+        display: none;
+
+        @include respond-to('600') {
+          position: absolute;
+          top: $menu--height;
+          left: 0;
+        }
+
+        list-style: none;
+
+        padding: 0;
+        margin: 0;
+
+        background: $color--menus_hover;
+
+        @include respond-to('600') {
+          background: $color--menus;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+        }
+
+        .menus--items--item--submenu--item {
+          position: relative;
+          padding: .25em 2em .25em 1em;
+          margin: 0;
+          white-space: nowrap;
+
+          &:hover {
+            background: $color--menus_mobile_hover;
+            @include respond-to('600') { background: $color--menus_hover; }
+          }
+
+          &.menus--items--item--submenu--item_separator {
+            border-top: solid 1px #aaa;
+            padding: 0;
+            margin: .5em;
+            box-shadow: -1px -1px 1px rgba(0,0,0,.5);
+          }
+
+          &.menus--items--item--submenu--item_group {
+            padding: 0;
+            margin: .5em 0 0 .5em;
+            font-size: 0.8em;
+
+            &:hover {
+              background: transparent;
+            }
+          }
+
+          &.menus--items--item--submenu--item_disabled {
+            color: rgba(150, 150, 150, .5);
+
+            input {
+              opacity: .5;
+            }
+          }
+
+          &.menus--items--item--submenu--item_has-submenu::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: .25em;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-left-color: #fff;
+          }
+
+          .menus--items--item--submenu--item--checkbox,
+          .menus--items--item--submenu--item--radio {
+            position: absolute;
+            right: .5em;
+            top: 50%;
+            transform: translateY(-50%);
+            border: solid 1px #fff;
+            background: transparent;
+            margin: 0;
+          }
+
+          .menus--items--item--submenu {
+            top: 5px;
+            left: 100%;
+          }
+        }
+      }
+    }
+  }
+}

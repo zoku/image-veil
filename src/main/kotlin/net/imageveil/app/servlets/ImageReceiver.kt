@@ -16,7 +16,6 @@ import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import javax.xml.bind.DatatypeConverter
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.lang.Exception
@@ -107,7 +106,7 @@ class ImageReceiver : HttpServlet() {
         val baos = ByteArrayOutputStream()
         ImageIO.write(image, "JPEG", baos)
 
-        val jsonString = gson.toJson(ImageResponse(success = true, image = DatatypeConverter.printBase64Binary(baos.toByteArray())))
+        val jsonString = gson.toJson(ImageResponse(success = true, image = Base64.getEncoder().encodeToString(baos.toByteArray())))
         response.setIntHeader("Content-Length", jsonString.length)
         response.writer.append(jsonString)
 

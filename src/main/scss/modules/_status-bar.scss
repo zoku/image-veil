@@ -1,0 +1,35 @@
+.status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $status-bar--height;
+  z-index: 600;
+
+  background: $color--menus;
+
+  .status-bar--items {
+    list-style: none;
+    height: $menu--height;
+    margin: 0;
+    padding: 0;
+    font-size: .8em;
+
+    .status-bar--items--item {
+      display: inline-block;
+      line-height: $status-bar--height;
+      padding: 0 .5em;
+
+      border-left: 1px solid #aaa;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &.status-bar--items--item_push-right {
+        float: right;
+        border: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "wrapper": "src/main/javascript/wrapper.js",
+  "scripts": {
+    "include": [
+      "src/main/javascript/lib/*.js",
+      "src/main/javascript/util/*.js",
+      "src/main/javascript/modules/*.js",
+      "src/main/javascript/modules/**/*.js"
+    ],
+    "exclude": []
+  },
+  "separator": "\n",
+  "minify": true,
+  "output": "src/main/webapp/v2/app.js",
+  "verbose": true
+}

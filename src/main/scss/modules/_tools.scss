@@ -1,0 +1,52 @@
+.tools {
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  z-index: 300;
+
+  background: $color--menus;
+
+  border-radius: 5px;
+
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+
+  .tools--title {
+    background: linear-gradient(to bottom, #212121 0%, #181818 100%);
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    padding: .25em;
+    font-size: .8em;
+  }
+
+  .tools--list {
+    list-style: none;
+    padding: .5em;
+    margin: 0;
+
+    .tools--list--tool {
+      margin: 0;
+
+      padding: 1em;
+      @include respond-to('600') { padding: .5em; }
+
+      text-align: center;
+
+      border-radius: 5px;
+
+      &.is-active,
+      &:hover {
+        background: $color--menus_hover;
+      }
+
+      &_desktop {
+        display: none;
+        @include respond-to('600') { display: block; }
+      }
+
+      &_mobile {
+        display: block;
+        @include respond-to('600') { display: none; }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@mixin respond-to($minWidth) {
+  @media screen and (min-width: #{$minWidth}px) {
+    @content;
+  }
+}
