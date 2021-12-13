@@ -1,0 +1,16 @@
+{
+  "id": "0.1.6",
+  "releaseDate": "2021-12-13",
+  "simple": "Remove Log4J as a dependency of ImageVeil.",
+  "details": {
+    "fix": [
+      "The version of Log4J used in ImageVeil contained a major security risk and has been removed in image-veil and image-veil-lib. Logging is now done via slf4j logging api."
+    ],
+    "feat": [
+      "none"
+    ],
+    "chore": [
+      "none"
+    ]
+  }
+}

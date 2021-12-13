@@ -47,7 +47,7 @@ class Statistics : HttpServlet() {
             "d" -> LocalDateTime.now().minusMonths(1)
             "m" -> LocalDateTime.now().minusMonths(12)
             "y" -> LocalDateTime.now().minusYears(5)
-            else -> dates.min() ?: LocalDateTime.now()
+            else -> dates.minOrNull() ?: LocalDateTime.now()
         }
 
         val dataDates = arrayListOf<String>()

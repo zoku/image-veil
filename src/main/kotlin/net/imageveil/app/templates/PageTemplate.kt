@@ -54,7 +54,7 @@ object PageTemplate {
                     val supportedLanguages = arrayListOf("de", "en", "es") // Add rm for Roman Empire and pi for Pirate, also fr, ru, gr, it
 
                     div(classes = "m-language") {
-                        div(classes = "m-language--preview") { img(src = "${request.contextPath}/assets/img/flags/${i18n.lang}.jpg");+" ${i18n.lang.toUpperCase()}" }
+                        div(classes = "m-language--preview") { img(src = "${request.contextPath}/assets/img/flags/${i18n.lang}.jpg");+" ${i18n.lang.uppercase()}" }
                         ul(classes = "m-language--list") {
                             supportedLanguages.forEach { language ->
                                 if (language != i18n.lang) {
@@ -66,7 +66,7 @@ object PageTemplate {
                                         }
 
                                         a(href = "$pageUri?l=$language${if(standalone) "&app=true" else ""}") {
-                                            img(src = "${request.contextPath}/assets/img/flags/$language.jpg"); + " ${language.toUpperCase()}"
+                                            img(src = "${request.contextPath}/assets/img/flags/$language.jpg"); + " ${language.uppercase()}"
                                         }
                                     }
                                 }
